@@ -6,18 +6,24 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma.studio": "npx prisma studio",
+    "prisma.seed": "npx prisma db seed",
+    "prisma.migrate": "npx prisma migrate dev",
+    "prisma.push": "npx prisma db push"
   },
   "dependencies": {
+    "@prisma/client": "^5.12.1",
     "@types/node": "22.7.3",
     "@types/react": "18.3.9",
     "@types/react-dom": "18.3.0",
     "autoprefixer": "10.4.20",
-    "babel-plugin-react-compiler": "^0.0.0-experimental-9e9694c-20240826",
+    "babel-plugin-react-compiler": "^0.0.0-experimental-57db2f6-20240926",
     "clsx": "^2.1.1",
     "eslint": "9.11.1",
     "next": "^15.0.0-canary.171",
     "postcss": "^8.4.47",
+    "prisma": "^5.12.1",
     "react": "^19.0.0-rc-eb3ad065-20240822",
     "react-dom": "^19.0.0-rc-eb3ad065-20240822",
     "server-only": "^0.0.1",
@@ -35,6 +41,10 @@
     "eslint-plugin-react-compiler": "^0.0.0-experimental-b6997ec-20240910",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.6.8"
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "ts-node": "^10.9.2"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   }
 }

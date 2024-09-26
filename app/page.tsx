@@ -1,5 +1,8 @@
+import { prisma } from '@/db';
 import React from 'react';
 
-export default function Home() {
-  return <div>Home</div>;
+export default async function Home() {
+  const data = await prisma.message.findMany();
+
+  return <div>Home{data[0].content}</div>;
 }
