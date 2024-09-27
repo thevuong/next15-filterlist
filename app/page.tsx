@@ -1,8 +1,15 @@
-import { prisma } from '@/db';
-import React from 'react';
+import React, { Suspense } from 'react';
+import DataComponent from '@/components/DataComponent';
+
+export const experimental_ppr = true;
 
 export default async function Home() {
-  const data = await prisma.message.findMany();
-
-  return <div>Home{data[0].content}</div>;
+  return (
+    <div>
+      Home STATIC
+      <Suspense fallback={<div>Loading...</div>}>
+        <DataComponent />
+      </Suspense>
+    </div>
+  );
 }
