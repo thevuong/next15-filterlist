@@ -1,15 +1,5 @@
-import React, { Suspense } from 'react';
-import DataComponent from '@/components/DataComponent';
+import React from 'react';
 
-export const experimental_ppr = true;
-
-export default async function Home() {
-  return (
-    <div>
-      Home STATIC
-      <Suspense fallback={<div>Loading...</div>}>
-        <DataComponent />
-      </Suspense>
-    </div>
-  );
+export default async function RootPage() {
+  return <div>RootPage</div>;
 }

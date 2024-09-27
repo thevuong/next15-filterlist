@@ -1,5 +1,5 @@
-export async function slow() {
+export async function slow(delay: number = 1000) {
   await new Promise(resolve => {
-    return setTimeout(resolve, 1000);
+    return setTimeout(resolve, delay);
   });
 }
