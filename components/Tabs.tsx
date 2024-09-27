@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import React, { useOptimistic, useTransition } from 'react';
+import React, { use, useOptimistic, useTransition } from 'react';
 import { cn } from '@/utils/cn';
 import type { Message } from '@prisma/client';
 
@@ -38,11 +38,12 @@ function Tab({ tabId, data, activeTab, setOptimisticTab }: Props) {
 }
 
 type TabsProps = {
-  data: Message[];
+  dataPromise: Promise<Message[]>;
 };
 
-export default function Tabs({ data }: TabsProps) {
+export default function Tabs({ dataPromise }: TabsProps) {
   const activeTab = useParams().tab as string;
+  const data = use(dataPromise);
   const [optimisticTab, setOptimisticTab] = useOptimistic(activeTab);
 
   return (

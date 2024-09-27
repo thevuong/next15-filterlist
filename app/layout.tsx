@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className}>
         <div className="group">
-          <div className="bg-blue-500 p-4 text-white">STATIC</div>
+          <div className="bg-blue-500 p-4 text-white">Statisk data</div>
           <Suspense fallback={<div>Loading...</div>}>
             <DataComponent />
           </Suspense>
