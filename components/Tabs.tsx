@@ -39,6 +39,7 @@ function Tab({ tabId, data, activeTab, setOptimisticTab }: Props) {
 
 type TabsProps = {
   dataPromise: Promise<Message[]>;
+  // data: Message[];
 };
 
 export default function Tabs({ dataPromise }: TabsProps) {

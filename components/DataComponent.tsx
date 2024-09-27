@@ -1,10 +1,11 @@
 import React, { Suspense } from 'react';
-import { getOtherData } from '@/data/getData';
+import { getDataOverview, getOtherData } from '@/data/getData';
 import Tabs from './Tabs';
 
 export default async function DataComponent() {
+  const dataOverview = getDataOverview();
   const otherData = await getOtherData();
-  const dataOverview = getOtherData();
+  // const [dataOverview, otherData] = await Promise.all([getDataOverview(), getOtherData()]);
 
   return (
     <>

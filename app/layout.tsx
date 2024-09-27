@@ -2,6 +2,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import { Suspense } from 'react';
 import DataComponent from '@/components/DataComponent';
+import LoadTimeTracker from '@/components/LoadTimeTracker';
 import Search from '@/components/Search';
 import type { Metadata } from 'next';
 
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Search />
           <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         </div>
+        <LoadTimeTracker />
       </body>
     </html>
   );
