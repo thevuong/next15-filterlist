@@ -3,9 +3,13 @@ import { getDataOverview, getOtherData } from '@/data/getData';
 import Tabs from './Tabs';
 
 export default async function DataComponent() {
+  // const dataOverview = await getDataOverview();
+  // const otherData = await getOtherData();
+
+  // const [dataOverview, otherData] = await Promise.all([getDataOverview(), getOtherData()]);
+
   const dataOverview = getDataOverview();
   const otherData = await getOtherData();
-  // const [dataOverview, otherData] = await Promise.all([getDataOverview(), getOtherData()]);
 
   return (
     <>
