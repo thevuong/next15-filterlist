@@ -10,10 +10,10 @@ type Props = {
   tabId: string;
   data: string;
   activeTab: string;
-  onClick: (_tabId: string) => void;
+  setOptimisticTab: (_tabId: string) => void;
 };
 
-function Tab({ tabId, data, activeTab, onClick }: Props) {
+function Tab({ tabId, data, activeTab, setOptimisticTab }: Props) {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
@@ -28,7 +28,7 @@ function Tab({ tabId, data, activeTab, onClick }: Props) {
       onClick={e => {
         e.preventDefault();
         startTransition(() => {
-          onClick(tabId);
+          setOptimisticTab(tabId);
           router.push(tabId);
         });
       }}
@@ -52,9 +52,9 @@ export default function Tabs({ dataPromise }: TabsProps) {
 
   return (
     <div className="flex gap-4 p-4">
-      <Tab activeTab={optimisticTab} onClick={setOptimisticTab} data={data[0].id} tabId="1" />
-      <Tab activeTab={optimisticTab} onClick={setOptimisticTab} data={data[1].id} tabId="2" />
-      <Tab activeTab={optimisticTab} onClick={setOptimisticTab} data={data[2].id} tabId="3" />
+      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} data={data[0].id} tabId="1" />
+      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} data={data[1].id} tabId="2" />
+      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} data={data[2].id} tabId="3" />
     </div>
   );
 }
