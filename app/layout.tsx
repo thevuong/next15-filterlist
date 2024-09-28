@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 import DataComponent from '@/components/DataComponent';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
 import Search from '@/components/Search';
+import Skeleton from '@/components/ui/Skeleton';
 import type { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -19,11 +20,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className}>
         <div className="group">
           <div className="bg-blue-500 p-4 text-white">Statisk data</div>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Skeleton />}>
             <DataComponent />
           </Suspense>
           <Search />
-          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+          <Suspense fallback={<Skeleton />}>{children}</Suspense>
         </div>
         <LoadTimeTracker />
       </body>
