@@ -10,6 +10,8 @@ import type { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'] });
 
+export const experimental_ppr = true;
+
 export const metadata: Metadata = {
   description: 'Next.js 15 Filter List',
   title: 'Next.js 15 filtering list example using modern React features',
