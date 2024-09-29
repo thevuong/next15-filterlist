@@ -1,6 +1,8 @@
 import React from 'react';
 import { getData } from '@/data/getData';
 
+export const experimental_ppr = false;
+
 type PageProps = {
   params: {
     tab: string;

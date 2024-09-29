@@ -8,9 +8,9 @@ import Search from '@/components/Search';
 import Skeleton from '@/components/ui/Skeleton';
 import type { Metadata } from 'next';
 
-const inter = Inter({ subsets: ['latin'] });
-
 export const experimental_ppr = true;
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   description: 'Next.js 15 Filter List',
@@ -24,15 +24,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="group">
           <div className="bg-blue-500 p-4 text-white">
             Statisk data
-            <Image priority src="/logo.jpeg" alt="Logo" width={500} height={200} />
+            <Image priority src="/image.jpg" alt="Logo" width={500} height={200} />
           </div>
           <Suspense>
             <Suspense fallback={<Skeleton />}>
               <DataComponent />
             </Suspense>
             <Search />
-            <Suspense fallback={<Skeleton />}>{children}</Suspense>
           </Suspense>
+          <Suspense fallback={<Skeleton />}>{children}</Suspense>
         </div>
         <LoadTimeTracker />
       </body>
