@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="group">
           <div className="bg-blue-500 p-4 text-white">
             Statisk data
-            <Image src="/logo.jpeg" alt="Logo" width={500} height={200} />
+            <Image priority src="/logo.jpeg" alt="Logo" width={500} height={200} />
           </div>
           <Suspense fallback={<Skeleton />}>
             <DataComponent />
