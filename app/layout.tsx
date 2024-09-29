@@ -26,13 +26,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             Statisk data
             <Image priority src="/logo.jpeg" alt="Logo" width={500} height={200} />
           </div>
-          <Suspense fallback={<Skeleton />}>
-            <DataComponent />
-          </Suspense>
           <Suspense>
+            <Suspense fallback={<Skeleton />}>
+              <DataComponent />
+            </Suspense>
             <Search />
+            <Suspense fallback={<Skeleton />}>{children}</Suspense>
           </Suspense>
-          <Suspense fallback={<Skeleton />}>{children}</Suspense>
         </div>
         <LoadTimeTracker />
       </body>
