@@ -23,7 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Suspense fallback={<Skeleton />}>
             <DataComponent />
           </Suspense>
-          <Search />
+          <Suspense>
+            <Search />
+          </Suspense>
           <Suspense fallback={<Skeleton />}>{children}</Suspense>
         </div>
         <LoadTimeTracker />
