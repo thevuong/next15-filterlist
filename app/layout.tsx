@@ -1,11 +1,12 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
-import Image from 'next/image';
+
 import { Suspense } from 'react';
 import DataComponent from '@/components/DataComponent';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
 import Search from '@/components/Search';
 import Skeleton from '@/components/ui/Skeleton';
+import { getStaticData } from '@/data/getData';
 import type { Metadata } from 'next';
 
 export const experimental_ppr = true;
@@ -17,14 +18,16 @@ export const metadata: Metadata = {
   title: 'Next.js 15 filtering list example using modern React features',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const data = await getStaticData();
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <div className="group">
           <div className="bg-blue-500 p-4 text-white">
             Statisk data
-            <Image priority src="/image.jpg" alt="Logo" width={500} height={200} />
+            {data[0].id}
           </div>
           <Suspense>
             <Suspense fallback={<Skeleton />}>

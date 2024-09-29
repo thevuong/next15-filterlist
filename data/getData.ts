@@ -26,3 +26,10 @@ export async function getOtherData() {
 
   return prisma.message.findMany();
 }
+
+export async function getStaticData() {
+  console.log('getStaticData');
+  await slow();
+
+  return prisma.message.findMany();
+}
