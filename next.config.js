@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    // ppr: true,
+    ppr: true,
     reactCompiler: true,
     // staleTimes: {
     //   dynamic: 30,
