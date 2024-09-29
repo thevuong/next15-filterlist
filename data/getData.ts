@@ -29,7 +29,7 @@ export async function getOtherData() {
 
 export async function getStaticData() {
   console.log('getStaticData');
-  await slow();
+  await slow(500);
 
   return prisma.message.findMany();
 }
