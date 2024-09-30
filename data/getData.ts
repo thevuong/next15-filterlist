@@ -31,5 +31,10 @@ export async function getStaticData() {
   console.log('getStaticData');
   await slow(700);
 
-  return prisma.message.findMany();
+  return [
+    {
+      id: 1,
+      name: 'Statisk data',
+    },
+  ];
 }
