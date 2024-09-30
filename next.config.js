@@ -2,7 +2,7 @@
 const nextConfig = {
   experimental: {
     ppr: 'incremental',
-    reactCompiler: true,
+    // reactCompiler: true,
     // staleTimes: {
     //   dynamic: 30,
     // },
