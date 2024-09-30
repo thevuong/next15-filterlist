@@ -3,7 +3,7 @@ import { getDataOverview, getOtherData } from '@/data/getData';
 import Tabs from './Tabs';
 import Skeleton from './ui/Skeleton';
 
-export default async function DataComponent() {
+export default async function DynamicData() {
   // const dataOverview = await getDataOverview();
   // const otherData = await getOtherData();
 
