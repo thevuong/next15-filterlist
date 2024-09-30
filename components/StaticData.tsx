@@ -3,6 +3,7 @@ import { slow } from '@/utils/slow';
 
 export default async function StaticData() {
   await slow();
+  console.log('StaticData');
 
   return (
     <div className="bg-blue-500 p-4 text-white">
