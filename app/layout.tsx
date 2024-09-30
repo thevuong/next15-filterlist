@@ -1,6 +1,6 @@
 import './globals.css';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter } from 'next/font/google';
-
 import { Suspense } from 'react';
 import DataComponent from '@/components/DataComponent';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
@@ -38,6 +38,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Suspense fallback={<Skeleton />}>{children}</Suspense>
         </div>
         <LoadTimeTracker />
+        <SpeedInsights />
       </body>
     </html>
   );
