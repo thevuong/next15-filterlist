@@ -1,6 +1,8 @@
 import React from 'react';
 import { getData } from '@/data/getData';
 
+export const dynamic = 'force-dynamic';
+
 type PageProps = {
   params: {
     tab: string;
@@ -10,7 +12,7 @@ type PageProps = {
   };
 };
 
-export default async function Tab({ params, searchParams }: PageProps) {
+export default async function TabPage({ params, searchParams }: PageProps) {
   const data = await getData();
 
   return (
