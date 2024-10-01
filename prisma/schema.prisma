@@ -11,9 +11,25 @@ datasource db {
     shadowDatabaseUrl = env("SHADOW_DATABASE_URL") // Remove with sqlite
 }
 
-model Message {
+model Todo {
     id          String   @id @default(uuid())
+    name        String // TODO:rename to title
+    description String?
     createdAt   DateTime @default(now())
-    createdById String
-    content     String
+    status      String   @default("TODO")
+    categoryId  String
+    category    Category @relation(fields: [categoryId], references: [id])
+}
+
+model Category {
+    id    String @id @default(uuid())
+    name  String
+    color String @default("bg-gray-200")
+    todos Todo[]
+}
+
+model User {
+    id        String @id @default(uuid())
+    firstname String
+    lastname  String
 }

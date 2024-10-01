@@ -3,17 +3,17 @@
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import React, { use, useOptimistic, useTransition } from 'react';
+import type { TodosOverview, TodoStatus } from '@/types/todo';
 import { cn } from '@/utils/cn';
-import type { Message } from '@prisma/client';
 
 type Props = {
   tabId: string;
-  data: string;
+  children: React.ReactNode;
   activeTab: string;
   setOptimisticTab: (_tabId: string) => void;
 };
 
-function Tab({ tabId, data, activeTab, setOptimisticTab }: Props) {
+function Tab({ tabId, children, activeTab, setOptimisticTab }: Props) {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
@@ -22,7 +22,7 @@ function Tab({ tabId, data, activeTab, setOptimisticTab }: Props) {
       data-pending={isPending ? '' : undefined}
       className={cn(
         isPending ? 'bg-gray-300' : 'bg-gray-200',
-        activeTab === tabId ? 'text-blue-500' : 'text-gray-900',
+        activeTab === tabId && 'outline outline-gray-500',
         'rounded p-4',
       )}
       onClick={e => {
@@ -34,27 +34,44 @@ function Tab({ tabId, data, activeTab, setOptimisticTab }: Props) {
       }}
       href={tabId}
     >
-      <span>Tab: {tabId}</span>
-      <span>{data}</span>
+      <h2 className="text-lg font-semibold">{tabId}</h2>
+      {children}
     </Link>
   );
 }
 
 type TabsProps = {
-  dataPromise: Promise<Message[]>;
-  // data: Message[];
+  todosOverviewPromise: Promise<TodosOverview>;
+  // todosOverview: TodosOverview;
 };
 
-export default function Tabs({ dataPromise }: TabsProps) {
+export default function Tabs({ todosOverviewPromise }: TabsProps) {
   const activeTab = useParams().tab as string;
-  const data = use(dataPromise);
+  const todosOverview = use(todosOverviewPromise);
   const [optimisticTab, setOptimisticTab] = useOptimistic(activeTab);
+
+  const mapTodos = (status: TodoStatus) => {
+    return Object.entries(todosOverview[status]).map(([categoryName, category], i) => {
+      return (
+        <span key={i} className="flex items-center gap-1">
+          <span className={`rounded-full ${category.color || 'bg-gray-500'} size-2 p-1`} />
+          {category.count} {categoryName}
+        </span>
+      );
+    });
+  };
 
   return (
     <div className="flex gap-4 p-4">
-      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} data={data[0].id} tabId="1" />
-      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} data={data[1].id} tabId="2" />
-      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} data={data[2].id} tabId="3" />
+      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} tabId="TODO">
+        {mapTodos('TODO')}
+      </Tab>
+      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} tabId="IN_PROGRESS">
+        {mapTodos('IN_PROGRESS')}
+      </Tab>
+      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} tabId="DONE">
+        {mapTodos('DONE')}
+      </Tab>
     </div>
   );
 }

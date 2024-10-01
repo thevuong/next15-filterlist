@@ -1,13 +1,9 @@
 import React from 'react';
-import { getStaticData } from '@/data/getData';
+import { getCurrentUser } from '@/data/getCurrentUser';
 
+// TODO: should not be the user, user is dynamic, can use user somewhere else
 export default async function StaticData() {
-  const data = await getStaticData();
+  const user = await getCurrentUser();
 
-  return (
-    <div className="bg-blue-500 p-4 text-white">
-      Statisk data
-      {data[0].id}
-    </div>
-  );
+  return <div className="bg-blue-500 p-4 text-white">Welcome to the static data page, {user.firstname}!</div>;
 }

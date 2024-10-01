@@ -1,5 +1,4 @@
 import './globals.css';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter } from 'next/font/google';
 import { Suspense } from 'react';
 import DynamicData from '@/components/DynamicData';
@@ -9,6 +8,7 @@ import StaticData from '@/components/StaticData';
 import Skeleton from '@/components/ui/Skeleton';
 import type { Metadata } from 'next';
 
+// TODO: make this work and ppr the static data
 export const experimental_ppr = true;
 
 const inter = Inter({ subsets: ['latin'] });
@@ -33,7 +33,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Suspense fallback={<Skeleton />}>{children}</Suspense>
         </div>
         <LoadTimeTracker />
-        <SpeedInsights />
       </body>
     </html>
   );

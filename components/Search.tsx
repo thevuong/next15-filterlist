@@ -10,6 +10,7 @@ export default function Search() {
   const q = searchParams.get('q') || '';
   const [isPending, startTransition] = useTransition();
 
+  // TODO: kanskje ikke reset, fikse ved å navigere med q andre steder
   return (
     <form key={params.tab as string}>
       Search:
