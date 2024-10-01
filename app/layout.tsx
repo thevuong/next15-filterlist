@@ -2,10 +2,11 @@ import './globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Inter } from 'next/font/google';
 import { Suspense } from 'react';
-import DynamicComponents from '@/components/DynamicComponents';
+import DynamicData from '@/components/DynamicData';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
+import Search from '@/components/Search';
 import StaticData from '@/components/StaticData';
-
+import Skeleton from '@/components/ui/Skeleton';
 import type { Metadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -20,9 +21,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en">
       <body className={inter.className}>
         <StaticData />
-        <Suspense>
-          <DynamicComponents>{children}</DynamicComponents>
-        </Suspense>
+        <div className="group">
+          <Suspense fallback={<Skeleton />}>
+            <DynamicData />
+          </Suspense>
+          <Suspense>
+            <Search />
+          </Suspense>
+          <Suspense fallback={<Skeleton />}>{children}</Suspense>
+        </div>
         <LoadTimeTracker />
         <SpeedInsights />
       </body>

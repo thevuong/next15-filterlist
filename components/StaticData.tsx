@@ -1,10 +1,13 @@
 import React from 'react';
-
-import { slow } from '@/utils/slow';
+import { getStaticData } from '@/data/getData';
 
 export default async function StaticData() {
-  await slow(700);
-  console.log('StaticData');
+  const data = await getStaticData();
 
-  return <div className="bg-blue-500 p-4 text-white">Statisk data</div>;
+  return (
+    <div className="bg-blue-500 p-4 text-white">
+      Statisk data
+      {data[0].id}
+    </div>
+  );
 }
