@@ -12,6 +12,7 @@ type Props = {
 export default function CategoryFilter({ categoriesPromise }: Props) {
   const categories = use(categoriesPromise);
   const searchParams = useSearchParams();
+  const q = searchParams.get('q') || '';
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const [optimisticCategories, setOptimisticCategories] = useOptimistic(searchParams.getAll('category'));
@@ -38,7 +39,7 @@ export default function CategoryFilter({ categoriesPromise }: Props) {
               );
               startTransition(() => {
                 setOptimisticCategories(newCategories);
-                router.push(`?${params.toString()}&q=${searchParams.get('q')}`);
+                router.push(`?${params.toString()}&q=${q}`);
               });
             }}
             key={category.id}
