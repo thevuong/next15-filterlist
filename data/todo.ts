@@ -11,7 +11,7 @@ export const getTodos = cache(async (filter?: { q?: string; status?: TodoStatus;
   console.log('getTodos', filter);
 
   unstable_noStore();
-  await slow(2000);
+  await slow(3000);
 
   return prisma.todo.findMany({
     where: {
@@ -30,6 +30,10 @@ export const getTodos = cache(async (filter?: { q?: string; status?: TodoStatus;
 
 export async function getTodosOverview(): Promise<TodosOverview> {
   console.log('getTodosOverview');
+
+  await slow(3000);
+  unstable_noStore();
+
   const groupedTodos = await prisma.todo.groupBy({
     _count: {
       id: true,
