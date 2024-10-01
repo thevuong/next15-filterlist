@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCurrentUser } from '@/data/getCurrentUser';
+import { getCurrentUser } from '@/data/user';
 
 // TODO: should not be the user, user is dynamic, can use user somewhere else
 export default async function StaticData() {

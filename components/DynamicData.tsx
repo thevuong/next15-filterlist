@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
-import { getCategories } from '@/data/getCategories';
-import { getTodosOverview } from '@/data/getTodos';
+import { getCategories } from '@/data/category';
+import { getTodosOverview } from '@/data/todo';
 import Tabs from './Tabs';
 import Skeleton from './ui/Skeleton';
 
@@ -18,7 +18,7 @@ export default async function DynamicData() {
       <div className="flex flex-col gap-2 bg-red-500 p-4">
         <span>
           Dynamic category data: {categories.length} categories
-          {categories.map(category => {
+          {Object.values(categories).map(category => {
             return (
               <span className="rounded p-1" key={category.id}>
                 {category.name}

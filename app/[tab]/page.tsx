@@ -1,5 +1,5 @@
 import React from 'react';
-import { getTodos } from '@/data/getTodos';
+import { getTodos } from '@/data/todo';
 import type { TodoStatus } from '@/types/todo';
 
 export const experimental_ppr = false;

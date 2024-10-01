@@ -13,3 +13,16 @@ export const getCategories = cache(async () => {
 
   return prisma.category.findMany();
 });
+
+export async function getCategoriesMap() {
+  console.log('getCategoriesMap');
+
+  const categories = await getCategories();
+  return categories.reduce(
+    (acc, category) => {
+      acc[category.id] = category;
+      return acc;
+    },
+    {} as Record<string, (typeof categories)[0]>,
+  );
+}
