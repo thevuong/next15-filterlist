@@ -1,3 +1,3 @@
 export default async function RootPage() {
-  return <></>;
+  return <div>Select a tab.</div>;
 }

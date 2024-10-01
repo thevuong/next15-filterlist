@@ -8,6 +8,7 @@ export default function Search() {
   const params = useParams();
   const searchParams = useSearchParams();
   const q = searchParams.get('q') || '';
+  const category = searchParams.getAll('category');
   const [isPending, startTransition] = useTransition();
 
   // TODO: kanskje ikke reset, fikse ved å navigere med q andre steder
@@ -18,8 +19,9 @@ export default function Search() {
         data-pending={isPending ? '' : undefined}
         className="m-4 border border-gray-400 p-2 outline-none"
         onChange={e => {
+          const categories = category.join('&category=');
           startTransition(() => {
-            router.push(`?q=${e.target.value}`);
+            router.push(`?q=${e.target.value}&category=${categories}`);
           });
         }}
         defaultValue={q}

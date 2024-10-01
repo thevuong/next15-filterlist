@@ -38,7 +38,7 @@ export default function CategoryFilter({ categoriesPromise }: Props) {
               );
               startTransition(() => {
                 setOptimisticCategories(newCategories);
-                router.push(`?${params.toString()}`);
+                router.push(`?${params.toString()}&q=${searchParams.get('q')}`);
               });
             }}
             key={category.id}
