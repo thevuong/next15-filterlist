@@ -9,6 +9,8 @@ import StaticData from '@/components/StaticData';
 import Skeleton from '@/components/ui/Skeleton';
 import type { Metadata } from 'next';
 
+export const experimental_ppr = true;
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
