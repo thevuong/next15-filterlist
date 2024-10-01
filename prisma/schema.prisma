@@ -17,12 +17,12 @@ model Todo {
     description String?
     createdAt   DateTime @default(now())
     status      String   @default("TODO")
-    categoryId  String
+    categoryId  Int
     category    Category @relation(fields: [categoryId], references: [id])
 }
 
 model Category {
-    id    String @id @default(uuid())
+    id    Int    @id
     name  String
     color String @default("bg-gray-200")
     todos Todo[]

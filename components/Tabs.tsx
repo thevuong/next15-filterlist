@@ -7,7 +7,7 @@ import type { TodosOverview, TodoStatus } from '@/types/todo';
 import { cn } from '@/utils/cn';
 
 type Props = {
-  tabId: string;
+  tabId: TodoStatus;
   children: React.ReactNode;
   activeTab: string;
   setOptimisticTab: (_tabId: string) => void;
@@ -62,15 +62,15 @@ export default function Tabs({ todosOverviewPromise }: TabsProps) {
   };
 
   return (
-    <div className="flex gap-4 p-4">
-      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} tabId="TODO">
-        {mapTodos('TODO')}
+    <div className="flex gap-4 bg-red-500 p-4">
+      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} tabId="todo">
+        {mapTodos('todo')}
       </Tab>
-      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} tabId="IN_PROGRESS">
-        {mapTodos('IN_PROGRESS')}
+      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} tabId="inprogress">
+        {mapTodos('inprogress')}
       </Tab>
-      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} tabId="DONE">
-        {mapTodos('DONE')}
+      <Tab activeTab={optimisticTab} setOptimisticTab={setOptimisticTab} tabId="done">
+        {mapTodos('done')}
       </Tab>
     </div>
   );

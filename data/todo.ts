@@ -7,7 +7,7 @@ import type { TodosOverview, TodoStatus } from '@/types/todo';
 import { slow } from '@/utils/slow';
 import { getCategoriesMap } from './category';
 
-export const getTodos = cache(async (filter?: { q?: string; status?: TodoStatus }) => {
+export const getTodos = cache(async (filter?: { q?: string; status?: TodoStatus; categories?: number[] }) => {
   console.log('getTodos', filter);
 
   unstable_noStore();
@@ -22,6 +22,7 @@ export const getTodos = cache(async (filter?: { q?: string; status?: TodoStatus 
             }
           : {},
         filter?.status ? { status: filter.status } : {},
+        filter?.categories && filter.categories.length > 0 ? { categoryId: { in: filter.categories } } : {},
       ],
     },
   });

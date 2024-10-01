@@ -11,67 +11,67 @@ const USERS = [
 
 const CATEGORIES = [
   {
-    id: '7c274dd0-fcee-4f71-907c-7d55d5d760f6',
-    name: 'Home',
     color: 'bg-blue-500',
+    id: 0,
+    name: 'Home',
   },
   {
-    id: 'c841a2b2-70e4-4c7e-aef1-3994a0039251',
-    name: 'Work',
     color: 'bg-red-500',
+    id: 1,
+    name: 'Work',
   },
   {
-    id: '7e7a5d87-3851-4768-b707-7d5c70399e2b',
-    name: 'Personal',
     color: 'bg-green-500',
+    id: 2,
+    name: 'Personal',
   },
 ];
 
 const TODOS = [
   {
-    categoryId: '7c274dd0-fcee-4f71-907c-7d55d5d760f6',
+    categoryId: 0,
     createdAt: new Date('2024-09-03T00:00:00Z'),
     description: 'Milk, Cheese, Pizza, Fruit, Tylenol',
     name: 'Buy groceries',
-    status: 'IN_PROGRESS',
+    status: 'inprogress',
   },
   {
-    categoryId: 'c841a2b2-70e4-4c7e-aef1-3994a0039251',
+    categoryId: 1,
     createdAt: new Date('2024-05-03T00:00:00Z'),
     description: 'Learn React by building a project',
     name: 'Learn React',
-    status: 'TODO',
+    status: 'todo',
   },
   {
-    categoryId: 'c841a2b2-70e4-4c7e-aef1-3994a0039251',
+    categoryId: 1,
     createdAt: new Date('2024-06-03T00:00:00Z'),
     description: 'Learn TypeScript by building a project',
     name: 'Learn TypeScript',
-    status: 'IN_PROGRESS',
+    status: 'inprogress',
   },
   {
-    categoryId: '7e7a5d87-3851-4768-b707-7d5c70399e2b',
+    categoryId: 2,
     createdAt: new Date('2024-07-03T00:00:00Z'),
     description: 'Learn to dance by taking a class',
     name: 'Learn to dance',
-    status: 'TODO',
+    status: 'todo',
   },
   {
-    categoryId: '7c274dd0-fcee-4f71-907c-7d55d5d760f6',
+    categoryId: 0,
     createdAt: new Date('2024-09-03T00:00:00Z'),
     description: 'Go to Grandmas house and have dinner',
     name: 'Visit Grandma',
-    status: 'DONE',
+    status: 'done',
   },
 ];
 
-async function seedMessages() {
+async function seedTodos() {
   await Promise.all(
-    USERS.map(n => {
+    USERS.map(user => {
       return prisma.user.create({
         data: {
-          firstname: n.firstName,
-          lastname: n.lastName,
+          firstname: user.firstName,
+          lastname: user.lastName,
         },
       });
     }),
@@ -83,12 +83,12 @@ async function seedMessages() {
       return console.error('[SEED] Failed to create category records', e);
     });
   await Promise.all(
-    CATEGORIES.map(n => {
+    CATEGORIES.map(category => {
       return prisma.category.create({
         data: {
-          id: n.id,
-          color: n.color,
-          name: n.name,
+          color: category.color,
+          id: category.id,
+          name: category.name,
         },
       });
     }),
@@ -100,14 +100,14 @@ async function seedMessages() {
       return console.error('[SEED] Failed to create category records', e);
     });
   await Promise.all(
-    TODOS.map(n => {
+    TODOS.map(todo => {
       return prisma.todo.create({
         data: {
-          categoryId: n.categoryId,
-          createdAt: n.createdAt,
-          description: n.description,
-          name: n.name,
-          status: n.status,
+          categoryId: todo.categoryId,
+          createdAt: todo.createdAt,
+          description: todo.description,
+          name: todo.name,
+          status: todo.status,
         },
       });
     }),
@@ -120,4 +120,4 @@ async function seedMessages() {
     });
 }
 
-seedMessages();
+seedTodos();
