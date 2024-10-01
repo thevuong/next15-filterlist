@@ -1,7 +1,7 @@
 import React from 'react';
 import { getData } from '@/data/getData';
 
-export const dynamic = 'force-dynamic';
+export const experimental_ppr = false;
 
 type PageProps = {
   params: {
