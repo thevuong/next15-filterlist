@@ -15,20 +15,16 @@ type PageProps = {
 
 export default async function TabPage({ params, searchParams }: PageProps) {
   const categoriesMap = await getCategoriesMap();
+  const { q, category } = searchParams;
   const data = await getTodos({
-    categories: Array.isArray(searchParams.category)
-      ? searchParams.category.map(Number)
-      : searchParams.category
-        ? [Number(searchParams.category)]
-        : undefined,
-    q: searchParams.q,
+    categories: Array.isArray(category) ? category.map(Number) : category ? [Number(category)] : undefined,
+    q,
     status: params.tab as TodoStatus,
   });
 
   return (
     <div className="bg-red-500 p-4 group-has-[[data-pending]]:animate-pulse">
-      Dynammisk data basert på: Tab: {params.tab}, Søk: {searchParams.q}, Kategorier:{' '}
-      {searchParams?.category?.toString()}
+      Dynammisk data basert på: Tab: {params.tab}, Søk: {q}, Kategorier: {category?.toString()}
       <table>
         <thead>
           <tr>
