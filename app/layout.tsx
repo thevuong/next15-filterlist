@@ -23,17 +23,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en">
       <body className={inter.className}>
         <StaticData />
-        <Suspense>
-          <div className="group">
-            <Suspense fallback={<Skeleton />}>
-              <DynamicData />
-            </Suspense>
-            <Suspense>
-              <Search />
-            </Suspense>
-            <Suspense fallback={<Skeleton />}>{children}</Suspense>
-          </div>
-        </Suspense>
+        <div className="group">
+          <Suspense fallback={<Skeleton />}>
+            <DynamicData />
+          </Suspense>
+          <Suspense>
+            <Search />
+          </Suspense>
+          <Suspense fallback={<Skeleton />}>{children}</Suspense>
+        </div>
         <LoadTimeTracker />
         <SpeedInsights />
       </body>
