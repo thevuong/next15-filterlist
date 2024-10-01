@@ -1,7 +1,6 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { Suspense } from 'react';
-
 import CategoryFilter from '@/components/CategoryFilter';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
 import Search from '@/components/Search';
@@ -11,9 +10,6 @@ import Skeleton from '@/components/ui/Skeleton';
 import { getCategories } from '@/data/category';
 import { getTodosOverview } from '@/data/todo';
 import type { Metadata } from 'next';
-
-// TODO: make this work and ppr the static data
-export const experimental_ppr = true;
 
 const inter = Inter({ subsets: ['latin'] });
 

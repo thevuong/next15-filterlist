@@ -3,8 +3,6 @@ import { getCategoriesMap } from '@/data/category';
 import { getTodos } from '@/data/todo';
 import type { TodoStatus } from '@/types/todo';
 
-export const experimental_ppr = false;
-
 type PageProps = {
   params: {
     tab: string;
