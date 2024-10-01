@@ -7,7 +7,7 @@ import { slow } from '@/utils/slow';
 export const getCurrentUser = cache(async () => {
   console.log('getUser');
 
-  await slow(500);
+  await slow(5000);
 
   const users = await prisma.user.findMany();
   return users[0];
