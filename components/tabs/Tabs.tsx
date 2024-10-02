@@ -19,13 +19,13 @@ export default function Tabs({ todosOverviewPromise }: Props) {
 
   const mapTodos = (status: TodoStatus) => {
     return (
-      <div className="hidden flex-col gap-2 sm:flex">
+      <div className="flex flex-col gap-2">
         {Object.entries(todosOverview[status]).map(([id, category]) => {
           const color = getCategoryColor(Number(id));
           return (
             <div key={id} className="flex items-center gap-2">
               <span className={cn(color, 'size-4')} />
-              {category.count} {category.name}
+              {category.count} <span className="hidden sm:flex">{category.name}</span>
             </div>
           );
         })}

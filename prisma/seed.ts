@@ -68,7 +68,7 @@ const TODOS = [
     createdAt: new Date('2024-09-03T00:00:00Z'),
     description: 'Research and implement a CI/CD pipeline for the application',
     projectId: 'b3876ae0-bdbf-4c04-8230-85d3a6da15e9',
-    status: 'inprogress',
+    status: 'todo',
     title: 'Implement CI/CD',
   },
   {
@@ -90,10 +90,26 @@ const TODOS = [
   {
     categoryId: 1,
     createdAt: new Date('2024-07-03T00:00:00Z'),
-    description: 'Implement the homepage of the application when the Figma design is available',
+    description: 'Implement the homescreen of the application when the Figma design is available',
     projectId: 'b3876ae0-bdbf-4c04-8230-85d3a6da15e9',
     status: 'todo',
-    title: 'Implement the homepage',
+    title: 'Implement the homescreen',
+  },
+  {
+    categoryId: 1,
+    createdAt: new Date('2024-07-03T00:00:00Z'),
+    description: 'Set up the application structure using Next.js',
+    projectId: 'b3876ae0-bdbf-4c04-8230-85d3a6da15e9',
+    status: 'inprogress',
+    title: 'Set up application structure',
+  },
+  {
+    categoryId: 2,
+    createdAt: new Date('2024-07-03T00:00:00Z'),
+    description: 'Implement the API for the application using ASP.NET Core',
+    projectId: 'b3876ae0-bdbf-4c04-8230-85d3a6da15e9',
+    status: 'inprogress',
+    title: 'Implement the API',
   },
   {
     categoryId: 2,
@@ -107,10 +123,10 @@ const TODOS = [
   {
     categoryId: 3,
     createdAt: new Date('2024-09-03T00:00:00Z'),
-    description: 'Test the homepage of the application when the frontend team is done with the implementation',
+    description: 'Test the homescreen of the application when the frontend team is done with the implementation',
     projectId: 'b3876ae0-bdbf-4c04-8230-85d3a6da15e9',
     status: 'todo',
-    title: 'Test the homepage',
+    title: 'Test the homescreen',
   },
 ];
 
