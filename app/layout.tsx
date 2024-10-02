@@ -6,6 +6,7 @@ import { Suspense } from 'react';
 import CategoryFilter from '@/components/CategoryFilter';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
 import ProjectInfo from '@/components/ProjectInfo';
+
 import Search from '@/components/Search';
 import Tabs, { TabsSkeleton } from '@/components/tabs/Tabs';
 import Skeleton from '@/components/ui/Skeleton';
@@ -46,7 +47,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </Suspense>
           </div>
           <div className="bg-gray h-[1px]" />
-          <Suspense>
+          <Suspense fallback={<input className="md:sm-96 mt-6 w-full" placeholder="Loading..." disabled />}>
             <Search />
           </Suspense>
           <Suspense fallback={<ToggleButton disabled>Loading...</ToggleButton>}>
