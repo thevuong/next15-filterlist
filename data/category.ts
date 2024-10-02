@@ -9,7 +9,7 @@ export const getCategoriesMap = cache(async () => {
   console.log('getCategoriesMap');
 
   cookies();
-  await slow();
+  await slow(1500);
 
   const categories = await prisma.category.findMany();
   return categories.reduce(
