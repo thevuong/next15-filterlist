@@ -1,6 +1,6 @@
-# Next.js 14 Filter List
+# Next.js 15 Filter List
 
-This is a simple project to demonstrate the new React 19 features with Next.js 15.
+An interactive, progressively enhanced project task manager with filtering using Next.js 15 with Tailwind CSS and Prisma.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
