@@ -46,11 +46,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               <Tabs todosOverviewPromise={todosOverview} />
             </Suspense>
           </div>
-          <Suspense fallback={<ToggleButton disabled>Loading...</ToggleButton>}>
-            <CategoryFilter categoriesPromise={categories} />
-          </Suspense>
+          <div className="bg-gray h-[1px]" />
           <Suspense>
             <Search />
+          </Suspense>
+          <Suspense fallback={<ToggleButton disabled>Loading...</ToggleButton>}>
+            <CategoryFilter categoriesPromise={categories} />
           </Suspense>
           <Suspense fallback={<Skeleton />}>{children}</Suspense>
         </div>
