@@ -26,7 +26,6 @@ export default function LoadTimeTracker() {
 
   return (
     <div className="fixed bottom-4 right-4">
-      LoadTimeTracker
       {loadTime !== null && <div>Page Load Time: {(loadTime / 1000).toFixed(3)} s</div>}
     </div>
   );

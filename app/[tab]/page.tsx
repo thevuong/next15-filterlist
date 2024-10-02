@@ -24,14 +24,14 @@ export default async function TabPage({ params, searchParams }: PageProps) {
   });
 
   return (
-    <div className="group-has-[[data-pending]]:animate-pulse">
+    <div className="overflow-x-auto group-has-[[data-pending]]:animate-pulse">
       <table>
         <thead>
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Category</th>
-            <th scope="col">Date</th>
+            <th scope="col">Created Date</th>
             <th scope="col" />
           </tr>
         </thead>
@@ -42,7 +42,7 @@ export default async function TabPage({ params, searchParams }: PageProps) {
                 <td className="font-medium uppercase">{todo.title}</td>
                 <td>{todo.description}</td>
                 <td>
-                  <div className="flex justify-center bg-primary px-3 py-1 text-white">
+                  <div className="flex w-fit justify-center bg-primary px-3 py-1 text-white">
                     {categoriesMap[todo.categoryId].name}
                   </div>
                 </td>

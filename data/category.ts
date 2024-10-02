@@ -1,10 +1,9 @@
 import 'server-only';
 
-import { unstable_noStore } from 'next/cache';
+import { cookies } from 'next/headers';
 import { cache } from 'react';
 import { prisma } from '@/db';
 import { slow } from '@/utils/slow';
-import { cookies } from 'next/headers';
 
 export const getCategories = cache(async () => {
   console.log('getCategories');

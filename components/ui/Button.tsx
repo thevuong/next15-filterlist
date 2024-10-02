@@ -8,8 +8,13 @@ export const button = cva('button', {
   },
   variants: {
     theme: {
-      primary: ['bg-primary', 'text-white'],
-      secondary: ['bg-white', 'text-black', 'border', 'border-primary'],
+      primary: ['bg-primary', 'text-white hover:bg-primary-dark focus:outline focus:-outline-offset-4 outline-white'],
+      secondary: [
+        'bg-white',
+        'text-black',
+        'border',
+        'border-primary hover:bg-gray-200 outline-primary focus:outline-2',
+      ],
     },
   },
 });
@@ -29,7 +34,7 @@ export default function Button({
   ...otherProps
 }: Props & React.HTMLProps<HTMLButtonElement> & VariantProps<typeof button>) {
   return (
-    <button {...otherProps} type={type} className={cn(button({ className, theme }), 'px-6 py-3')}>
+    <button {...otherProps} type={type} className={cn(button({ className, theme }), 'w-fit px-6 py-3')}>
       {children}
     </button>
   );

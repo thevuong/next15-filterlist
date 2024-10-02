@@ -6,7 +6,9 @@ import CategoryFilter from '@/components/CategoryFilter';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
 import ProjectInfo from '@/components/ProjectInfo';
 import Search from '@/components/Search';
-import Tabs, { TabsSkeleton } from '@/components/Tabs';
+import { TabsSkeleton } from '@/components/tabs/TabSkeleton';
+import Tabs from '@/components/tabs/Tabs';
+
 import Skeleton from '@/components/ui/Skeleton';
 import ToggleButton from '@/components/ui/ToggleButton';
 import { getCategories } from '@/data/category';
@@ -31,11 +33,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className={cn(GeistSans.className, 'flex flex-col px-4 py-16 sm:px-16 xl:px-48')}>
-        <div className="flex flex-col gap-6">
-          <h1>Project information</h1>
-          <ProjectInfo />
-        </div>
         <div className="group flex flex-col gap-10">
+          <div className="flex flex-col gap-6">
+            <h1>Project information</h1>
+            <ProjectInfo />
+          </div>
           <div className="flex flex-col gap-6">
             <h2>Task list</h2>
             <Suspense fallback={<TabsSkeleton />}>
