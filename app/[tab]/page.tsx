@@ -55,6 +55,11 @@ export default async function TabPage({ params, searchParams }: PageProps) {
               </tr>
             );
           })}
+          {data.length === 0 && (
+            <tr>
+              <td colSpan={5}>No todos found</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
