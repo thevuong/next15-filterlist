@@ -42,7 +42,9 @@ export default async function TabPage({ params, searchParams }: PageProps) {
                 <td className="font-medium uppercase">{todo.title}</td>
                 <td>{todo.description}</td>
                 <td>
-                  <div className="bg-primary px-3 py-1 text-white">{categoriesMap[todo.categoryId].name}</div>
+                  <div className="flex justify-center bg-primary px-3 py-1 text-white">
+                    {categoriesMap[todo.categoryId].name}
+                  </div>
                 </td>
                 <td>{new Date(todo.createdAt).toLocaleDateString()}</td>
                 <td>
