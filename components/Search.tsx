@@ -20,7 +20,7 @@ export default function Search() {
       </label>
       <input
         id="search"
-        className="w-fit pl-10"
+        className="w-full pl-10 sm:w-96"
         data-pending={isPending ? '' : undefined}
         onChange={e => {
           const categories = category.join('&category=');
@@ -30,7 +30,7 @@ export default function Search() {
         }}
         defaultValue={q}
         name="q"
-        placeholder="Search in tasks..."
+        placeholder="Search in title or description..."
         type="search"
       />
       <div aria-hidden className="absolute left-4 top-[41px]">

@@ -51,10 +51,11 @@ export async function getTodosOverview(): Promise<TodosOverview> {
       acc[status] = {};
     }
 
-    if (!acc[status][category.name]) {
-      acc[status][category.name] = {
+    if (!acc[status][category.id]) {
+      acc[status][category.id] = {
         color: category.color,
         count: todo._count.id,
+        name: category.name,
       };
     }
 

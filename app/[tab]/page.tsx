@@ -3,6 +3,8 @@ import { ActionIcon } from '@/components/ui/icons/ActionIcon';
 import { getCategoriesMap } from '@/data/category';
 import { getTodos } from '@/data/todo';
 import type { TodoStatus } from '@/types/todo';
+import { cn } from '@/utils/cn';
+import { getCategoryColor } from '@/utils/getCategoryColor';
 
 type PageProps = {
   params: {
@@ -37,12 +39,13 @@ export default async function TabPage({ params, searchParams }: PageProps) {
         </thead>
         <tbody>
           {data.map(todo => {
+            const color = getCategoryColor(todo.categoryId);
             return (
               <tr key={todo.id}>
                 <td className="font-medium uppercase">{todo.title}</td>
                 <td>{todo.description}</td>
                 <td>
-                  <div className="flex w-fit justify-center bg-primary px-3 py-1 text-white">
+                  <div className={cn(color, 'flex w-fit justify-center px-3 py-1 text-white')}>
                     {categoriesMap[todo.categoryId].name}
                   </div>
                 </td>

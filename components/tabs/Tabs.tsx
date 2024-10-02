@@ -3,7 +3,8 @@
 import { useParams } from 'next/navigation';
 import React, { use, useOptimistic } from 'react';
 import type { TodosOverview, TodoStatus } from '@/types/todo';
-
+import { cn } from '@/utils/cn';
+import { getCategoryColor } from '@/utils/getCategoryColor';
 import Tab from './Tab';
 
 type Props = {
@@ -19,11 +20,12 @@ export default function Tabs({ todosOverviewPromise }: Props) {
   const mapTodos = (status: TodoStatus) => {
     return (
       <div className="hidden flex-col gap-2 sm:flex">
-        {Object.entries(todosOverview[status]).map(([categoryName, category], i) => {
+        {Object.entries(todosOverview[status]).map(([id, category]) => {
+          const color = getCategoryColor(Number(id));
           return (
-            <div key={i} className="flex items-center gap-2">
-              <span className={`${'bg-primary'} size-4`} />
-              {category.count} {categoryName}
+            <div key={id} className="flex items-center gap-2">
+              <span className={cn(color, 'size-4')} />
+              {category.count} {category.name}
             </div>
           );
         })}

@@ -1,4 +1,5 @@
 import './globals.css';
+
 // eslint-disable-next-line import/no-unresolved
 import { GeistSans } from 'geist/font/sans';
 import { Suspense } from 'react';
@@ -8,10 +9,9 @@ import ProjectInfo from '@/components/ProjectInfo';
 import Search from '@/components/Search';
 import { TabsSkeleton } from '@/components/tabs/TabSkeleton';
 import Tabs from '@/components/tabs/Tabs';
-
 import Skeleton from '@/components/ui/Skeleton';
 import ToggleButton from '@/components/ui/ToggleButton';
-import { getCategories } from '@/data/category';
+import { getCategoriesMap } from '@/data/category';
 import { getTodosOverview } from '@/data/todo';
 import { cn } from '@/utils/cn';
 import type { Metadata } from 'next';
@@ -23,11 +23,11 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   // const todosOverview = await getTodosOverview();
-  // const categories = await getCategories();
+  // const categories = await getCategoriesMap();
 
-  // const [todosOverview, categories] = await Promise.all([getTodosOverview(), getCategories()]);
+  // const [todosOverview, categories] = await Promise.all([getTodosOverview(), getCategoriesMap()]);
 
-  const categories = getCategories();
+  const categories = getCategoriesMap();
   const todosOverview = getTodosOverview();
 
   return (

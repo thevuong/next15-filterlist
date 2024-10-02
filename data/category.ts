@@ -5,19 +5,13 @@ import { cache } from 'react';
 import { prisma } from '@/db';
 import { slow } from '@/utils/slow';
 
-export const getCategories = cache(async () => {
-  console.log('getCategories');
+export const getCategoriesMap = cache(async () => {
+  console.log('getCategoriesMap');
 
   cookies();
   await slow();
 
-  return prisma.category.findMany();
-});
-
-export async function getCategoriesMap() {
-  console.log('getCategoriesMap');
-
-  const categories = await getCategories();
+  const categories = await prisma.category.findMany();
   return categories.reduce(
     (acc, category) => {
       acc[category.id] = category;
@@ -25,4 +19,4 @@ export async function getCategoriesMap() {
     },
     {} as Record<string, (typeof categories)[0]>,
   );
-}
+});

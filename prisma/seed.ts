@@ -41,27 +41,22 @@ const TEAMMEMBERS = [
 
 const CATEGORIES = [
   {
-    color: 'bg-blue-500',
     id: 0,
     name: 'Infrastructure',
   },
   {
-    color: 'bg-red-500',
     id: 1,
     name: 'Frontend',
   },
   {
-    color: 'bg-green-500',
     id: 2,
     name: 'Backend',
   },
   {
-    color: 'bg-yellow-500',
     id: 3,
     name: 'Testing',
   },
   {
-    color: 'bg-red-500',
     id: 4,
     name: 'Design',
   },
@@ -159,7 +154,6 @@ async function seedTodos() {
     CATEGORIES.map(category => {
       return prisma.category.create({
         data: {
-          color: category.color,
           id: category.id,
           name: category.name,
         },

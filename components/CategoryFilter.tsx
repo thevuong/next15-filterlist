@@ -6,7 +6,7 @@ import ToggleButton from './ui/ToggleButton';
 import type { Category } from '@prisma/client';
 
 type Props = {
-  categoriesPromise: Promise<Category[]>;
+  categoriesPromise: Promise<Record<string, Category>>;
 };
 
 export default function CategoryFilter({ categoriesPromise }: Props) {
@@ -19,7 +19,7 @@ export default function CategoryFilter({ categoriesPromise }: Props) {
 
   return (
     <div data-pending={isPending ? '' : undefined} className="flex flex-wrap gap-2">
-      {categories.map(category => {
+      {Object.values(categories).map(category => {
         return (
           <ToggleButton
             onClick={() => {
