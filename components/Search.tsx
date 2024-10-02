@@ -45,3 +45,7 @@ export default function Search() {
     </form>
   );
 }
+
+export function SearchSkeleton() {
+  return <input className="mt-8 w-full sm:w-96" placeholder="Loading..." disabled />;
+}

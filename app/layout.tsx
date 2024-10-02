@@ -5,9 +5,9 @@ import { GeistSans } from 'geist/font/sans';
 import { Suspense } from 'react';
 import CategoryFilter from '@/components/CategoryFilter';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
-import ProjectInfo from '@/components/ProjectInfo';
+import ProjectInfo, { ProjectInfoSkeleton } from '@/components/ProjectInfo';
 
-import Search from '@/components/Search';
+import Search, { SearchSkeleton } from '@/components/Search';
 import Tabs, { TabsSkeleton } from '@/components/tabs/Tabs';
 import Skeleton from '@/components/ui/Skeleton';
 import ToggleButton from '@/components/ui/ToggleButton';
@@ -36,9 +36,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <div className="group flex flex-col gap-10">
           <div className="flex flex-col gap-6">
             <h1>Project information</h1>
-            {/* <Suspense fallback={<Skeleton className="mb-[84px] w-1/2" />}> */}
-            <ProjectInfo />
-            {/* </Suspense> */}
+            <Suspense fallback={<ProjectInfoSkeleton />}>
+              <ProjectInfo />
+            </Suspense>
           </div>
           <div className="flex flex-col gap-6">
             <h2>Task list</h2>
@@ -47,7 +47,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </Suspense>
           </div>
           <div className="bg-gray h-[1px]" />
-          <Suspense fallback={<input className="mt-8 w-full sm:w-96" placeholder="Loading..." disabled />}>
+          <Suspense fallback={<SearchSkeleton />}>
             <Search />
           </Suspense>
           <Suspense fallback={<ToggleButton disabled>Loading...</ToggleButton>}>

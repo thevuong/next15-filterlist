@@ -1,5 +1,6 @@
 import React from 'react';
 import { getProjectWithTeamMembers } from '@/data/project';
+import Skeleton from './ui/Skeleton';
 
 function Chip({ children }: { children: React.ReactNode }) {
   return <span className="w-fit bg-black px-2 py-1 uppercase text-white">{children}</span>;
@@ -47,4 +48,8 @@ export default async function ProjectInfo() {
       </div>
     </div>
   );
+}
+
+export function ProjectInfoSkeleton() {
+  return <Skeleton className="mb-[84px] w-1/2" />;
 }
