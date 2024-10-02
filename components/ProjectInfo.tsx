@@ -7,7 +7,7 @@ function Chip({ children }: { children: React.ReactNode }) {
 
 function Info({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex flex-col gap-2 sm:flex-row">
+    <div className="flex gap-2">
       <span>{label}</span>
       <Chip>{value}</Chip>
     </div>
@@ -29,13 +29,13 @@ export default async function ProjectInfo() {
         />
         <Info label="Expected launch:" value={projectAndMembers.expectedLaunchDate.toLocaleDateString()} />
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="hidden flex-col gap-2 sm:flex">
         <span className="font-bold">Team members</span>
         {Object.entries(projectAndMembers.teamMembers).map(([role, member]) => {
           return <Chip key={role}>{`${role.split('-').join(' ')} (${member.count})`}</Chip>;
         })}
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="hidden flex-col gap-2 md:flex">
         <span className="font-bold">Deliverables</span>
         {projectAndMembers.deliverables.split(';').map(deliverable => {
           return (

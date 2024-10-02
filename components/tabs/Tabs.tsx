@@ -25,7 +25,7 @@ export default function Tabs({ todosOverviewPromise }: Props) {
           return (
             <div key={id} className="flex items-center gap-2">
               <span className={cn(color, 'size-4')} />
-              {category.count} <span className="hidden sm:flex">{category.name}</span>
+              {category.count} {category.name}
             </div>
           );
         })}
