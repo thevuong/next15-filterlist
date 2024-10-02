@@ -7,8 +7,7 @@ import CategoryFilter from '@/components/CategoryFilter';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
 import ProjectInfo from '@/components/ProjectInfo';
 import Search from '@/components/Search';
-import { TabsSkeleton } from '@/components/tabs/TabSkeleton';
-import Tabs from '@/components/tabs/Tabs';
+import Tabs, { TabsSkeleton } from '@/components/tabs/Tabs';
 import Skeleton from '@/components/ui/Skeleton';
 import ToggleButton from '@/components/ui/ToggleButton';
 import { getCategoriesMap } from '@/data/category';
@@ -47,7 +46,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </Suspense>
           </div>
           <div className="bg-gray h-[1px]" />
-          <Search />
+          <Suspense>
+            <Search />
+          </Suspense>
           <Suspense fallback={<ToggleButton disabled>Loading...</ToggleButton>}>
             <CategoryFilter categoriesPromise={categories} />
           </Suspense>

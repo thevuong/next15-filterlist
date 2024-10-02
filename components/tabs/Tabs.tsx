@@ -5,6 +5,7 @@ import React, { use, useOptimistic } from 'react';
 import type { TodosOverview, TodoStatus } from '@/types/todo';
 import { cn } from '@/utils/cn';
 import { getCategoryColor } from '@/utils/getCategoryColor';
+import Skeleton from '../ui/Skeleton';
 import Tab from './Tab';
 
 type Props = {
@@ -65,6 +66,16 @@ export default function Tabs({ todosOverviewPromise }: Props) {
       >
         {mapTodos('done')}
       </Tab>
+    </div>
+  );
+}
+
+export function TabsSkeleton() {
+  return (
+    <div className="flex gap-6 overflow-auto">
+      <Skeleton className="h-[169px] sm:h-48" />
+      <Skeleton className="h-[169px] sm:h-48" />
+      <Skeleton className="h-[169px] sm:h-48" />
     </div>
   );
 }
