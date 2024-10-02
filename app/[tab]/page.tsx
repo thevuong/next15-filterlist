@@ -30,7 +30,7 @@ export default async function TabPage({ params, searchParams }: PageProps) {
       <table>
         <thead>
           <tr>
-            <th scope="col">Name</th>
+            <th scope="col">Title</th>
             <th scope="col">Description</th>
             <th scope="col">Category</th>
             <th scope="col">Created Date</th>

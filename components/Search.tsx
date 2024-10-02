@@ -30,7 +30,7 @@ export default function Search() {
         }}
         defaultValue={q}
         name="q"
-        placeholder="Search in title or description..."
+        placeholder="Search in task title or description..."
         type="search"
       />
       <div aria-hidden className="absolute left-4 top-[41px]">

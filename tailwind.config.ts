@@ -21,7 +21,7 @@ const config: Config = {
         },
         primary: {
           DEFAULT: '#2457FA',
-          dark: '#183BAD',
+          dark: '#1D47CF',
           darker: '#142F8B',
           light: '#BECDFF',
           lighter: '#DFE7FF',
