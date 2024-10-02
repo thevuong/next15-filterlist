@@ -5,7 +5,7 @@ import { GeistSans } from 'geist/font/sans';
 import { Suspense } from 'react';
 import CategoryFilter from '@/components/CategoryFilter';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
-import ProjectInfo, { ProjectInfoSkeleton } from '@/components/ProjectInfo';
+import ProjectInfo from '@/components/ProjectInfo';
 
 import Search, { SearchSkeleton } from '@/components/Search';
 import Tabs, { TabsSkeleton } from '@/components/tabs/Tabs';
@@ -36,9 +36,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <div className="group flex flex-col gap-10">
           <div className="flex flex-col gap-6">
             <h1>Project information</h1>
-            <Suspense fallback={<ProjectInfoSkeleton />}>
-              <ProjectInfo />
-            </Suspense>
+            {/* <Suspense fallback={<ProjectInfoSkeleton />}> */}
+            <ProjectInfo />
+            {/* </Suspense> */}
           </div>
           <div className="flex flex-col gap-6">
             <h2>Task list</h2>
