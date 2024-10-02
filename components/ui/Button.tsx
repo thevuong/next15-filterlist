@@ -13,7 +13,7 @@ export const button = cva('button', {
         'bg-white',
         'text-black',
         'border',
-        'border-primary hover:bg-gray-200 outline-primary focus:outline-2',
+        'border-primary hover:bg-gray-light outline-primary focus:outline-2',
       ],
     },
   },

@@ -36,10 +36,10 @@ export default function Search() {
       <div aria-hidden className="absolute left-4 top-[41px]">
         {isPending ? (
           <div className="h-fit w-fit animate-spin">
-            <SpinnerIcon width={16} height={16} className="text-gray-dark" />
+            <SpinnerIcon width={16} height={16} className="text-gray" />
           </div>
         ) : (
-          <SearchIcon width={16} height={16} className="text-gray-dark" />
+          <SearchIcon width={16} height={16} className="text-gray" />
         )}
       </div>
     </form>

@@ -14,7 +14,7 @@ export default function ToggleButton({
   active,
   ...otherProps
 }: Props & React.HTMLProps<HTMLButtonElement>) {
-  const inactiveClass = 'outline-primary focus:outline-2 bg-white text-black hover:bg-gray-200';
+  const inactiveClass = 'outline-primary focus:outline-2 bg-white text-black hover:bg-gray-light';
   const activeClass = 'outline-white focus:outline focus:-outline-offset-4 hover:bg-primary-dark bg-primary text-white';
 
   return (
@@ -23,7 +23,7 @@ export default function ToggleButton({
       type={type}
       className={cn(
         active ? activeClass : inactiveClass,
-        'w-fit rounded border border-primary px-4 py-2 disabled:border-gray-500 disabled:opacity-50',
+        'disabled:border-gray w-fit rounded border border-primary px-4 py-2 disabled:opacity-50',
       )}
     >
       {children}
