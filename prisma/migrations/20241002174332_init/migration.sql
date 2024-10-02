@@ -18,7 +18,6 @@ CREATE TABLE [dbo].[Todo] (
 CREATE TABLE [dbo].[Category] (
     [id] INT NOT NULL,
     [name] NVARCHAR(1000) NOT NULL,
-    [color] NVARCHAR(1000) NOT NULL CONSTRAINT [Category_color_df] DEFAULT 'bg-gray-200',
     CONSTRAINT [Category_pkey] PRIMARY KEY CLUSTERED ([id])
 );
 
