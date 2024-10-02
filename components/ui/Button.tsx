@@ -8,8 +8,8 @@ export const button = cva('button', {
   },
   variants: {
     theme: {
-      secondary: ['bg-white', 'text-black', 'border', 'border-primary'],
       primary: ['bg-primary', 'text-white'],
+      secondary: ['bg-white', 'text-black', 'border', 'border-primary'],
     },
   },
 });

@@ -1,6 +1,4 @@
 import 'server-only';
-
-import { unstable_noStore } from 'next/cache';
 import { cache } from 'react';
 import { prisma } from '@/db';
 import type { TodosOverview, TodoStatus } from '@/types/todo';
@@ -19,7 +17,7 @@ export const getTodos = cache(async (filter?: { q?: string; status?: TodoStatus;
       AND: [
         filter?.q
           ? {
-              OR: [{ name: { contains: filter.q } }, { description: { contains: filter.q } }],
+              OR: [{ title: { contains: filter.q } }, { description: { contains: filter.q } }],
             }
           : {},
         filter?.status ? { status: filter.status } : {},

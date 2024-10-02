@@ -1,17 +1,18 @@
 import './globals.css';
+// eslint-disable-next-line import/no-unresolved
+import { GeistSans } from 'geist/font/sans';
 import { Suspense } from 'react';
+import CategoryFilter from '@/components/CategoryFilter';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
-import Search from '@/components/Search';
 import ProjectInfo from '@/components/ProjectInfo';
+import Search from '@/components/Search';
 import Tabs, { TabsSkeleton } from '@/components/Tabs';
 import Skeleton from '@/components/ui/Skeleton';
+import ToggleButton from '@/components/ui/ToggleButton';
 import { getCategories } from '@/data/category';
 import { getTodosOverview } from '@/data/todo';
-import type { Metadata } from 'next';
-import { GeistSans } from 'geist/font/sans';
 import { cn } from '@/utils/cn';
-import ToggleButton from '@/components/ui/ToggleButton';
-import CategoryFilter from '@/components/CategoryFilter';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   description: 'Next.js 15 Filter List',

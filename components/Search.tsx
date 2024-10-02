@@ -2,8 +2,8 @@
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import React, { useTransition } from 'react';
-import { SearchIcon } from './ui/SearchIcon';
-import { SpinnerIcon } from './ui/SpinnerIcon';
+import { SearchIcon } from './ui/icons/SearchIcon';
+import { SpinnerIcon } from './ui/icons/SpinnerIcon';
 
 export default function Search() {
   const router = useRouter();

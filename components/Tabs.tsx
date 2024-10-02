@@ -27,7 +27,7 @@ function Tab({ tabId, children, activeTab, header, setOptimisticTab }: Props) {
           ? 'border-primary bg-primary-light'
           : isPending
             ? 'bg-primary-light'
-            : 'bg-primary-lighter border-transparent',
+            : 'border-transparent bg-primary-lighter',
         'flex flex-col gap-6 border-b-4 p-6',
       )}
       onClick={e => {
@@ -71,7 +71,9 @@ export default function Tabs({ todosOverviewPromise }: TabsProps) {
   };
 
   const getTodoCount = (status: TodoStatus) => {
-    return Object.values(todosOverview[status]).reduce((acc, category) => acc + category.count, 0);
+    return Object.values(todosOverview[status]).reduce((acc, category) => {
+      return acc + category.count;
+    }, 0);
   };
 
   return (

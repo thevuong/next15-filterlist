@@ -1,8 +1,8 @@
 import React from 'react';
+import { ActionIcon } from '@/components/ui/icons/ActionIcon';
 import { getCategoriesMap } from '@/data/category';
 import { getTodos } from '@/data/todo';
 import type { TodoStatus } from '@/types/todo';
-import { ActionIcon } from '@/components/ui/ActionIcon';
 
 type PageProps = {
   params: {
@@ -32,14 +32,14 @@ export default async function TabPage({ params, searchParams }: PageProps) {
             <th scope="col">Description</th>
             <th scope="col">Category</th>
             <th scope="col">Date</th>
-            <th scope="col"></th>
+            <th scope="col" />
           </tr>
         </thead>
         <tbody>
           {data.map(todo => {
             return (
               <tr key={todo.id}>
-                <td className="font-medium uppercase">{todo.name}</td>
+                <td className="font-medium uppercase">{todo.title}</td>
                 <td>{todo.description}</td>
                 <td>
                   <div className="bg-primary px-3 py-1 text-white">{categoriesMap[todo.categoryId].name}</div>

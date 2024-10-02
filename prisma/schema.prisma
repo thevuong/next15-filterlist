@@ -6,9 +6,9 @@ generator client {
 }
 
 datasource db {
-    provider          = "sqlserver"
-    url               = env("DATABASE_URL") // Change to "file:./dev.db" with sqlite
-    shadowDatabaseUrl = env("SHADOW_DATABASE_URL") // Remove with sqlite
+    provider = "sqlite"
+    url      = "file:./dev.db" // Change to  with sqlite
+    // shadowDatabaseUrl = env("SHADOW_DATABASE_URL") // Remove with sqlite
 }
 
 model Todo {

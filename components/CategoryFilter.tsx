@@ -2,9 +2,8 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { use, useOptimistic, useTransition } from 'react';
-import { cn } from '@/utils/cn';
-import type { Category } from '@prisma/client';
 import ToggleButton from './ui/ToggleButton';
+import type { Category } from '@prisma/client';
 
 type Props = {
   categoriesPromise: Promise<Category[]>;
