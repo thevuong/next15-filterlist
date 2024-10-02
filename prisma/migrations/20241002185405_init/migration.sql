@@ -26,7 +26,9 @@ CREATE TABLE [dbo].[Project] (
     [id] NVARCHAR(1000) NOT NULL,
     [name] NVARCHAR(1000) NOT NULL,
     [companyName] NVARCHAR(1000) NOT NULL,
-    [expectedLaunch] DATETIME2 NOT NULL,
+    [startDate] DATETIME2 NOT NULL,
+    [deliverables] NVARCHAR(1000) NOT NULL,
+    [expectedLaunchDate] DATETIME2 NOT NULL,
     CONSTRAINT [Project_pkey] PRIMARY KEY CLUSTERED ([id])
 );
 

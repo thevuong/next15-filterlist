@@ -5,9 +5,11 @@ const prisma = new PrismaClient();
 const PROJECTS = [
   {
     companyName: 'Company X',
-    expectedLaunchDate: new Date('2025-09-12T00:00:00Z'),
+    deliverables: 'Web app;PWA;Documentation',
+    expectedLaunchDate: new Date('2025-01-01T00:00:00Z'),
     id: 'b3876ae0-bdbf-4c04-8230-85d3a6da15e9',
     name: 'Project X',
+    startDate: new Date('2024-06-01T00:00:00Z'),
   },
 ];
 
@@ -104,12 +106,28 @@ const TODOS = [
     title: 'Set up application structure',
   },
   {
+    categoryId: 1,
+    createdAt: new Date('2024-07-03T00:00:00Z'),
+    description: 'Enable PWA support for the application so it can be installed on mobile devices',
+    projectId: 'b3876ae0-bdbf-4c04-8230-85d3a6da15e9',
+    status: 'todo',
+    title: 'Enable PWA support',
+  },
+  {
     categoryId: 2,
     createdAt: new Date('2024-07-03T00:00:00Z'),
     description: 'Implement the API for the application using ASP.NET Core',
     projectId: 'b3876ae0-bdbf-4c04-8230-85d3a6da15e9',
     status: 'inprogress',
     title: 'Implement the API',
+  },
+  {
+    categoryId: 2,
+    createdAt: new Date('2024-07-03T00:00:00Z'),
+    description: 'Write the documentation for the API endpoints',
+    projectId: 'b3876ae0-bdbf-4c04-8230-85d3a6da15e9',
+    status: 'inprogress',
+    title: 'Write API documentation',
   },
   {
     categoryId: 2,
@@ -136,9 +154,11 @@ async function seedTodos() {
       return prisma.project.create({
         data: {
           companyName: project.companyName,
-          expectedLaunch: project.expectedLaunchDate,
+          deliverables: project.deliverables,
+          expectedLaunchDate: project.expectedLaunchDate,
           id: project.id,
           name: project.name,
+          startDate: project.startDate,
         },
       });
     }),

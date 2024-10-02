@@ -30,12 +30,14 @@ model Category {
 }
 
 model Project {
-    id             String       @id @default(uuid())
-    name           String
-    companyName    String
-    expectedLaunch DateTime
-    teamMembers    TeamMember[]
-    Todo           Todo[]
+    id                 String       @id @default(uuid())
+    name               String
+    companyName        String
+    startDate          DateTime
+    deliverables       String
+    expectedLaunchDate DateTime
+    teamMembers        TeamMember[]
+    Todo               Todo[]
 }
 
 model TeamMember {
