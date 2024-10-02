@@ -1,12 +1,14 @@
 import 'server-only';
 
+import { cookies } from 'next/headers';
 import { prisma } from '@/db';
 import { slow } from '@/utils/slow';
 
 export async function getProjectWithTeamMembers() {
   console.log('getProject');
 
-  await slow(1000);
+  cookies();
+  await slow(500);
 
   const projects = await prisma.project.findMany({
     include: {

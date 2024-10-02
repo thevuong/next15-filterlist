@@ -36,7 +36,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <div className="group flex flex-col gap-10">
           <div className="flex flex-col gap-6">
             <h1>Project information</h1>
-            <ProjectInfo />
+            <Suspense fallback={<Skeleton className="mb-[84px] w-1/2" />}>
+              <ProjectInfo />
+            </Suspense>
           </div>
           <div className="flex flex-col gap-6">
             <h2>Task list</h2>
