@@ -4,11 +4,12 @@ import { unstable_noStore } from 'next/cache';
 import { cache } from 'react';
 import { prisma } from '@/db';
 import { slow } from '@/utils/slow';
+import { cookies } from 'next/headers';
 
 export const getCategories = cache(async () => {
   console.log('getCategories');
 
-  unstable_noStore();
+  cookies();
   await slow();
 
   return prisma.category.findMany();

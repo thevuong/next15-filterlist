@@ -2,6 +2,7 @@ import React from 'react';
 import { getCategoriesMap } from '@/data/category';
 import { getTodos } from '@/data/todo';
 import type { TodoStatus } from '@/types/todo';
+import { ActionIcon } from '@/components/ui/ActionIcon';
 
 type PageProps = {
   params: {
@@ -23,25 +24,32 @@ export default async function TabPage({ params, searchParams }: PageProps) {
   });
 
   return (
-    <div className="bg-red-500 p-4 group-has-[[data-pending]]:animate-pulse">
-      Dynammisk data basert på: Tab: {params.tab}, Søk: {q}, Kategorier: {category?.toString()}
+    <div className="group-has-[[data-pending]]:animate-pulse">
       <table>
         <thead>
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Category</th>
-            <th scope="col">Created Date</th>
+            <th scope="col">Date</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
           {data.map(todo => {
             return (
               <tr key={todo.id}>
-                <td>{todo.name}</td>
+                <td className="font-medium uppercase">{todo.name}</td>
                 <td>{todo.description}</td>
-                <td>{categoriesMap[todo.categoryId].name}</td>
+                <td>
+                  <div className="bg-primary px-3 py-1 text-white">{categoriesMap[todo.categoryId].name}</div>
+                </td>
                 <td>{new Date(todo.createdAt).toLocaleDateString()}</td>
+                <td>
+                  <button aria-label="Options">
+                    <ActionIcon aria-hidden width={20} height={20} />
+                  </button>
+                </td>
               </tr>
             );
           })}

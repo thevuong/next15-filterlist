@@ -8,7 +8,15 @@ const config: Config = {
   ],
   plugins: [],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: '#2457FA',
+          lighter: '#DFE7FF',
+          light: '#BECDFF',
+        },
+      },
+    },
   },
 };
 export default config;

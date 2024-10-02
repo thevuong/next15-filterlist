@@ -1,17 +1,17 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
 import { Suspense } from 'react';
-import CategoryFilter from '@/components/CategoryFilter';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
 import Search from '@/components/Search';
-import StaticData from '@/components/StaticData';
-import Tabs from '@/components/Tabs';
+import ProjectInfo from '@/components/ProjectInfo';
+import Tabs, { TabsSkeleton } from '@/components/Tabs';
 import Skeleton from '@/components/ui/Skeleton';
 import { getCategories } from '@/data/category';
 import { getTodosOverview } from '@/data/todo';
 import type { Metadata } from 'next';
-
-const inter = Inter({ subsets: ['latin'] });
+import { GeistSans } from 'geist/font/sans';
+import { cn } from '@/utils/cn';
+import ToggleButton from '@/components/ui/ToggleButton';
+import CategoryFilter from '@/components/CategoryFilter';
 
 export const metadata: Metadata = {
   description: 'Next.js 15 Filter List',
@@ -29,13 +29,19 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <StaticData />
-        <div className="group">
-          <Suspense fallback={<Skeleton />}>
-            <Tabs todosOverviewPromise={todosOverview} />
-          </Suspense>
-          <Suspense fallback={<Skeleton />}>
+      <body className={cn(GeistSans.className, 'flex flex-col px-4 py-16 sm:px-16 xl:px-48')}>
+        <div className="flex flex-col gap-6">
+          <h1>Project information</h1>
+          <ProjectInfo />
+        </div>
+        <div className="group flex flex-col gap-10">
+          <div className="flex flex-col gap-6">
+            <h2>Task list</h2>
+            <Suspense fallback={<TabsSkeleton />}>
+              <Tabs todosOverviewPromise={todosOverview} />
+            </Suspense>
+          </div>
+          <Suspense fallback={<ToggleButton disabled>Loading...</ToggleButton>}>
             <CategoryFilter categoriesPromise={categories} />
           </Suspense>
           <Suspense>

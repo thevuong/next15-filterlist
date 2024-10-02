@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React, { use, useOptimistic, useTransition } from 'react';
 import { cn } from '@/utils/cn';
 import type { Category } from '@prisma/client';
+import ToggleButton from './ui/ToggleButton';
 
 type Props = {
   categoriesPromise: Promise<Category[]>;
@@ -21,7 +22,7 @@ export default function CategoryFilter({ categoriesPromise }: Props) {
     <div data-pending={isPending ? '' : undefined} className="flex gap-2">
       {categories.map(category => {
         return (
-          <button
+          <ToggleButton
             onClick={() => {
               const categoryId = category.id.toString();
               let newCategories: string[] = [];
@@ -43,13 +44,10 @@ export default function CategoryFilter({ categoriesPromise }: Props) {
               });
             }}
             key={category.id}
-            className={cn(
-              optimisticCategories.includes(category.id.toString()) && 'outline outline-blue-500',
-              'rounded bg-gray-200 p-2',
-            )}
+            active={optimisticCategories.includes(category.id.toString())}
           >
             {category.name}
-          </button>
+          </ToggleButton>
         );
       })}
     </div>
