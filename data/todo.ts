@@ -53,7 +53,6 @@ export async function getTodosOverview(): Promise<TodosOverview> {
 
     if (!acc[status][category.id]) {
       acc[status][category.id] = {
-        color: category.color,
         count: todo._count.id,
         name: category.name,
       };
