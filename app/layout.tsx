@@ -47,7 +47,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </Suspense>
           </div>
           <div className="bg-gray h-[1px]" />
-          <Suspense fallback={<input className="md:sm-96 mt-8 w-full" placeholder="Loading..." disabled />}>
+          <Suspense fallback={<input className="mt-8 w-full sm:w-96" placeholder="Loading..." disabled />}>
             <Search />
           </Suspense>
           <Suspense fallback={<ToggleButton disabled>Loading...</ToggleButton>}>
