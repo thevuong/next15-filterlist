@@ -47,9 +47,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </Suspense>
           </div>
           <div className="bg-gray h-[1px]" />
-          <Suspense>
-            <Search />
-          </Suspense>
+          <Search />
           <Suspense fallback={<ToggleButton disabled>Loading...</ToggleButton>}>
             <CategoryFilter categoriesPromise={categories} />
           </Suspense>
