@@ -11,8 +11,8 @@ type PageProps = {
     tab: string;
   }>;
   searchParams: Promise<{
-    q: string;
-    category: string | string[];
+    q?: string;
+    category?: string | string[];
   }>;
 };
 
