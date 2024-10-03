@@ -7,7 +7,7 @@ import { slow } from '@/utils/slow';
 import { getCategoriesMap } from './category';
 
 export async function getTasks(filter?: { q?: string; status?: TaskStatus; categories?: number[] }) {
-  console.log('getTodos', filter);
+  console.log('getTasks', filter);
 
   await cookies();
   await slow(2000);
@@ -33,7 +33,7 @@ export async function getTaskSummary(): Promise<TaskSummary> {
   await cookies();
   await slow(2000);
 
-  const groupedTodos = await prisma.task.groupBy({
+  const groupedTasks = await prisma.task.groupBy({
     _count: {
       id: true,
     },
@@ -42,7 +42,7 @@ export async function getTaskSummary(): Promise<TaskSummary> {
 
   const categoriesMap = await getCategoriesMap();
 
-  return groupedTodos.reduce((acc, task) => {
+  return groupedTasks.reduce((acc, task) => {
     const status = task.status as TaskStatus;
     const category = categoriesMap[task.categoryId];
 

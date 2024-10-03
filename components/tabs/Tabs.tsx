@@ -17,7 +17,7 @@ export default function Tabs({ taskSummaryPromise }: Props) {
   const taskSummary = use(taskSummaryPromise);
   const [optimisticTab, setOptimisticTab] = useOptimistic(activeTab);
 
-  const mapTodos = (status: TaskStatus) => {
+  const mapTasks = (status: TaskStatus) => {
     return (
       <div className="flex flex-col gap-2">
         {Object.entries(taskSummary[status]).map(([id, category]) => {
@@ -33,7 +33,7 @@ export default function Tabs({ taskSummaryPromise }: Props) {
     );
   };
 
-  const getTodoCount = (status: TaskStatus) => {
+  const getTaskCount = (status: TaskStatus) => {
     return Object.values(taskSummary[status]).reduce((acc, category) => {
       return acc + category.count;
     }, 0);
@@ -42,28 +42,28 @@ export default function Tabs({ taskSummaryPromise }: Props) {
   return (
     <div className="flex gap-6 overflow-auto">
       <Tab
-        header={`TODO (${getTodoCount('todo')})`}
+        header={`TODO (${getTaskCount('todo')})`}
         activeTab={optimisticTab}
         setOptimisticTab={setOptimisticTab}
         tabId="todo"
       >
-        {mapTodos('todo')}
+        {mapTasks('todo')}
       </Tab>
       <Tab
-        header={`IN PROGRESS (${getTodoCount('inprogress')})`}
+        header={`IN PROGRESS (${getTaskCount('inprogress')})`}
         activeTab={optimisticTab}
         setOptimisticTab={setOptimisticTab}
         tabId="inprogress"
       >
-        {mapTodos('inprogress')}
+        {mapTasks('inprogress')}
       </Tab>
       <Tab
-        header={`DONE (${getTodoCount('done')})`}
+        header={`DONE (${getTaskCount('done')})`}
         activeTab={optimisticTab}
         setOptimisticTab={setOptimisticTab}
         tabId="done"
       >
-        {mapTodos('done')}
+        {mapTasks('done')}
       </Tab>
     </div>
   );
