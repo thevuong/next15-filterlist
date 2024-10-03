@@ -25,7 +25,6 @@ export default function Search() {
   const params = useParams();
   const searchParams = useSearchParams();
   const q = searchParams.get('q') || '';
-  const category = searchParams.getAll('category');
   const [isPending, startTransition] = useTransition();
 
   return (
@@ -37,9 +36,10 @@ export default function Search() {
         id="search"
         data-pending={isPending ? '' : undefined}
         onChange={e => {
-          const categories = category.join('&category=');
           startTransition(() => {
-            router.push(`?q=${e.target.value}&category=${categories}`);
+            const newSearchParams = new URLSearchParams(searchParams.toString());
+            newSearchParams.set('q', e.target.value);
+            router.push(`?${newSearchParams.toString()}`);
           });
         }}
         defaultValue={q}

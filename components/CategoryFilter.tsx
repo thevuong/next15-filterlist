@@ -12,7 +12,6 @@ type Props = {
 export default function CategoryFilter({ categoriesPromise }: Props) {
   const categories = use(categoriesPromise);
   const searchParams = useSearchParams();
-  const q = searchParams.get('q') || '';
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const [optimisticCategories, setOptimisticCategories] = useOptimistic(searchParams.getAll('category'));
@@ -24,22 +23,20 @@ export default function CategoryFilter({ categoriesPromise }: Props) {
           <ToggleButton
             onClick={() => {
               const categoryId = category.id.toString();
-              let newCategories: string[] = [];
-              if (optimisticCategories.includes(categoryId)) {
-                newCategories = optimisticCategories.filter(id => {
-                  return categoryId !== id;
-                });
-              } else {
-                newCategories = [...optimisticCategories, categoryId];
-              }
-              const params = new URLSearchParams(
-                newCategories.map(categoryId => {
-                  return ['category', categoryId];
-                }),
-              );
+              const newCategories = optimisticCategories.includes(categoryId)
+                ? optimisticCategories.filter(id => {
+                    return id !== categoryId;
+                  })
+                : [...optimisticCategories, categoryId];
+
+              const params = new URLSearchParams(searchParams);
+              params.delete('category');
+              newCategories.forEach(id => {
+                return params.append('category', id);
+              });
               startTransition(() => {
                 setOptimisticCategories(newCategories);
-                router.push(`?${params.toString()}&q=${q}`);
+                router.push(`?${params.toString()}`);
               });
             }}
             key={category.id}
