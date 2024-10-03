@@ -2,14 +2,12 @@ import './globals.css';
 
 // eslint-disable-next-line import/no-unresolved
 import { GeistSans } from 'geist/font/sans';
-
 import LoadTimeTracker from '@/components/LoadTimeTracker';
 import ProjectInfo from '@/components/ProjectInfo';
 import Search from '@/components/Search';
 import Tabs from '@/components/tabs/Tabs';
-
 import { getProjectWithTeamMembers } from '@/data/services/project';
-import { getTodosOverview } from '@/data/services/todo';
+import { getTaskSummary } from '@/data/services/task';
 import { cn } from '@/utils/cn';
 import type { Metadata } from 'next';
 
@@ -26,7 +24,7 @@ type LayoutProps = {
 };
 
 export default async function RootLayout({ params, children }: LayoutProps) {
-  const todosOverview = await getTodosOverview();
+  const taskSummary = await getTaskSummary();
   const projectAndMembers = await getProjectWithTeamMembers();
 
   return (
@@ -39,7 +37,7 @@ export default async function RootLayout({ params, children }: LayoutProps) {
           </div>
           <div className="flex flex-col gap-6">
             <h2>Task list</h2>
-            <Tabs todosOverview={todosOverview} activeTab={(await params).tab} />
+            <Tabs taskSummary={taskSummary} activeTab={(await params).tab} />
           </div>
           <div className="h-[1px] bg-primary" />
           <Search tab={(await params).tab} />

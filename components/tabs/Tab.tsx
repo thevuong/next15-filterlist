@@ -1,11 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import type { TodoStatus } from '@/types/todo';
+import type { TaskStatus } from '@/types/task';
 import { cn } from '@/utils/cn';
 
 type Props = {
-  tabId: TodoStatus;
+  tabId: TaskStatus;
   children: React.ReactNode;
   activeTab: string;
   header: string;

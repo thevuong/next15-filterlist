@@ -11,7 +11,7 @@ datasource db {
     shadowDatabaseUrl = env("SHADOW_DATABASE_URL") // Remove with sqlite
 }
 
-model Todo {
+model Task {
     id          String   @id @default(uuid())
     title       String
     description String?
@@ -26,7 +26,7 @@ model Todo {
 model Category {
     id    Int    @id
     name  String
-    todos Todo[]
+    tasks Task[]
 }
 
 model Project {
@@ -37,7 +37,7 @@ model Project {
     deliverables       String
     expectedLaunchDate DateTime
     teamMembers        TeamMember[]
-    Todo               Todo[]
+    Task               Task[]
 }
 
 model TeamMember {

@@ -203,24 +203,24 @@ async function seedTodos() {
       return console.error('[SEED] Failed to create category records', e);
     });
   await Promise.all(
-    TODOS.map(todo => {
-      return prisma.todo.create({
+    TODOS.map(task => {
+      return prisma.task.create({
         data: {
-          categoryId: todo.categoryId,
-          createdAt: todo.createdAt,
-          description: todo.description,
-          projectId: todo.projectId,
-          status: todo.status,
-          title: todo.title,
+          categoryId: task.categoryId,
+          createdAt: task.createdAt,
+          description: task.description,
+          projectId: task.projectId,
+          status: task.status,
+          title: task.title,
         },
       });
     }),
   )
     .then(() => {
-      return console.info('[SEED] Successfully created todo records');
+      return console.info('[SEED] Successfully created task records');
     })
     .catch(e => {
-      return console.error('[SEED] Failed to create todo records', e);
+      return console.error('[SEED] Failed to create task records', e);
     });
 }
 
