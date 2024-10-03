@@ -11,7 +11,7 @@ import Tabs, { TabsSkeleton } from '@/components/tabs/Tabs';
 import Skeleton from '@/components/ui/Skeleton';
 import ToggleButton from '@/components/ui/ToggleButton';
 import { getCategoriesMap } from '@/data/services/category';
-import { getTodosOverview } from '@/data/services/todo';
+import { getTaskSummary } from '@/data/services/task';
 import { cn } from '@/utils/cn';
 import type { Metadata } from 'next';
 
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const categories = getCategoriesMap();
-  const todosOverview = getTodosOverview();
+  const todosOverview = getTaskSummary();
 
   return (
     <html lang="en">

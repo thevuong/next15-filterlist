@@ -3,11 +3,11 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
-import type { TodoStatus } from '@/types/todo';
+import type { TaskStatus } from '@/types/task';
 import { cn } from '@/utils/cn';
 
 type Props = {
-  tabId: TodoStatus;
+  tabId: TaskStatus;
   children: React.ReactNode;
   activeTab: string;
   header: string;

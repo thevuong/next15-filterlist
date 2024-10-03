@@ -2,17 +2,17 @@ import 'server-only';
 
 import { cookies } from 'next/headers';
 import { prisma } from '@/db';
-import type { TodosOverview, TodoStatus } from '@/types/todo';
+import type { TaskStatus, TaskSummary } from '@/types/task';
 import { slow } from '@/utils/slow';
 import { getCategoriesMap } from './category';
 
-export async function getTodos(filter?: { q?: string; status?: TodoStatus; categories?: number[] }) {
+export async function getTodos(filter?: { q?: string; status?: TaskStatus; categories?: number[] }) {
   console.log('getTodos', filter);
 
   await cookies();
   await slow(2000);
 
-  return prisma.todo.findMany({
+  return prisma.task.findMany({
     where: {
       AND: [
         filter?.q
@@ -27,13 +27,13 @@ export async function getTodos(filter?: { q?: string; status?: TodoStatus; categ
   });
 }
 
-export async function getTodosOverview(): Promise<TodosOverview> {
-  console.log('getTodosOverview');
+export async function getTaskSummary(): Promise<TaskSummary> {
+  console.log('getTaskSummary');
 
   await cookies();
   await slow(2000);
 
-  const groupedTodos = await prisma.todo.groupBy({
+  const groupedTodos = await prisma.task.groupBy({
     _count: {
       id: true,
     },
@@ -42,9 +42,9 @@ export async function getTodosOverview(): Promise<TodosOverview> {
 
   const categoriesMap = await getCategoriesMap();
 
-  return groupedTodos.reduce((acc: TodosOverview, todo) => {
-    const status = todo.status as TodoStatus;
-    const category = categoriesMap[todo.categoryId];
+  return groupedTodos.reduce((acc, task) => {
+    const status = task.status as TaskStatus;
+    const category = categoriesMap[task.categoryId];
 
     if (!acc[status]) {
       acc[status] = {};
@@ -52,11 +52,11 @@ export async function getTodosOverview(): Promise<TodosOverview> {
 
     if (!acc[status][category.id]) {
       acc[status][category.id] = {
-        count: todo._count.id,
+        count: task._count.id,
         name: category.name,
       };
     }
 
     return acc;
-  }, {} as TodosOverview);
+  }, {} as TaskSummary);
 }

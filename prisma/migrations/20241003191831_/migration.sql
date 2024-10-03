@@ -3,15 +3,15 @@ BEGIN TRY
 BEGIN TRAN;
 
 -- CreateTable
-CREATE TABLE [dbo].[Todo] (
+CREATE TABLE [dbo].[Task] (
     [id] NVARCHAR(1000) NOT NULL,
     [title] NVARCHAR(1000) NOT NULL,
     [description] NVARCHAR(1000),
-    [createdAt] DATETIME2 NOT NULL CONSTRAINT [Todo_createdAt_df] DEFAULT CURRENT_TIMESTAMP,
-    [status] NVARCHAR(1000) NOT NULL CONSTRAINT [Todo_status_df] DEFAULT 'TODO',
+    [createdAt] DATETIME2 NOT NULL CONSTRAINT [Task_createdAt_df] DEFAULT CURRENT_TIMESTAMP,
+    [status] NVARCHAR(1000) NOT NULL CONSTRAINT [Task_status_df] DEFAULT 'TODO',
     [categoryId] INT NOT NULL,
     [projectId] NVARCHAR(1000) NOT NULL,
-    CONSTRAINT [Todo_pkey] PRIMARY KEY CLUSTERED ([id])
+    CONSTRAINT [Task_pkey] PRIMARY KEY CLUSTERED ([id])
 );
 
 -- CreateTable
@@ -41,10 +41,10 @@ CREATE TABLE [dbo].[TeamMember] (
 );
 
 -- AddForeignKey
-ALTER TABLE [dbo].[Todo] ADD CONSTRAINT [Todo_categoryId_fkey] FOREIGN KEY ([categoryId]) REFERENCES [dbo].[Category]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE [dbo].[Task] ADD CONSTRAINT [Task_categoryId_fkey] FOREIGN KEY ([categoryId]) REFERENCES [dbo].[Category]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE [dbo].[Todo] ADD CONSTRAINT [Todo_projectId_fkey] FOREIGN KEY ([projectId]) REFERENCES [dbo].[Project]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
+ALTER TABLE [dbo].[Task] ADD CONSTRAINT [Task_projectId_fkey] FOREIGN KEY ([projectId]) REFERENCES [dbo].[Project]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE [dbo].[TeamMember] ADD CONSTRAINT [TeamMember_projectId_fkey] FOREIGN KEY ([projectId]) REFERENCES [dbo].[Project]([id]) ON DELETE NO ACTION ON UPDATE CASCADE;

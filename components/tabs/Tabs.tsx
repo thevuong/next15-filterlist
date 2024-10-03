@@ -2,25 +2,25 @@
 
 import { useParams } from 'next/navigation';
 import React, { use, useOptimistic } from 'react';
-import type { TodosOverview, TodoStatus } from '@/types/todo';
+import type { TaskStatus, TaskSummary } from '@/types/task';
 import { cn } from '@/utils/cn';
 import { getCategoryColor } from '@/utils/getCategoryColor';
 import Skeleton from '../ui/Skeleton';
 import Tab from './Tab';
 
 type Props = {
-  todosOverviewPromise: Promise<TodosOverview>;
+  todosOverviewPromise: Promise<TaskSummary>;
 };
 
 export default function Tabs({ todosOverviewPromise }: Props) {
   const activeTab = useParams().tab as string;
-  const todosOverview = use(todosOverviewPromise);
+  const taskSummary = use(todosOverviewPromise);
   const [optimisticTab, setOptimisticTab] = useOptimistic(activeTab);
 
-  const mapTodos = (status: TodoStatus) => {
+  const mapTodos = (status: TaskStatus) => {
     return (
       <div className="flex flex-col gap-2">
-        {Object.entries(todosOverview[status]).map(([id, category]) => {
+        {Object.entries(taskSummary[status]).map(([id, category]) => {
           const color = getCategoryColor(Number(id));
           return (
             <div key={id} className="flex items-center gap-2">
@@ -33,8 +33,8 @@ export default function Tabs({ todosOverviewPromise }: Props) {
     );
   };
 
-  const getTodoCount = (status: TodoStatus) => {
-    return Object.values(todosOverview[status]).reduce((acc, category) => {
+  const getTodoCount = (status: TaskStatus) => {
+    return Object.values(taskSummary[status]).reduce((acc, category) => {
       return acc + category.count;
     }, 0);
   };

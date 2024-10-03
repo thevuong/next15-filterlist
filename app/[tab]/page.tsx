@@ -1,8 +1,8 @@
 import React from 'react';
 import { ActionIcon } from '@/components/ui/icons/ActionIcon';
 import { getCategoriesMap } from '@/data/services/category';
-import { getTodos } from '@/data/services/todo';
-import type { TodoStatus } from '@/types/todo';
+import { getTasks } from '@/data/services/task';
+import type { TaskStatus } from '@/types/task';
 import { cn } from '@/utils/cn';
 import { getCategoryColor } from '@/utils/getCategoryColor';
 
@@ -19,10 +19,10 @@ type PageProps = {
 export default async function TabPage({ params, searchParams }: PageProps) {
   const categoriesMap = await getCategoriesMap();
   const { q, category } = await searchParams;
-  const data = await getTodos({
+  const data = await getTasks({
     categories: Array.isArray(category) ? category.map(Number) : category ? [Number(category)] : undefined,
     q,
-    status: (await params).tab as TodoStatus,
+    status: (await params).tab as TaskStatus,
   });
 
   return (
@@ -38,18 +38,18 @@ export default async function TabPage({ params, searchParams }: PageProps) {
           </tr>
         </thead>
         <tbody>
-          {data.map(todo => {
-            const color = getCategoryColor(todo.categoryId);
+          {data.map(task => {
+            const color = getCategoryColor(task.categoryId);
             return (
-              <tr key={todo.id}>
-                <td className="font-medium">{todo.title}</td>
-                <td>{todo.description}</td>
+              <tr key={task.id}>
+                <td className="font-medium">{task.title}</td>
+                <td>{task.description}</td>
                 <td>
                   <div className={cn(color, 'flex w-fit justify-center px-3 py-1 text-white')}>
-                    {categoriesMap[todo.categoryId].name}
+                    {categoriesMap[task.categoryId].name}
                   </div>
                 </td>
-                <td>{new Date(todo.createdAt).toLocaleDateString()}</td>
+                <td>{new Date(task.createdAt).toLocaleDateString()}</td>
                 <td>
                   <button aria-label="Options">
                     <ActionIcon aria-hidden width={20} height={20} />
@@ -60,7 +60,9 @@ export default async function TabPage({ params, searchParams }: PageProps) {
           })}
           {data.length === 0 && (
             <tr>
-              <td colSpan={5}>No todos found</td>
+              <td className="text-italic" colSpan={5}>
+                No tasks found
+              </td>
             </tr>
           )}
         </tbody>
