@@ -5,6 +5,20 @@ import React, { useTransition } from 'react';
 import { SearchIcon } from './ui/icons/SearchIcon';
 import { SpinnerIcon } from './ui/icons/SpinnerIcon';
 
+function SearchStatus({ searching }: { searching: boolean }) {
+  return (
+    <div aria-hidden className="absolute left-4 top-[41px]">
+      {searching ? (
+        <div className="h-fit w-fit animate-spin">
+          <SpinnerIcon width={16} height={16} className="text-gray" />
+        </div>
+      ) : (
+        <SearchIcon width={16} height={16} className="text-gray" />
+      )}
+    </div>
+  );
+}
+
 export default function Search() {
   const router = useRouter();
   const params = useParams();
@@ -33,15 +47,7 @@ export default function Search() {
         placeholder="Search in task title or description..."
         type="search"
       />
-      <div aria-hidden className="absolute left-4 top-[41px]">
-        {isPending ? (
-          <div className="h-fit w-fit animate-spin">
-            <SpinnerIcon width={16} height={16} className="text-gray" />
-          </div>
-        ) : (
-          <SearchIcon width={16} height={16} className="text-gray" />
-        )}
-      </div>
+      <SearchStatus searching={isPending} />
     </form>
   );
 }

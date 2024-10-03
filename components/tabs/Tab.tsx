@@ -22,11 +22,7 @@ export default function Tab({ tabId, children, activeTab, header, setOptimisticT
     <Link
       data-pending={isPending ? '' : undefined}
       className={cn(
-        activeTab === tabId
-          ? 'border-primary bg-primary-light'
-          : isPending
-            ? 'bg-primary-light'
-            : 'border-transparent bg-primary-lighter',
+        activeTab === tabId ? 'border-primary bg-primary-light' : 'border-transparent bg-primary-lighter',
         'flex w-full min-w-fit flex-col gap-3 border-b-4 p-3 -outline-offset-2 hover:bg-primary-light focus:outline-2 focus:outline-primary sm:gap-6 sm:p-6',
       )}
       onClick={e => {
