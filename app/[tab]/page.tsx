@@ -26,7 +26,7 @@ export default async function TabPage({ params, searchParams }: PageProps) {
   });
 
   return (
-    <div className="overflow-x-auto group-has-[[data-pending]]:animate-pulse">
+    <div className="overflow-x-auto rounded group-has-[[data-pending]]:animate-pulse">
       <table>
         <thead>
           <tr>

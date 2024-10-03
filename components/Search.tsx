@@ -34,7 +34,6 @@ export default function Search() {
       </label>
       <input
         id="search"
-        className="w-full pl-10 sm:w-96"
         data-pending={isPending ? '' : undefined}
         onChange={e => {
           const categories = category.join('&category=');
@@ -43,6 +42,7 @@ export default function Search() {
           });
         }}
         defaultValue={q}
+        className="w-full pl-10 sm:w-96"
         name="q"
         placeholder="Search in task title or description..."
         type="search"
