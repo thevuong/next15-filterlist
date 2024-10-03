@@ -24,7 +24,7 @@ table {
 }
 
 tr {
-  @apply w-full odd:bg-white even:bg-primary-lighter;
+  @apply even:bg-gray-light w-full odd:bg-white;
 }
 
 td {

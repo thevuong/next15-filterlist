@@ -45,7 +45,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               <Tabs todosOverviewPromise={todosOverview} />
             </Suspense>
           </div>
-          <div className="bg-gray h-[1px]" />
+          <div className="h-[1px] bg-primary" />
           <Suspense fallback={<SearchSkeleton />}>
             <Search />
           </Suspense>
