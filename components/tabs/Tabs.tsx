@@ -1,7 +1,4 @@
-'use client';
-
-import { useParams } from 'next/navigation';
-import React, { use, useOptimistic } from 'react';
+import React from 'react';
 import type { TodosOverview, TodoStatus } from '@/types/todo';
 import { cn } from '@/utils/cn';
 import { getCategoryColor } from '@/utils/getCategoryColor';
@@ -9,14 +6,11 @@ import Skeleton from '../ui/Skeleton';
 import Tab from './Tab';
 
 type Props = {
-  todosOverviewPromise: Promise<TodosOverview>;
+  todosOverview: TodosOverview;
+  activeTab: string;
 };
 
-export default function Tabs({ todosOverviewPromise }: Props) {
-  const activeTab = useParams().tab as string;
-  const todosOverview = use(todosOverviewPromise);
-  const [optimisticTab, setOptimisticTab] = useOptimistic(activeTab);
-
+export default function Tabs({ todosOverview, activeTab }: Props) {
   const mapTodos = (status: TodoStatus) => {
     return (
       <div className="flex flex-col gap-2">
@@ -41,28 +35,13 @@ export default function Tabs({ todosOverviewPromise }: Props) {
 
   return (
     <div className="flex gap-6 overflow-auto">
-      <Tab
-        header={`TODO (${getTodoCount('todo')})`}
-        activeTab={optimisticTab}
-        setOptimisticTab={setOptimisticTab}
-        tabId="todo"
-      >
+      <Tab header={`TODO (${getTodoCount('todo')})`} activeTab={activeTab} tabId="todo">
         {mapTodos('todo')}
       </Tab>
-      <Tab
-        header={`IN PROGRESS (${getTodoCount('inprogress')})`}
-        activeTab={optimisticTab}
-        setOptimisticTab={setOptimisticTab}
-        tabId="inprogress"
-      >
+      <Tab header={`IN PROGRESS (${getTodoCount('inprogress')})`} activeTab={activeTab} tabId="inprogress">
         {mapTodos('inprogress')}
       </Tab>
-      <Tab
-        header={`DONE (${getTodoCount('done')})`}
-        activeTab={optimisticTab}
-        setOptimisticTab={setOptimisticTab}
-        tabId="done"
-      >
+      <Tab header={`DONE (${getTodoCount('done')})`} activeTab={activeTab} tabId="done">
         {mapTodos('done')}
       </Tab>
     </div>

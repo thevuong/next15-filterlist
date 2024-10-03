@@ -6,11 +6,11 @@ import { Suspense } from 'react';
 import CategoryFilter from '@/components/CategoryFilter';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
 import ProjectInfo from '@/components/ProjectInfo';
-import Search, { SearchSkeleton } from '@/components/Search';
-import Tabs, { TabsSkeleton } from '@/components/tabs/Tabs';
+import Search from '@/components/Search';
+import Tabs from '@/components/tabs/Tabs';
 import Skeleton from '@/components/ui/Skeleton';
-import ToggleButton from '@/components/ui/ToggleButton';
 import { getCategoriesMap } from '@/data/services/category';
+import { getProjectWithTeamMembers } from '@/data/services/project';
 import { getTodosOverview } from '@/data/services/todo';
 import { cn } from '@/utils/cn';
 import type { Metadata } from 'next';
@@ -20,9 +20,17 @@ export const metadata: Metadata = {
   title: 'Next.js 15 filtering list example using modern React features',
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const categories = getCategoriesMap();
-  const todosOverview = getTodosOverview();
+type LayoutProps = {
+  params: Promise<{
+    tab: string;
+  }>;
+  children: React.ReactNode;
+};
+
+export default async function RootLayout({ params, children }: LayoutProps) {
+  const categories = await getCategoriesMap();
+  const todosOverview = await getTodosOverview();
+  const projectAndMembers = await getProjectWithTeamMembers();
 
   return (
     <html lang="en">
@@ -30,21 +38,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <div className="group flex flex-col gap-10">
           <div className="flex flex-col gap-6">
             <h1>Project information</h1>
-            <ProjectInfo />
+            <ProjectInfo projectAndMembers={projectAndMembers} />
           </div>
           <div className="flex flex-col gap-6">
             <h2>Task list</h2>
-            <Suspense fallback={<TabsSkeleton />}>
-              <Tabs todosOverviewPromise={todosOverview} />
-            </Suspense>
+            <Tabs todosOverview={todosOverview} activeTab={(await params).tab} />
           </div>
           <div className="h-[1px] bg-primary" />
-          <Suspense fallback={<SearchSkeleton />}>
-            <Search />
-          </Suspense>
-          <Suspense fallback={<ToggleButton disabled>Loading...</ToggleButton>}>
-            <CategoryFilter categoriesPromise={categories} />
-          </Suspense>
+          <Search tab={(await params).tab} />
+          <CategoryFilter categories={categories} />
           <Suspense fallback={<Skeleton />}>{children}</Suspense>
         </div>
         <LoadTimeTracker />
