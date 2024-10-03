@@ -28,7 +28,7 @@ tr {
 }
 
 th {
-  @apply border-gray-light text-nowrap border-b px-4 py-2 text-left font-medium uppercase;
+  @apply border-gray-light text-nowrap border-b bg-gray-50 px-4 py-2 text-left font-medium uppercase;
 }
 
 th:not(:first-child):not(:last-child) {
