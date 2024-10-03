@@ -6,7 +6,6 @@ import { Suspense } from 'react';
 import CategoryFilter from '@/components/CategoryFilter';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
 import ProjectInfo from '@/components/ProjectInfo';
-
 import Search, { SearchSkeleton } from '@/components/Search';
 import Tabs, { TabsSkeleton } from '@/components/tabs/Tabs';
 import Skeleton from '@/components/ui/Skeleton';

@@ -7,22 +7,22 @@ import { cn } from '@/utils/cn';
 import { getCategoryColor } from '@/utils/getCategoryColor';
 
 type PageProps = {
-  params: {
+  params: Promise<{
     tab: string;
-  };
-  searchParams: {
+  }>;
+  searchParams: Promise<{
     q: string;
     category: string | string[];
-  };
+  }>;
 };
 
 export default async function TabPage({ params, searchParams }: PageProps) {
   const categoriesMap = await getCategoriesMap();
-  const { q, category } = searchParams;
+  const { q, category } = await searchParams;
   const data = await getTodos({
     categories: Array.isArray(category) ? category.map(Number) : category ? [Number(category)] : undefined,
     q,
-    status: params.tab as TodoStatus,
+    status: (await params).tab as TodoStatus,
   });
 
   return (
