@@ -13,7 +13,7 @@ type Props = {
 };
 
 export default function Tabs({ taskSummaryPromise }: Props) {
-  const activeTab = useParams().tab as string;
+  const activeTab = useParams().tab as TaskStatus;
   const taskSummary = use(taskSummaryPromise);
   const [optimisticTab, setOptimisticTab] = useOptimistic(activeTab);
 

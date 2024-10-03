@@ -11,7 +11,7 @@ type Props = {
   children: React.ReactNode;
   activeTab: string;
   header: string;
-  setOptimisticTab: (_tabId: string) => void;
+  setOptimisticTab: (_tabId: TaskStatus) => void;
 };
 
 export default function Tab({ tabId, children, activeTab, header, setOptimisticTab }: Props) {

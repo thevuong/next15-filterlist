@@ -2,6 +2,7 @@
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import React, { useTransition } from 'react';
+import type { TaskStatus } from '@/types/task';
 import { SearchIcon } from './ui/icons/SearchIcon';
 import { SpinnerIcon } from './ui/icons/SpinnerIcon';
 
@@ -28,7 +29,7 @@ export default function Search() {
   const [isPending, startTransition] = useTransition();
 
   return (
-    <form className="relative flex w-full flex-col gap-1 sm:w-fit" key={params.tab as string}>
+    <form className="relative flex w-full flex-col gap-1 sm:w-fit" key={params.tab as TaskStatus}>
       <label className="font-semibold" htmlFor="search">
         Search
       </label>
