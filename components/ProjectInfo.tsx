@@ -1,5 +1,5 @@
 import React from 'react';
-import { getProjectWithTeamMembers } from '@/data/project';
+import { getProjectWithTeamMembers } from '@/data/services/project';
 import Skeleton from './ui/Skeleton';
 
 function Chip({ children }: { children: React.ReactNode }) {

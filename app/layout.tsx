@@ -10,8 +10,8 @@ import Search, { SearchSkeleton } from '@/components/Search';
 import Tabs, { TabsSkeleton } from '@/components/tabs/Tabs';
 import Skeleton from '@/components/ui/Skeleton';
 import ToggleButton from '@/components/ui/ToggleButton';
-import { getCategoriesMap } from '@/data/category';
-import { getTodosOverview } from '@/data/todo';
+import { getCategoriesMap } from '@/data/services/category';
+import { getTodosOverview } from '@/data/services/todo';
 import { cn } from '@/utils/cn';
 import type { Metadata } from 'next';
 

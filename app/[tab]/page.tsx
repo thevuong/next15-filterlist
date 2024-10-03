@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActionIcon } from '@/components/ui/icons/ActionIcon';
-import { getCategoriesMap } from '@/data/category';
-import { getTodos } from '@/data/todo';
+import { getCategoriesMap } from '@/data/services/category';
+import { getTodos } from '@/data/services/todo';
 import type { TodoStatus } from '@/types/todo';
 import { cn } from '@/utils/cn';
 import { getCategoryColor } from '@/utils/getCategoryColor';
