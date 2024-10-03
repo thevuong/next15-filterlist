@@ -21,11 +21,6 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  // const todosOverview = await getTodosOverview();
-  // const categories = await getCategoriesMap();
-
-  // const [todosOverview, categories] = await Promise.all([getTodosOverview(), getCategoriesMap()]);
-
   const categories = getCategoriesMap();
   const todosOverview = getTodosOverview();
 
@@ -35,9 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <div className="group flex flex-col gap-10">
           <div className="flex flex-col gap-6">
             <h1>Project information</h1>
-            {/* <Suspense fallback={<ProjectInfoSkeleton />}> */}
             <ProjectInfo />
-            {/* </Suspense> */}
           </div>
           <div className="flex flex-col gap-6">
             <h2>Task list</h2>

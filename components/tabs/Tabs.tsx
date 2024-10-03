@@ -10,7 +10,6 @@ import Tab from './Tab';
 
 type Props = {
   todosOverviewPromise: Promise<TodosOverview>;
-  // todosOverview: TodosOverview;
 };
 
 export default function Tabs({ todosOverviewPromise }: Props) {
