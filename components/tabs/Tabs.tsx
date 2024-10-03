@@ -12,7 +12,7 @@ type Props = {
 export default function Tabs({ taskSummary }: Props) {
   const activeTab = '';
 
-  const mapTodos = (status: TaskStatus) => {
+  const mapTasks = (status: TaskStatus) => {
     return (
       <div className="flex flex-col gap-2">
         {Object.entries(taskSummary[status]).map(([id, category]) => {
@@ -28,7 +28,7 @@ export default function Tabs({ taskSummary }: Props) {
     );
   };
 
-  const getTodoCount = (status: TaskStatus) => {
+  const getTaskCount = (status: TaskStatus) => {
     return Object.values(taskSummary[status]).reduce((acc, category) => {
       return acc + category.count;
     }, 0);
@@ -36,14 +36,14 @@ export default function Tabs({ taskSummary }: Props) {
 
   return (
     <div className="flex gap-6 overflow-auto">
-      <Tab header={`TODO (${getTodoCount('todo')})`} activeTab={activeTab} tabId="todo">
-        {mapTodos('todo')}
+      <Tab header={`TODO (${getTaskCount('todo')})`} activeTab={activeTab} tabId="todo">
+        {mapTasks('todo')}
       </Tab>
-      <Tab header={`IN PROGRESS (${getTodoCount('inprogress')})`} activeTab={activeTab} tabId="inprogress">
-        {mapTodos('inprogress')}
+      <Tab header={`IN PROGRESS (${getTaskCount('inprogress')})`} activeTab={activeTab} tabId="inprogress">
+        {mapTasks('inprogress')}
       </Tab>
-      <Tab header={`DONE (${getTodoCount('done')})`} activeTab={activeTab} tabId="done">
-        {mapTodos('done')}
+      <Tab header={`DONE (${getTaskCount('done')})`} activeTab={activeTab} tabId="done">
+        {mapTasks('done')}
       </Tab>
     </div>
   );
