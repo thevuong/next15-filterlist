@@ -60,7 +60,7 @@ export default async function TabPage({ params, searchParams }: PageProps) {
           })}
           {data.length === 0 && (
             <tr>
-              <td className="text-italic" colSpan={5}>
+              <td className="italic" colSpan={5}>
                 No tasks found
               </td>
             </tr>
