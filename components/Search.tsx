@@ -1,4 +1,5 @@
 import React from 'react';
+import type { TaskStatus } from '@/types/task';
 import { SearchIcon } from './ui/icons/SearchIcon';
 import { SpinnerIcon } from './ui/icons/SpinnerIcon';
 
@@ -16,9 +17,9 @@ function SearchStatus({ searching }: { searching: boolean }) {
   );
 }
 
-export default function Search() {
+export default function Search({ tab }: { tab: TaskStatus }) {
   return (
-    <form className="relative flex w-full flex-col gap-1 sm:w-fit" key={''}>
+    <form className="relative flex w-full flex-col gap-1 sm:w-fit" key={tab}>
       <label className="font-semibold" htmlFor="search">
         Search
       </label>
