@@ -2,14 +2,12 @@ import './globals.css';
 
 // eslint-disable-next-line import/no-unresolved
 import { GeistSans } from 'geist/font/sans';
-import { Suspense } from 'react';
-import CategoryFilter from '@/components/CategoryFilter';
+
 import LoadTimeTracker from '@/components/LoadTimeTracker';
 import ProjectInfo from '@/components/ProjectInfo';
 import Search from '@/components/Search';
 import Tabs from '@/components/tabs/Tabs';
-import Skeleton from '@/components/ui/Skeleton';
-import { getCategoriesMap } from '@/data/services/category';
+
 import { getProjectWithTeamMembers } from '@/data/services/project';
 import { getTodosOverview } from '@/data/services/todo';
 import { cn } from '@/utils/cn';
@@ -28,7 +26,6 @@ type LayoutProps = {
 };
 
 export default async function RootLayout({ params, children }: LayoutProps) {
-  const categories = await getCategoriesMap();
   const todosOverview = await getTodosOverview();
   const projectAndMembers = await getProjectWithTeamMembers();
 
@@ -46,8 +43,7 @@ export default async function RootLayout({ params, children }: LayoutProps) {
           </div>
           <div className="h-[1px] bg-primary" />
           <Search tab={(await params).tab} />
-          <CategoryFilter categories={categories} />
-          <Suspense fallback={<Skeleton />}>{children}</Suspense>
+          {children}
         </div>
         <LoadTimeTracker />
       </body>
