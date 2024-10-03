@@ -26,6 +26,7 @@ type LayoutProps = {
 export default async function RootLayout({ params, children }: LayoutProps) {
   const taskSummary = await getTaskSummary();
   const projectAndMembers = await getProjectWithTeamMembers();
+  const resolvedParams = await params;
 
   return (
     <html lang="en">
@@ -37,10 +38,10 @@ export default async function RootLayout({ params, children }: LayoutProps) {
           </div>
           <div className="flex flex-col gap-6">
             <h2>Task list</h2>
-            <Tabs taskSummary={taskSummary} activeTab={(await params).tab} />
+            <Tabs taskSummary={taskSummary} activeTab={resolvedParams.tab} />
           </div>
           <div className="h-[1px] bg-primary" />
-          <Search tab={(await params).tab} />
+          <Search tab={resolvedParams.tab} />
           {children}
         </div>
         <LoadTimeTracker />
