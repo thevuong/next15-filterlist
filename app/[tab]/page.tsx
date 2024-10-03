@@ -26,45 +26,43 @@ export default async function TabPage({ params, searchParams }: PageProps) {
   });
 
   return (
-    <div className="overflow-x-auto group-has-[[data-pending]]:animate-pulse">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Category</th>
-            <th scope="col">Created Date</th>
-            <th scope="col" />
-          </tr>
-        </thead>
-        <tbody>
-          {data.map(todo => {
-            const color = getCategoryColor(todo.categoryId);
-            return (
-              <tr key={todo.id}>
-                <td className="font-medium uppercase">{todo.title}</td>
-                <td>{todo.description}</td>
-                <td>
-                  <div className={cn(color, 'flex w-fit justify-center px-3 py-1 text-white')}>
-                    {categoriesMap[todo.categoryId].name}
-                  </div>
-                </td>
-                <td>{new Date(todo.createdAt).toLocaleDateString()}</td>
-                <td>
-                  <button aria-label="Options">
-                    <ActionIcon aria-hidden width={20} height={20} />
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-          {data.length === 0 && (
-            <tr>
-              <td colSpan={5}>No todos found</td>
+    <table className="overflow-x-auto group-has-[[data-pending]]:animate-pulse">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Category</th>
+          <th scope="col">Created Date</th>
+          <th scope="col" />
+        </tr>
+      </thead>
+      <tbody>
+        {data.map(todo => {
+          const color = getCategoryColor(todo.categoryId);
+          return (
+            <tr key={todo.id}>
+              <td className="font-medium">{todo.title}</td>
+              <td>{todo.description}</td>
+              <td>
+                <div className={cn(color, 'flex w-fit justify-center px-3 py-1 text-white')}>
+                  {categoriesMap[todo.categoryId].name}
+                </div>
+              </td>
+              <td>{new Date(todo.createdAt).toLocaleDateString()}</td>
+              <td>
+                <button aria-label="Options">
+                  <ActionIcon aria-hidden width={20} height={20} />
+                </button>
+              </td>
             </tr>
-          )}
-        </tbody>
-      </table>
-    </div>
+          );
+        })}
+        {data.length === 0 && (
+          <tr>
+            <td colSpan={5}>No todos found</td>
+          </tr>
+        )}
+      </tbody>
+    </table>
   );
 }

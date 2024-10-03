@@ -20,19 +20,23 @@ h3 {
 }
 
 table {
-  @apply w-full border-spacing-0;
+  @apply border-gray-light w-full border-separate border-spacing-0 rounded border;
 }
 
 tr {
-  @apply even:bg-gray-light w-full odd:bg-white;
-}
-
-td {
-  @apply px-4 py-2 text-left;
+  @apply w-full;
 }
 
 th {
-  @apply text-nowrap bg-primary px-4 py-2 text-left font-medium text-white;
+  @apply border-gray-light text-nowrap border-b px-4 py-2 text-left font-medium uppercase;
+}
+
+th:not(:first-child):not(:last-child) {
+  @apply border-l;
+}
+
+td {
+  @apply border-gray-light border-b px-4 py-4 text-left;
 }
 
 .skeleton-animation {
