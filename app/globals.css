@@ -4,7 +4,7 @@
 
 textarea,
 input {
-  @apply border-gray m-0 border bg-white p-2 px-3 shadow-sm outline-none focus:outline focus:-outline-offset-1 focus:outline-primary disabled:bg-gray-100;
+  @apply m-0 border border-gray bg-white p-2 px-3 shadow-sm outline-none focus:outline focus:-outline-offset-1 focus:outline-primary disabled:bg-gray-100;
 }
 
 h1 {
@@ -20,15 +20,15 @@ h3 {
 }
 
 table {
-  @apply border-gray-light w-full border-separate border-spacing-0 rounded border;
+  @apply w-full border-collapse border-spacing-0 border border-gray-light;
 }
 
 tr {
-  @apply w-full;
+  @apply w-full border-b border-gray-light;
 }
 
 th {
-  @apply border-gray-light text-nowrap border-b bg-gray-50 px-4 py-2 text-left font-medium uppercase;
+  @apply text-nowrap border-b border-gray-light bg-gray-50 px-4 py-2 text-left font-medium uppercase;
 }
 
 th:not(:first-child):not(:last-child) {
@@ -36,7 +36,7 @@ th:not(:first-child):not(:last-child) {
 }
 
 td {
-  @apply border-gray-light border-b px-4 py-4 text-left;
+  @apply px-4 py-4 text-left;
 }
 
 .skeleton-animation {
