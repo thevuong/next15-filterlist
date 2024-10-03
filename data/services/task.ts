@@ -6,7 +6,7 @@ import type { TaskStatus, TaskSummary } from '@/types/task';
 import { slow } from '@/utils/slow';
 import { getCategoriesMap } from './category';
 
-export async function getTodos(filter?: { q?: string; status?: TaskStatus; categories?: number[] }) {
+export async function getTasks(filter?: { q?: string; status?: TaskStatus; categories?: number[] }) {
   console.log('getTodos', filter);
 
   await cookies();
