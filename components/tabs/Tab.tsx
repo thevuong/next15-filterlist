@@ -20,6 +20,7 @@ export default function Tab({ tabId, children, activeTab, header, setOptimisticT
 
   return (
     <Link
+      scroll={false}
       data-pending={isPending ? '' : undefined}
       className={cn(
         activeTab === tabId ? 'border-primary bg-primary-light' : 'border-transparent bg-primary-lighter',
@@ -29,7 +30,9 @@ export default function Tab({ tabId, children, activeTab, header, setOptimisticT
         e.preventDefault();
         startTransition(() => {
           setOptimisticTab(tabId);
-          router.push('/' + tabId);
+          router.push('/' + tabId, {
+            scroll: false,
+          });
         });
       }}
       href={tabId}
