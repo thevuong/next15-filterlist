@@ -11,6 +11,7 @@ export async function getCategoriesMap() {
   await slow(1500);
 
   const categories = await prisma.category.findMany();
+
   return categories.reduce(
     (acc, category) => {
       acc[category.id] = category;
