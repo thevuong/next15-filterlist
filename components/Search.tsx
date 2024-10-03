@@ -16,13 +16,9 @@ function SearchStatus({ searching }: { searching: boolean }) {
   );
 }
 
-type Props = {
-  tab: string;
-};
-
-export default function Search({ tab }: Props) {
+export default function Search() {
   return (
-    <form className="relative flex w-full flex-col gap-1 sm:w-fit" key={tab}>
+    <form className="relative flex w-full flex-col gap-1 sm:w-fit" key={''}>
       <label className="font-semibold" htmlFor="search">
         Search
       </label>

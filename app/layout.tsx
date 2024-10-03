@@ -16,17 +16,9 @@ export const metadata: Metadata = {
   title: 'Next.js 15 filtering list example using modern React features',
 };
 
-type LayoutProps = {
-  params: Promise<{
-    tab: string;
-  }>;
-  children: React.ReactNode;
-};
-
-export default async function RootLayout({ params, children }: LayoutProps) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const taskSummary = await getTaskSummary();
   const projectAndMembers = await getProjectWithTeamMembers();
-  const resolvedParams = await params;
 
   return (
     <html lang="en">
@@ -38,10 +30,10 @@ export default async function RootLayout({ params, children }: LayoutProps) {
           </div>
           <div className="flex flex-col gap-6">
             <h2>Task list</h2>
-            <Tabs taskSummary={taskSummary} activeTab={resolvedParams.tab} />
+            <Tabs taskSummary={taskSummary} />
           </div>
           <div className="h-[1px] bg-primary" />
-          <Search tab={resolvedParams.tab} />
+          <Search />
           {children}
         </div>
         <LoadTimeTracker />

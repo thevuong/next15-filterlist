@@ -7,10 +7,11 @@ import Tab from './Tab';
 
 type Props = {
   taskSummary: TaskSummary;
-  activeTab: string;
 };
 
-export default function Tabs({ taskSummary, activeTab }: Props) {
+export default function Tabs({ taskSummary }: Props) {
+  const activeTab = '';
+
   const mapTodos = (status: TaskStatus) => {
     return (
       <div className="flex flex-col gap-2">
