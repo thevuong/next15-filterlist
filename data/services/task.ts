@@ -10,9 +10,16 @@ export async function getTasks(filter?: { q?: string; status?: TaskStatus; categ
   console.log('getTasks', filter);
 
   await cookies();
-  await slow(2000);
+  await slow(3000);
 
   return prisma.task.findMany({
+    include: {
+      category: {
+        select: {
+          name: true,
+        },
+      },
+    },
     where: {
       AND: [
         filter?.q
