@@ -12,7 +12,6 @@ type Props = {
 export default function CategoryFilter({ categoriesPromise }: Props) {
   const categories = use(categoriesPromise);
   const searchParams = useSearchParams();
-  const q = searchParams.get('q') || '';
   const router = useRouter();
   const selectedCategories = searchParams.getAll('category');
 
@@ -23,20 +22,18 @@ export default function CategoryFilter({ categoriesPromise }: Props) {
           <ToggleButton
             onClick={() => {
               const categoryId = category.id.toString();
-              let newCategories: string[] = [];
-              if (selectedCategories.includes(categoryId)) {
-                newCategories = selectedCategories.filter(id => {
-                  return categoryId !== id;
-                });
-              } else {
-                newCategories = [...selectedCategories, categoryId];
-              }
-              const params = new URLSearchParams(
-                newCategories.map(categoryId => {
-                  return ['category', categoryId];
-                }),
-              );
-              router.push(`?${params.toString()}&q=${q}`);
+              const newCategories = selectedCategories.includes(categoryId)
+                ? selectedCategories.filter(id => {
+                    return id !== categoryId;
+                  })
+                : [...selectedCategories, categoryId];
+
+              const params = new URLSearchParams(searchParams);
+              params.delete('category');
+              newCategories.forEach(id => {
+                return params.append('category', id);
+              });
+              router.push(`?${params.toString()}`);
             }}
             key={category.id}
             active={selectedCategories.includes(category.id.toString())}
