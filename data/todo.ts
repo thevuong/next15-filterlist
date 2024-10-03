@@ -10,7 +10,7 @@ import { getCategoriesMap } from './category';
 export const getTodos = cache(async (filter?: { q?: string; status?: TodoStatus; categories?: number[] }) => {
   console.log('getTodos', filter);
 
-  cookies();
+  await cookies();
   await slow(2000);
 
   return prisma.todo.findMany({
@@ -31,8 +31,8 @@ export const getTodos = cache(async (filter?: { q?: string; status?: TodoStatus;
 export async function getTodosOverview(): Promise<TodosOverview> {
   console.log('getTodosOverview');
 
+  await cookies();
   await slow(2000);
-  cookies();
 
   const groupedTodos = await prisma.todo.groupBy({
     _count: {

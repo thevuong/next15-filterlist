@@ -6,7 +6,7 @@ import { slow } from '@/utils/slow';
 export async function getProjectWithTeamMembers() {
   console.log('getProject');
 
-  // cookies();
+  // await cookies();
   await slow(500);
 
   const projects = await prisma.project.findMany({
