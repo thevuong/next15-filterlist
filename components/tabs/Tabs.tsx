@@ -9,12 +9,12 @@ import Skeleton from '../ui/Skeleton';
 import Tab from './Tab';
 
 type Props = {
-  todosOverviewPromise: Promise<TaskSummary>;
+  taskSummaryPromise: Promise<TaskSummary>;
 };
 
-export default function Tabs({ todosOverviewPromise }: Props) {
+export default function Tabs({ taskSummaryPromise }: Props) {
   const activeTab = useParams().tab as string;
-  const taskSummary = use(todosOverviewPromise);
+  const taskSummary = use(taskSummaryPromise);
   const [optimisticTab, setOptimisticTab] = useOptimistic(activeTab);
 
   const mapTodos = (status: TaskStatus) => {

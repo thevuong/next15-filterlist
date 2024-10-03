@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const categories = getCategoriesMap();
-  const todosOverview = getTaskSummary();
+  const taskSummary = getTaskSummary();
 
   return (
     <html lang="en">
@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <div className="flex flex-col gap-6">
             <h2>Task list</h2>
             <Suspense fallback={<TabsSkeleton />}>
-              <Tabs todosOverviewPromise={todosOverview} />
+              <Tabs taskSummaryPromise={taskSummary} />
             </Suspense>
           </div>
           <div className="h-[1px] bg-primary" />
