@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 import { prisma } from '@/db';
 import { slow } from '@/utils/slow';
 
-export async function getProjectWithTeamMembers() {
+export async function getProject() {
   console.log('getProject');
 
   await slow(500);

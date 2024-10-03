@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
 import React from 'react';
 import { ActionIcon } from '@/components/ui/icons/ActionIcon';
-import { getCategoriesMap } from '@/data/services/category';
 import { getTasks } from '@/data/services/task';
 import type { TaskStatus } from '@/types/task';
 import { cn } from '@/utils/cn';
@@ -23,7 +22,6 @@ export default async function TabPage({ params, searchParams }: PageProps) {
   if (!validStatuses.includes(tab)) {
     notFound();
   }
-  const categoriesMap = await getCategoriesMap();
   const { q, category } = await searchParams;
   const data = await getTasks({
     categories: Array.isArray(category) ? category.map(Number) : category ? [Number(category)] : undefined,
@@ -52,7 +50,7 @@ export default async function TabPage({ params, searchParams }: PageProps) {
                 <td>{task.description}</td>
                 <td>
                   <div className={cn(color, 'flex w-fit justify-center px-3 py-1 text-white')}>
-                    {categoriesMap[task.categoryId].name}
+                    {task.category.name}
                   </div>
                 </td>
                 <td>{new Date(task.createdAt).toLocaleDateString()}</td>

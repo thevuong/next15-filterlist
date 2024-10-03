@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Skeleton from './ui/Skeleton';
 import type { Project, TeamMember } from '@prisma/client';
 
@@ -17,33 +16,33 @@ function Info({ label, value }: { label: string; value: string }) {
 }
 
 type Props = {
-  projectAndMembers: Project & {
+  project: Project & {
     teamMembers: Record<string, { count: number; members: TeamMember[] }>;
   };
 };
 
-export default async function ProjectInfo({ projectAndMembers }: Props) {
+export default async function ProjectInfo({ project }: Props) {
   return (
     <div className="flex gap-16">
       <div className="flex flex-col gap-2">
         <span className="font-bold">About the project</span>
-        <Info label="Project name:" value={projectAndMembers.name} />
-        <Info label="Company:" value={projectAndMembers.companyName} />
+        <Info label="Project name:" value={project.name} />
+        <Info label="Company:" value={project.companyName} />
         <Info
           label="Duration:"
-          value={`${projectAndMembers.startDate.getFullYear()}-${projectAndMembers.expectedLaunchDate.getFullYear()}`}
+          value={`${project.startDate.getFullYear()}-${project.expectedLaunchDate.getFullYear()}`}
         />
-        <Info label="Expected launch:" value={projectAndMembers.expectedLaunchDate.toLocaleDateString()} />
+        <Info label="Expected launch:" value={project.expectedLaunchDate.toLocaleDateString()} />
       </div>
       <div className="hidden flex-col gap-2 sm:flex">
         <span className="font-bold">Team members</span>
-        {Object.entries(projectAndMembers.teamMembers).map(([role, member]) => {
+        {Object.entries(project.teamMembers).map(([role, member]) => {
           return <Chip key={role}>{`${role.split('-').join(' ')} (${member.count})`}</Chip>;
         })}
       </div>
       <div className="hidden flex-col gap-2 md:flex">
         <span className="font-bold">Deliverables</span>
-        {projectAndMembers.deliverables.split(';').map(deliverable => {
+        {project.deliverables.split(';').map(deliverable => {
           return (
             <span key={deliverable} className="w-fit bg-black px-2 py-1 text-white">
               {deliverable}
