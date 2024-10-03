@@ -6,7 +6,7 @@ import LoadTimeTracker from '@/components/LoadTimeTracker';
 import ProjectInfo from '@/components/ProjectInfo';
 import Search from '@/components/Search';
 import Tabs from '@/components/tabs/Tabs';
-import { getProjectWithTeamMembers } from '@/data/services/project';
+import { getProject } from '@/data/services/project';
 import { getTaskSummary } from '@/data/services/task';
 import { cn } from '@/utils/cn';
 import type { Metadata } from 'next';
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const taskSummary = await getTaskSummary();
-  const projectAndMembers = await getProjectWithTeamMembers();
+  const project = await getProject();
 
   return (
     <html lang="en">
@@ -26,7 +26,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <div className="group flex flex-col gap-10">
           <div className="flex flex-col gap-6">
             <h1>Project information</h1>
-            <ProjectInfo projectAndMembers={projectAndMembers} />
+            <ProjectInfo project={project} />
           </div>
           <div className="flex flex-col gap-6">
             <h2>Task list</h2>

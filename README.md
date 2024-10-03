@@ -1,6 +1,6 @@
 # Next.js 15 Filter List
 
-An interactive, progressively enhanced project task manager with filtering using Next.js 15 with Tailwind CSS and Prisma.
+An interactive, progressively enhanced project task manager with filtering using Next.js 15 with Tailwind CSS and Prisma. It's been slowed down purposely to show the loading state.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
