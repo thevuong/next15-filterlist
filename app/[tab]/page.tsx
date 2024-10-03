@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import React from 'react';
 import { ActionIcon } from '@/components/ui/icons/ActionIcon';
 import { getCategoriesMap } from '@/data/services/category';
@@ -8,7 +9,7 @@ import { getCategoryColor } from '@/utils/getCategoryColor';
 
 type PageProps = {
   params: Promise<{
-    tab: string;
+    tab: TaskStatus;
   }>;
   searchParams: Promise<{
     q?: string;
@@ -17,12 +18,17 @@ type PageProps = {
 };
 
 export default async function TabPage({ params, searchParams }: PageProps) {
+  const { tab } = await params;
+  const validStatuses: TaskStatus[] = ['todo', 'inprogress', 'done'];
+  if (!validStatuses.includes(tab)) {
+    notFound();
+  }
   const categoriesMap = await getCategoriesMap();
   const { q, category } = await searchParams;
   const data = await getTasks({
     categories: Array.isArray(category) ? category.map(Number) : category ? [Number(category)] : undefined,
     q,
-    status: (await params).tab as TaskStatus,
+    status: (await params).tab,
   });
 
   return (
