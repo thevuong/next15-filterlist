@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default function CategoryFilter({ categoriesPromise }: Props) {
-  const categories = use(categoriesPromise);
+  const categoriesMap = use(categoriesPromise);
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -18,7 +18,7 @@ export default function CategoryFilter({ categoriesPromise }: Props) {
 
   return (
     <div data-pending={isPending ? '' : undefined} className="flex flex-wrap gap-2">
-      {Object.values(categories).map(category => {
+      {Object.values(categoriesMap).map(category => {
         return (
           <ToggleButton
             onClick={() => {
