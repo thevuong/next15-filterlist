@@ -13,7 +13,6 @@
 
 ## Review lighthouse scores
 
-- Pre measure?
 - TBT: 0 since no JS, responsive page, no uncanny valley since default elements.
 - FCP: Bad since we are showing nothing until everything. Check the logs for the true value. Fix mistakenly good scores.
 - LCP: Bad, out LCP is shown together with everything else. Check the logs for the true value. Fix mistakenly good scores.
@@ -123,7 +122,6 @@ We can now use our common pattern of fetching data inside components, similar to
 
 ## Test lighthouse scores again
 
-- Potentially, open deployed version with pre-measures scores and show it there.
 - FCP: FCP is now instant. We are showing the project details from the start. Check ms in logs.
 - LCP: LCP is our PPR'd project details, also instant. Check ms in logs.
 - Speed index is also even better.
