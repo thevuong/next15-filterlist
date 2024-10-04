@@ -34,7 +34,6 @@ export default function Search() {
       </label>
       <input
         id="search"
-        data-pending={isPending ? '' : undefined}
         onChange={e => {
           startTransition(() => {
             const newSearchParams = new URLSearchParams(searchParams.toString());
