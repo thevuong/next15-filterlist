@@ -14,9 +14,9 @@
 ## Review lighthouse scores
 
 - Pre measure?
-- TBT: 0 since no JS, responsive page, no uncanny valley since default elements
-- FCP: Bad since we are showing nothing until everything. Check the logs for the true value.
-- LCP: Bad, out LCP is shown together with everything else. check the logs for the true value.
+- TBT: 0 since no JS, responsive page, no uncanny valley since default elements.
+- FCP: Bad since we are showing nothing until everything. Check the logs for the true value. Fix mistakenly good scores.
+- LCP: Bad, out LCP is shown together with everything else. Check the logs for the true value. Fix mistakenly good scores.
 - CLS: 0 since everything is painted at once.
 - Speed index bad since it measures incrementally how much content is shown, but we have nothing until everything is shown.
 - Show impact of each by hovering circle.
@@ -117,7 +117,7 @@ We can now use our common pattern of fetching data inside components, similar to
 ## Fix LCP and FCP with Partial Pre-rendering
 
 - We are still not the best on LCP and FCP. Actually, we are dynamically fetching this project details data on every page load even though it very rarely changes.
-- This could be static data that we can revalidate on a time based interval. Wasting resources and time. Static is the fastest.
+- This could be static data that we can revalidate on a time based interval using X (unstable_cache), Y (fetch options) or Z (ISR). Wasting resources and time. Static is the fastest.
 - Remove the cookies from the data fetch, and remove the suspense around the projectDetails. Show the result: app is frozen again.
 - Turn on partial prerendering in next.config.js. Run build and start and show the result. The app is now super fast.
 
