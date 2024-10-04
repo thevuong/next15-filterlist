@@ -10,14 +10,14 @@ type Props = {
 };
 
 export default function CategoryFilter({ categoriesPromise }: Props) {
-  const categories = use(categoriesPromise);
+  const categoriesMap = use(categoriesPromise);
   const searchParams = useSearchParams();
   const router = useRouter();
   const selectedCategories = searchParams.getAll('category');
 
   return (
     <div className="flex flex-wrap gap-2">
-      {Object.values(categories).map(category => {
+      {Object.values(categoriesMap).map(category => {
         return (
           <ToggleButton
             onClick={() => {
