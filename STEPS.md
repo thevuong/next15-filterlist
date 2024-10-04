@@ -19,7 +19,7 @@
 - CLS: 0 since everything is painted at once.
 - Speed index bad since it measures incrementally how much content is shown, but we have nothing until everything is shown.
 - Show impact of each by hovering circle.
-- Overall metrics aren't that bad but UX is definitely not good.
+- Overall metrics terrible and UX is definitely not good.
 
 ## Go through the code
 
