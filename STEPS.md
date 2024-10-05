@@ -14,9 +14,9 @@
 
 - New fullscreen with pre-measured lighthouse scores.
 - Show impact of each by hovering circle.
-- TBT: 0 since no JS, responsive page, no uncanny valley since default elements.
 - FCP: Bad since we are showing nothing until everything. Check the logs for the true value. Fix mistakenly good scores.
 - LCP: Bad, out LCP is shown together with everything else. Check the logs for the true value. Fix mistakenly good scores.
+- TBT: 0 since no JS, responsive page, no uncanny valley since default elements.
 - CLS: 0 since everything is painted at once.
 - Speed index bad since it measures incrementally how much content is shown, but we have nothing until everything is shown.
 - Overall metrics terrible and UX is definitely not good.
@@ -90,34 +90,35 @@ We are putting state in the URL. This is a common request because the current st
 
 ## Cache() getCategoriesMap in categories.ts
 
-- We are fetching the categories twice for every render - once for the task summary and once for the category filter. We can deduplicate this with a cache() function.
-- Show console logs 2x.
-- Add cache() to getCategoriesMap in categories.ts. Show console logs 1x, reduced load time?
+- We are fetching the categories twice for every render - once for the task summary and once for the category filter. Show console logs 2x.
+- We can deduplicate this since it's running in the same render.
+- Add cache() to getCategoriesMap in categories.ts. Show console logs 1x, reduced load time.
 - This is also good for using inside dynamic metadata.
 
-We can now use our common pattern of fetching data inside components, similar to how we would use useQuery in a client side app. This is automatically happening with fetch requests by the way.
+This means that can keep using our common pattern of fetching data inside components, similar to how we would use useQuery in a client side app. This deduplication automatically happening with fetch requests by the way.
 
 ## Turn on staleTimes in next.config.js
 
 - Every time we click a tab, filter, or search, we are rerunning the page.tsx table on the server, with the data fetch. We can cache this.
-- Cache the rsc payload for the route page.tsx (table) by turning on staleTimes in next.config.js. Show the result. Click the same twice. This is a Next.js 15 feature.
+- Cache the rsc payload for the route page.tsx (table) by turning on staleTimes in next.config.js. 
+- Show the result. Click the same twice. This is a Next.js 15 feature.
 
 ## Final demo
 
-- Reload page. Interact with tabs while streaming in the server components as they load. Switch tabs back and fourth. Switch tabs. Click multiple filters.
+- Reload page. Interact with tabs and filters while streaming in the server components as they load. Switch tabs back and fourth. Click multiple filters.
 - Greatly improved UX even though the data fetches are still extremely slow. App feels super responsive.
-- And this is very robust: progressively enhanced, no race conditions because of useTransitions, reloadable and shareable. Low amount of js, using only where needed.
+- And this is very robust: progressively enhanced, we wont have race conditions because of useTransitions, the app is reloadable and shareable. And there is a low amount of js, using it only where needed.
 - No useEffects or useStates in sight. We are making interactive apps without it. In the new React world with Next.js 15 we don't need it as much.
 
 ## Test lighthouse scores
 
+- FCP: FCP is better! Showing suspense fallbacks right away.
+- LCP: Its a lot better, but it's dependant on the project details so it's higher than FCP.
 - TBT: 0 since minimal JS and no long tasks, responsive page, no uncanny valley since default elements. Same as before pretty much.
-- FCP: FCP is better! Only waiting for our project details to show something.
-- LCP: Same as our FCP, same waiting time. Its also a lot better.
-- CLS: Good since my skeletons are good, but not perfect and will always be hard to maintain.
+- CLS: Managed 0 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
 - Speed index way better since we show incrementally more content.
 
-## Fix LCP and FCP with Partial Pre-rendering
+## Fix LCP with Partial Pre-rendering
 
 - We are still not the best on LCP and FCP. Actually, we are dynamically fetching this project details data on every page load even though it very rarely changes.
 - This could be static data that we can revalidate on a time based interval using X (unstable_cache), Y (fetch options) or Z (ISR). Wasting resources and time. Static is the fastest.
