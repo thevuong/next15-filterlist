@@ -135,5 +135,5 @@ This means that can keep using our common pattern of fetching data inside compon
 ## Showcase other things for improvement
 
 - Some final things to note
-- Show filters are being discarded when clicking between them. Checkout branch here called filter-provider where I've fixed this and simplified the code by extracting to a optimistic search param provider which React Context which batches all of them together.
+- Show filters are being discarded when clicking between them if the transition is still ongoing. Checkout branch here called filter-provider where I've fixed this and simplified the code by extracting to a optimistic search param provider which React Context which batches all of them together.
 - Turn off slow and feel the UX. Suspense boundaries are omitted cause the app is fast. However we know its okay if it isn't.
