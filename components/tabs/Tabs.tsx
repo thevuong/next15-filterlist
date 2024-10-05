@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default async function Tabs({ taskSummary }: Props) {
-  const activeTab = '';
+  const activeTab = '' as TaskStatus;
 
   const mapTasks = (status: TaskStatus) => {
     return (

@@ -6,6 +6,15 @@
             "<Suspense fallback={${1:< />}}>",
             "${0}</Suspense>"
         ],
-        "description": "React Suspense component with fallback"
+    }
+    ,
+    "tabsprops": {
+        "scope": "typescriptreact",
+        "prefix": "tabsprops",
+        "body": [
+            "type Props = {",
+            "  taskSummaryPromise: Promise<TaskSummary>;",
+            "};"
+        ],
     }
 }

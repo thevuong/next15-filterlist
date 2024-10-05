@@ -56,7 +56,7 @@ The ux is still not good here. We are not getting any feedback when we click thi
 
 - Let's begin by seeing the currently active tab. Add useParams and get active tab. Make client component. We cannot have this async now, we have to fetch the data outside. Put the data outside.
 - But we don't want to get back to blocking our layout. Lets remove the await and pass it down to the Tabs as a promise.
-- Then we can read the promise with use which will resolve ut, and the component will suspend the same way allowing us to see the fallback.
+- Then we can read the promise with use() which will resolve it, and the component will suspend the same way allowing us to see the fallback.
 
 ### Make table flash with startTransition in Tab.tsx
 
