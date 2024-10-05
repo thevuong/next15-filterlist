@@ -9,10 +9,11 @@
 - Turn off Js
 - Try out tabs, try search with a basic form, see the result in the table.
 - Good base case, will work even if we are on a device with low processing power that cannot run JS efficiently.
-- No forms, we are focusing on data fetching and server components patterns, forms and mutations is another story, I've done talks on that before.
+- No data mutation, we are focusing on data fetching and server components patterns, forms and mutations is another story, I've done talks on that before.
 
 ## Review lighthouse scores
 
+- New tab with pre-measured lighthouse scores.
 - TBT: 0 since no JS, responsive page, no uncanny valley since default elements.
 - FCP: Bad since we are showing nothing until everything. Check the logs for the true value. Fix mistakenly good scores.
 - LCP: Bad, out LCP is shown together with everything else. Check the logs for the true value. Fix mistakenly good scores.
