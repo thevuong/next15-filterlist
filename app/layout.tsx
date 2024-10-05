@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const taskSummary = await getTaskSummary();
   const project = await getProject();
+  const taskSummary = await getTaskSummary();
 
   return (
     <html lang="en">
