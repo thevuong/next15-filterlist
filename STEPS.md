@@ -69,17 +69,17 @@ The ux is still not good here. We are not getting any feedback when we click thi
 - Show the result. Pending feedback while showing stale content.
 Credit to Sam Selikoff with his post on buildui blog for this pattern.
 
+### Make Tabs.tsx more responsive
+
+- Pay attention to the URL. It's not switching until the new table is done rendering on the server. Therefore we cannot see the active tab right away.
+- UseOptimistic is a great tool to handle this. It will take in a state to show no action is pending, and return an trigger function and optimistic value, and it will throw away the client side optimistic state is thrown away after the action completes, then settle to the "truth".
+- Add useOptimistic to Tabs.tsx and Tab.tsx. They are now way more responsive.
+
 ### Add a loading spinner to Search.tsx
 
 - Progressive enhancement of the base case search with onChange. Enable the spinner. Pay attention to the url - startTransition also batches all state updates, or keystrokes, and executes all of them once they are all done.
 
 We are putting state in the URL. This is a common request because the current state of the app can be shareable and reloadable. But, it can be hard to coordinate state in the url with component state with i.e useEffect - instead the URL is now a single source of truth. We are lifting the state up, which is a well known pattern in React.
-
-### Make Tabs.tsx more responsive
-
-- Pay attention to the URL. It's not switching until the new table is done rendering on the server. Therefore we cannot see the active tab right away.
-- UseOptimistic is a great tool to handle this. It will take in a state to show no action is pending, let us define an optimistic value, and then settle to the "truth" when the client side optimistic state is thrown away after the action completes.
-- Add useOptimistic to Tabs.tsx and Tab.tsx. They are now way more responsive.
 
 ## Add CategoryFilter.tsx to layout.tsx
 
