@@ -14,12 +14,12 @@
 ## Review lighthouse scores
 
 - New fullscreen with pre-measured lighthouse scores.
+- Show impact of each by hovering circle.
 - TBT: 0 since no JS, responsive page, no uncanny valley since default elements.
 - FCP: Bad since we are showing nothing until everything. Check the logs for the true value. Fix mistakenly good scores.
 - LCP: Bad, out LCP is shown together with everything else. Check the logs for the true value. Fix mistakenly good scores.
 - CLS: 0 since everything is painted at once.
 - Speed index bad since it measures incrementally how much content is shown, but we have nothing until everything is shown.
-- Show impact of each by hovering circle.
 - Overall metrics terrible and UX is definitely not good.
 
 ## Go through the code
