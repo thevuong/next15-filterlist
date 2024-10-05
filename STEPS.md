@@ -39,12 +39,12 @@
 - Layout.tsx fetches are running sequentially even though they don't depend on each other.
 - The first thorugh might be to run them in parallel with promise.all().That would help, but you would still be blocked in the layout, and the slowest call which is the page.tsx.
 - So, let's unblock the layout and push the data down from the layout to the components themselves, and show Suspense fallbacks.
-- Unblock the page.tsx by adding suspense around children.
-- Now we can show something on the screen while streaming in the components as they finish. Utilizing the shared compute load between server and client, and interact with what we have.
-- Suspense around tabs with skeleton, await inside. Explain making skeletons the right size. If we don't we get CLS which hurts our score badly. Can be hard.
 - Suspense around projectDetails with skeleton, await inside.
+- Suspense around tabs with skeleton, await inside. Explain making skeletons the right size. If we don't we get CLS which hurts our score badly. Can be hard.
+- Unblock the page.tsx by adding suspense around children.
 - Suspense Search because SearchParams witch skeleton because SearchParams are dynamic.
 - Showcase the result
+- Now we can show something on the screen while streaming in the components as they finish. Utilizing the shared compute load between server and client, and interact with what we have.
 
 Our strategy: We are pushing data down and displaying fallbacks while streaming in the RSC's. All components fetch in parallel in this case since they are independent. If they did depend on each other, we could have made more levels of suspenses inside each, streaming sequentially. Each component is now responsible for their own data, making them composable.
 
