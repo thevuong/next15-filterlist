@@ -5,8 +5,7 @@
 - This is a project task manager sort of thing. My designer Eileen Røsholt has designed the UI, and it's based on something we made in our current project.
 - The setup is of course Next.js App router, prisma and an Azure DB, tailwind CSS.
 - Demo app: Very slow load, slowed down data fetches on purpose.
-- But, it's actually not bad. This is all html, and things work. And there is no JS on the client side.
-- Turn off Js
+- But, it's actually not bad. This is all html, navigations and a form for the search, and things work. And there is no JS on the client side. Works without js.
 - Try out tabs, try search with a basic form, see the result in the table.
 - Good base case, will work even if we are on a device with low processing power that cannot run JS efficiently.
 - No data mutation, we are focusing on data fetching and server components patterns, forms and mutations is another story, I've done talks on that before.
@@ -45,9 +44,9 @@
 - Unblock the page.tsx by adding suspense around children.
 - Suspense Search because SearchParams witch skeleton because SearchParams are dynamic.
 - Showcase the result
-- Now we can show something on the screen while streaming in the components as they finish. Utilizing the shared compute load between server and client, and interact with what we have.
+- Now we can show something on the screen while streaming in the components as they finish. Utilizing the shared compute load between server and client, and interact with what we have (fill search).
 
-Our strategy: We are pushing data down and displaying fallbacks while streaming in the RSC's. All components fetch in parallel in this case since they are independent. If they did depend on each other, we could have made more levels of suspenses inside each, streaming sequentially. Each component is now responsible for their own data, making them composable.
+Our strategy: We are pushing data fetching down and displaying fallbacks while streaming in the RSC's. All components fetch in parallel in this case since they are independent. If they did depend on each other, we could have made more levels of suspenses inside each, streaming sequentially. Each component is now responsible for their own data, making them composable.
 
 ## Improve UX
 
