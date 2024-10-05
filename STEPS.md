@@ -46,7 +46,7 @@
 - Showcase the result
 - Now we can show something on the screen while streaming in the components as they finish. Utilizing the shared compute load between server and client, and interact with what we have (fill search).
 
-Our strategy: We are pushing data fetching down and displaying fallbacks while streaming in the RSC's. All components fetch in parallel in this case since they are independent. If they did depend on each other, we could have made more levels of suspenses inside each, streaming sequentially. Each component is now responsible for their own data, making them composable.
+Our strategy: We are pushing data fetching down and displaying fallbacks while streaming in the RSC's. All components fetch in parallel in this case since they are independent, reducing total load time. If they did depend on each other, we could have made more levels of suspenses inside each, streaming sequentially. Each component is now responsible for their own data, making them composable.
 
 ## Improve UX
 

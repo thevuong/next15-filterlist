@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 import { ActionIcon } from '@/components/ui/icons/ActionIcon';
 import { getTasks } from '@/data/services/task';
-import type { TaskStatus } from '@/types/task';
+import { taskStatusSchema, type TaskStatus } from '@/types/task';
 import { cn } from '@/utils/cn';
 import { getCategoryColor } from '@/utils/getCategoryColor';
 
@@ -20,16 +20,17 @@ export default async function TabPage({ params, searchParams }: PageProps) {
   const { tab } = await params;
   const { q, category } = await searchParams;
 
+  try {
+    taskStatusSchema.parse(tab);
+  } catch (e) {
+    notFound();
+  }
+
   const data = await getTasks({
     categories: Array.isArray(category) ? category.map(Number) : category ? [Number(category)] : undefined,
     q,
     status: (await params).tab,
   });
-
-  const validStatuses: TaskStatus[] = ['todo', 'inprogress', 'done'];
-  if (!validStatuses.includes(tab)) {
-    notFound();
-  }
 
   return (
     <div className="overflow-x-auto rounded group-has-[[data-pending]]:animate-pulse">

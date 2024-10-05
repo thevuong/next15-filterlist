@@ -2,12 +2,10 @@ import './globals.css';
 
 // eslint-disable-next-line import/no-unresolved
 import { GeistSans } from 'geist/font/sans';
-
 import LoadTimeTracker from '@/components/LoadTimeTracker';
 import ProjectInfo from '@/components/ProjectInfo';
 import Search from '@/components/Search';
 import Tabs from '@/components/tabs/Tabs';
-
 import { getProject } from '@/data/services/project';
 import { getTaskSummary } from '@/data/services/task';
 import { cn } from '@/utils/cn';
