@@ -1,3 +1,12 @@
 {
-
+    "suspense": {
+        "scope": "typescriptreact",
+        "prefix": "suspense",
+        "body": [
+            "<Suspense fallback={${1:< />}}>",
+            "\t${0}",
+            "</Suspense>"
+        ],
+        "description": "React Suspense component with fallback"
+    }
 }

@@ -35,12 +35,11 @@
 
 - Show the different data files just querying a db and using cookies() and slow()
 - Dynamic requests, static is easy because this could be run in the build, but this is dynamic data. We have to await at runtime.
-- I'm blocked by the layouts and also by the slowest one and I cant show anything on the screen.
+- I'm blocked by the awaits in the layout and I cant show anything on the screen.
 - Layout.tsx fetches are running sequentially even though they don't depend on each other.
-- Let's run them in parallel with promise.all().
-- Better, but blocked by the slowest call which is the page.tsx. Suspense around children with fallback.
-- Add suspense around children and see the skeleton.
-- Let's unblock the layout and push the data down from the layout to the components themselves, and show Suspense fallback.
+- The first thorugh might be to run them in parallel with promise.all().That would help, but you would still be blocked in the layout, and the slowest call which is the page.tsx.
+- So, let's unblock the layout and push the data down from the layout to the components themselves, and show Suspense fallbacks.
+- Unblock the page.tsx by adding suspense around children.
 - Now we can show something on the screen while streaming in the components as they finish. Utilizing the shared compute load between server and client, and interact with what we have.
 - Suspense around tabs with skeleton, await inside. Explain making skeletons the right size. If we don't we get CLS which hurts our score badly. Can be hard.
 - Suspense around projectDetails with skeleton, await inside.
