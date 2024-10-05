@@ -62,10 +62,12 @@ The ux is still not good here. We are not getting any feedback when we click thi
 ### Make table flash with startTransition in Tab.tsx
 
 - However when we click the tabs, we dont see anything happening.
-- What's happening is we are waiting for the await of the page.tsx to finish, so we cannot switch tabs. We could add a suspense with loading.tsx, but that would be of little value to the user. Let's instead show stale content while waiting. I like to think of it as picking between displaying pending state in the source, the destination would be suspense.
+- What's happening is we are waiting for the await of the page.tsx to finish, so we cannot switch tabs. We could add a suspense with loading.tsx, but that would be of little value to the user. Let's instead show stale content while waiting. I like to think of it as picking between displaying pending state in the source or destination, the destination would be suspense.
 - Add prog-enh onClick to Tab.tsx, startTransition router.push. Explain useTransition. Mark a state update as non-urgent and non-blocking and get pending state. How can we use this isPending?
-- Show group-has data-pending in page.tsx, show class group. Add data-pending=isPending.
-- Show the result. Credit to Sam Selikoff with his post on buildui blog for this pattern.
+- Add data-pending=isPending.
+- Show group-has data-pending in page.tsx, show class group.
+- Show the result. Pending feedback while showing stale content.
+Credit to Sam Selikoff with his post on buildui blog for this pattern.
 
 ### Add a loading spinner to Search.tsx
 
