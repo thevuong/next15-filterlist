@@ -57,9 +57,11 @@ The ux is still not good here. We are not getting any feedback when we click thi
 - Let's begin by seeing the currently active tab. Add useParams and get active tab. Make client component. We cannot have this async now, we have to fetch the data outside. Put the data outside.
 - But we don't want to get back to blocking our layout. Lets remove the await and pass it down to the Tabs as a promise.
 - Then we can read the promise with use() which will resolve it, and the component will suspend the same way allowing us to see the fallback.
+- Now we can see the active tabs.
 
 ### Make table flash with startTransition in Tab.tsx
 
+- However when we click the tabs, we dont see anything happening.
 - What's happening is we are waiting for the await of the page.tsx to finish, so we cannot switch tabs. We could add a suspense with loading.tsx, but that would be of little value to the user. Let's instead show stale content while waiting. I like to think of it as picking between displaying pending state in the source, the destination would be suspense.
 - Add prog-enh onClick to Tab.tsx, startTransition router.push. Explain useTransition. Mark a state update as non-urgent and non-blocking and get pending state. How can we use this isPending?
 - Show group-has data-pending in page.tsx, show class group. Add data-pending=isPending.
