@@ -25,8 +25,8 @@
 ## Go through the code
 
 - Async components, async layout
-- Data fetching server side in a [tab] page.tsx based on the params. Searching directly to my database, no React state.
-- And we are accessing our db directly in the components and finishing the render there since they are server components.
+- Data fetching server side in a [tab] page.tsx based on the params.
+- And we are querying our db based on filters directly in the components and finishing the render there since they are server components. No React state.
 - Search is just submitting a query param with a get request
 - Tabs are navigating
 - App feels terrible because we are waiting for everything to render on the server and only getting the default browser spinner.
