@@ -18,16 +18,18 @@ type PageProps = {
 
 export default async function TabPage({ params, searchParams }: PageProps) {
   const { tab } = await params;
-  const validStatuses: TaskStatus[] = ['todo', 'inprogress', 'done'];
-  if (!validStatuses.includes(tab)) {
-    notFound();
-  }
   const { q, category } = await searchParams;
+
   const data = await getTasks({
     categories: Array.isArray(category) ? category.map(Number) : category ? [Number(category)] : undefined,
     q,
     status: (await params).tab,
   });
+
+  const validStatuses: TaskStatus[] = ['todo', 'inprogress', 'done'];
+  if (!validStatuses.includes(tab)) {
+    notFound();
+  }
 
   return (
     <div className="overflow-x-auto rounded group-has-[[data-pending]]:animate-pulse">
