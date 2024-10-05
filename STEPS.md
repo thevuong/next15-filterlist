@@ -40,7 +40,8 @@
 - The first thorugh might be to run them in parallel with promise.all().That would help, but you would still be blocked in the layout, and the slowest call which is the page.tsx.
 - So, let's unblock the layout and push the data down from the layout to the components themselves, and show Suspense fallbacks.
 - Suspense around projectDetails with skeleton, await inside.
-- Suspense around tabs with skeleton, await inside. Explain making skeletons the right size. If we don't we get CLS which hurts our score badly. Can be hard.
+- Explain making skeletons the right size. If we don't we get CLS which hurts our score badly. Can be hard.
+- Suspense around tabs with skeleton, await inside.
 - Unblock the page.tsx by adding suspense around children.
 - Suspense Search because SearchParams witch skeleton because SearchParams are dynamic.
 - Showcase the result
