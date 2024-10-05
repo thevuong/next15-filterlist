@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import type { TaskStatus } from '@/types/task';
 import { cn } from '@/utils/cn';
