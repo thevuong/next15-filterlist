@@ -63,6 +63,7 @@ The ux is still not good here. We are not getting much feedback when we click th
 
 - Progressive enhancement of the base case search with onChange. Enable the spinner.
 - Explain useTransition: mark a state update as non-urgent and non-blocking and get pending state.
+- Using the existing searchparams because I will be adding more in the next step.
 - Pay attention to the url - startTransition also batches all state updates, or keystrokes, and executes all of them once they are all done.
 
 We are putting state in the URL. This is a common request because the current state of the app can be shareable and reloadable. But, it can be hard to coordinate state in the url with component state with i.e useEffect - instead the URL is now a single source of truth. We are lifting the state up, which is a well known pattern in React.
