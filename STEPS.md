@@ -12,7 +12,7 @@
 
 ## Review lighthouse scores
 
-- New fullscreen with pre-measured lighthouse scores.
+- Run lighthouse.
 - Show impact of each by hovering circle.
 - FCP: Bad since we are showing nothing until everything. Check the logs for the true value. Fix mistakenly good scores.
 - LCP: Bad, out LCP is shown together with everything else. Check the logs for the true value. Fix mistakenly good scores.
@@ -115,25 +115,23 @@ This means that can keep using our common pattern of fetching data inside compon
 - FCP: FCP is better! Showing suspense fallbacks right away.
 - LCP: Its a lot better, but it's dependant on the project details so it's higher than FCP.
 - TBT: 0 since minimal JS and no long tasks, responsive page, no uncanny valley since default elements. Same as before pretty much.
-- CLS: Managed 0 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
+- CLS: Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
 - Speed index way better since we show incrementally more content.
+- Greatly improved scores, 100 lighthouse performance even with a 4s second total load time application.
 
-## Fix LCP with Partial Pre-rendering
+## Improve LCP (and FCP) with Partial Pre-rendering
 
-- We are still not the best on LCP and FCP. Actually, we are dynamically fetching this project details data on every page load even though it very rarely changes.
+- We can still improve. Actually, we are dynamically fetching this project details data on every page load even though it very rarely changes.
 - This could be static data that we can revalidate on a time based interval using X (unstable_cache), Y (fetch options) or Z (ISR). Wasting resources and time. Static is the fastest.
 - Remove the cookies from the data fetch, and remove the suspense around the projectDetails. Show the result: app is frozen again.
-- Turn on partial prerendering in next.config.js. Run build and start and show the result. The app is now super fast.
+- Turn on partial prerendering in next.config.js. Run build and start and show the result, refresh and new tab. The app is now instantly showing useful content.
 
 ## Test lighthouse scores again
 
-- New fullscreen with pre-measured lighthouse scores deployed version.
-- FCP: FCP is now instant. We are showing the project details from the start. Check ms in logs.
-- LCP: LCP is our PPR'd project details, also instant. Check ms in logs.
-- Speed index is also even better.
-- Greatly improved scores, 100 lighthouse performance even with a 4s second total load time application.
+- LCP: LCP is our PPR'd project details, so the score is even better. Check ms for LCP in logs.
+- This can be very impactful on a bigger application with larger chunks of static content.
 
-## Do random other things for improvement
+## (Do random other things for improvement)
 
 - Turn off slow and feel the UX. Suspense boundaries are omitted cause the app is fast. However we know its okay if it isn't.
-- Show filters are being discarded when clicking between them. Checkout filter-branch and show its fixed, extracted to a optimistic search param provider. It's now batching all of them together.
+- Show filters are being discarded when clicking between them. There is a branch here called filter-provider where I've fixed this and simplified the code by extracting to a optimistic search param provider which React Context which batches all of them together. Check that our if you're interested.

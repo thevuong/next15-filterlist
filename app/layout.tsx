@@ -2,12 +2,12 @@ import './globals.css';
 
 // eslint-disable-next-line import/no-unresolved
 import { GeistSans } from 'geist/font/sans';
-import { Suspense } from 'react';
+
 import LoadTimeTracker from '@/components/LoadTimeTracker';
 import ProjectInfo from '@/components/ProjectInfo';
 import Search from '@/components/Search';
 import Tabs from '@/components/tabs/Tabs';
-import Skeleton from '@/components/ui/Skeleton';
+
 import { getProject } from '@/data/services/project';
 import { getTaskSummary } from '@/data/services/task';
 import { cn } from '@/utils/cn';
@@ -19,9 +19,8 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  // const project = await getProject();
-  // const taskSummary = await getTaskSummary();
-  const [taskSummary, project] = await Promise.all([getTaskSummary(), getProject()]);
+  const project = await getProject();
+  const taskSummary = await getTaskSummary();
 
   return (
     <html lang="en">
@@ -33,13 +32,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           </div>
           <div className="flex flex-col gap-6">
             <h2>Task list</h2>
-            <Suspense>
-              <Tabs taskSummary={taskSummary} />
-            </Suspense>
+            <Tabs taskSummary={taskSummary} />
           </div>
           <div className="h-[1px] bg-primary" />
           <Search />
-          <Suspense fallback={<Skeleton />}>{children}</Suspense>
+          {children}
         </div>
         <LoadTimeTracker />
       </body>
