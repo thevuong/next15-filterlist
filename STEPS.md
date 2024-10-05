@@ -7,7 +7,7 @@
 - Demo app: Very slow load, slowed down data fetches on purpose.
 - But, it's actually not bad. This is all html, and things work. And there is no JS on the client side.
 - Turn off Js
-- Try out tabs, try search with a basic form, see the result in the table. Searching directly to my database, no React state.
+- Try out tabs, try search with a basic form, see the result in the table.
 - Good base case, will work even if we are on a device with low processing power that cannot run JS efficiently.
 - No forms, we are focusing on data fetching and server components patterns, forms and mutations is another story, I've done talks on that before.
 
@@ -24,7 +24,7 @@
 ## Go through the code
 
 - Async components, async layout
-- Data fetching server side in a [tab] page.tsx based on the params
+- Data fetching server side in a [tab] page.tsx based on the params. Searching directly to my database, no React state.
 - And we are accessing our db directly in the components and finishing the render there since they are server components.
 - Search is just submitting a query param with a get request
 - Tabs are navigating
