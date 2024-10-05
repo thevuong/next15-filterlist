@@ -9,7 +9,7 @@ type Props = {
   taskSummary: TaskSummary;
 };
 
-export default function Tabs({ taskSummary }: Props) {
+export default async function Tabs({ taskSummary }: Props) {
   const activeTab = '';
 
   const mapTasks = (status: TaskStatus) => {
