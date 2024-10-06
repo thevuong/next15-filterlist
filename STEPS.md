@@ -79,7 +79,7 @@ We are putting state in the URL. This is a common request because the current st
 - This component is filtering with searchParams again, using the URL as the state again. However when we click the tabs, we dont see anything happening.
 - What's happening is we are waiting for the await of the page.tsx to finish, so we cannot see the active filters.
 - Add startTransition router.push. How can we use this isPending?
-- Add data-pending=isPending.
+- Add data-pending=isPending attribute.
 - Show group-has data-pending in page.tsx, show class group.
 - Show the result. Pending feedback while showing stale content.
 - Credit to Sam Selikoff with his post on buildui blog for this pattern.
