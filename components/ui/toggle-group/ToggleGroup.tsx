@@ -7,20 +7,16 @@ type ToggleOption = {
 };
 
 type Props = {
-  onToggle: (_options: ToggleOption[]) => void;
+  onToggle: (_options: string[]) => void;
   options: ToggleOption[];
-  selectedOptions: ToggleOption[];
+  selectedValues: string[];
 };
 
-export default function ToggleGroup({ onToggle, options, selectedOptions }: Props) {
+export default function ToggleGroup({ onToggle, options, selectedValues }: Props) {
   return (
     <div className="flex flex-wrap gap-2">
       {options.map(option => {
-        const isActive = selectedOptions
-          .map(selectedOption => {
-            return selectedOption.value;
-          })
-          .includes(option.value);
+        const isActive = selectedValues.includes(option.value);
         return (
           <ToggleButton
             key={option.value}
@@ -28,12 +24,12 @@ export default function ToggleGroup({ onToggle, options, selectedOptions }: Prop
             onClick={() => {
               if (isActive) {
                 onToggle(
-                  selectedOptions.filter(selectedOption => {
-                    return selectedOption.value !== option.value;
+                  selectedValues.filter(selectedValue => {
+                    return selectedValue !== option.value;
                   }),
                 );
               } else {
-                onToggle([...selectedOptions, option]);
+                onToggle([...selectedValues, option.value]);
               }
             }}
           >
