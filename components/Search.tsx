@@ -38,7 +38,9 @@ export default function Search() {
           startTransition(() => {
             const newSearchParams = new URLSearchParams(searchParams.toString());
             newSearchParams.set('q', e.target.value);
-            router.push(`?${newSearchParams.toString()}`);
+            router.push(`?${newSearchParams.toString()}`, {
+              scroll: false,
+            });
           });
         }}
         defaultValue={q}
