@@ -78,18 +78,18 @@ We are putting state in the URL. This is a common request because the current st
 
 - Add the CategoryFilter component to layout.tsx. It takes in a categories promise and reads it with use. Pass it down with a new data fetch and suspend with a skeleton.
 - This component is filtering with searchParams again, using the URL as the state again. However when we click the tabs, we don't see anything happening.
-- What's happening is we are waiting for the await of the page.tsx to finish, so we cannot see the active filters.
+- Pay attention to the URL. It's not switching until the new table in page.tsx is done with its await query and finished rendering on the server. Therefore we cannot see the active filters right away.
+- What's happening is we are waiting for the await of the page.tsx.
 - Add startTransition router.push. How can we use this isPending?
-- Add data-pending=isPending attribute.
+- Add data-pending=isPending attribute. Instead of creating a global state manager, we can just use css.
 - Show group-has data-pending in page.tsx, show class group.
 - Show the result. Pending feedback while showing stale content.
-- Pay attention to the URL. It's not switching until the new table in page.tsx is done with its await query and finished rendering on the server. Therefore we cannot see the active filters right away.
-- UseOptimistic is a great tool to handle this. It will take in a state to show no action is pending, and return an trigger function and optimistic value, and it will throw away the client side optimistic state is thrown away after the action completes, then settle to the "truth".
-- Add useOptimistic to Tabs.tsx and Tab.tsx. They are now way more responsive.
+- What were gonna use to fix the togglebuttons, is useOptimistic, it is a great tool to handle this. It will take in a state to show no action is pending, and return an trigger function and optimistic value.
 - Add useOptimistic to CategoryFilter.tsx.
+- UseOptimistic will throw away the client side optimistic state after the navigation completes, then settle to the "truth".
 - Credit to Sam Selikoff with his post on buildui blog for this pattern.
 
-The categories are instant and don't depend in the network. Refreshing the page will show the correct state. It also batches them like with the search! Can be cancelled if the user navigates away before the promise resolves.
+The categories are instant and don't depend in the network. Refreshing the page will show the correct state. It also batches them like with the search!
 
 ## Cache() getCategoriesMap in categories.ts
 
