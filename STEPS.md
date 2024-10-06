@@ -25,10 +25,10 @@
 ## Go through the code
 
 - Async layout.tsx server component
-- Async [tab] page.tsx server components, we are querying our db based on filters directly based on the filters inside this server component.
-- Search is just submitting a query param with a get request using a form.
-- Dynamic requests, static is easy because this could be run in the build, but this is dynamic data. We have to await at runtime.
 - Show the different data files just querying a db and using cookies() and slow()
+- Search is just submitting a query param with a get request using a form.
+- Async [tab] page.tsx server components, we are querying our db based on filters directly based on the filters inside this server component.
+- Dynamic requests, static is easy because this could be run in the build, but this is dynamic data. We have to await at runtime.
 
 ## Improve the UX when switching tabs
 
@@ -42,9 +42,10 @@
 - Layout.tsx fetches are running sequentially even though they don't depend on each other.
 - The first through might be to run them in parallel with promise.all().That would help, but you would still be blocked in the layout.
 - So, let's push the data down from the layout to the components themselves, and show Suspense fallbacks.
-- Suspense around projectDetails with skeleton, await inside.
+- Move projectDetails fetch to projectDetails.tsx, and move tabs fetch to tabs.tsx. Show the result.
+- Suspense around projectDetails with skeleton.
 - Explain making skeletons the right size. If we don't we get CLS which hurts our score badly. Can be hard.
-- Suspense around tabs with skeleton, await inside.
+- Suspense around tabs with skeleton.
 - (Suspense Search because SearchParams witch skeleton because SearchParams are dynamic.)
 - Showcase the result.
 
@@ -52,20 +53,21 @@ Now we can show something on the screen while streaming in the components as the
 
 ## Improve UX
 
-The ux is still not good here. We are not seeing active tab and not getting feedback on search, and its doing a full page reload.
+The ux is still not good here. We are not seeing active tab and the search is doing a full page reload.
 
 ### Mark active tab and read promise with use in Tabs.tsx
 
-- Let's begin by seeing the currently active tab. Add useParams and get active tab. Make client component. We cannot have this async now, we have to fetch the data outside. Put the data outside.
+- Let's continue by seeing the currently active tab. Add useParams and get active tab. Make client component. We cannot have this async now, we have to fetch the data outside. Put the data outside.
 - But we don't want to get back to blocking our layout. Lets remove the await and pass it down to the Tabs as a promise.
 - Then we can read the promise with use() which will resolve it, and the component will suspend the same way allowing us to see the fallback.
 - Now we can see the active tabs and navigate between them.
 
 ### Add a loading spinner to Search.tsx
 
-- Progressive enhancement of the base case search with onChange. Enable the spinner. When this is hydrated by js, we have the onchange and the spinner.
+- Progressive enhancement of the base case search with onChange, add router and searchParams.
 - Explain useTransition: mark a state update as non-urgent and non-blocking and get pending state.
-- Use pending state to display user while waiting for the navigation to finish.
+- Use pending state to display user while waiting for the navigation to finish, which is the await in the table component.
+- Enable the spinner. When this is hydrated by js, we have the onchange and the spinner.
 - Using the existing search params because I will be adding more in the next step.
 - Pay attention to the url - startTransition also batches all state updates, or keystrokes, and executes all of them once they are all done. Few pushes to the browser history.
 - Add key to form to reset it between tabs
