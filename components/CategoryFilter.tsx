@@ -46,10 +46,9 @@ export default function CategoryFilter({ categoriesPromise }: Props) {
           });
           startTransition(() => {
             setOptimisticCategories(newCategories);
-            router.push(`?${params.toString()}`),
-              {
-                scroll: false,
-              };
+            router.push(`?${params.toString()}`, {
+              scroll: false,
+            });
           });
         }}
       />
