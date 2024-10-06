@@ -86,7 +86,7 @@ We are putting state in the URL. This is a common request because the current st
 - Show the result. Pending feedback while showing stale content.
 - What were gonna use to fix the togglebuttons, is useOptimistic, it is a great tool to handle this. It will take in a state to show no action is pending, and return an trigger function and optimistic value.
 - Add useOptimistic to CategoryFilter.tsx.
-- UseOptimistic will throw away the client side optimistic state after the navigation completes, then settle to the "truth".
+- UseOptimistic will throw away the client side optimistic state after the navigation completes, then settle to the "truth" which is the URL.
 - Credit to Sam Selikoff with his post on buildui blog for this pattern.
 
 The categories are instant and don't depend in the network. Refreshing the page will show the correct state. It also batches them like with the search!
@@ -95,8 +95,8 @@ The categories are instant and don't depend in the network. Refreshing the page 
 
 - We are fetching the categories twice for every render - once for the task summary and once for the category filter. Show console logs 2x.
 - We can deduplicate this since it's running in the same render.
-- Add cache() to getCategoriesMap in categories.ts. Show console logs 1x, reduced load time.
-- This is also good for using inside dynamic metadata.
+- Add cache() to getCategoriesMap in categories.ts. Show console logs 1x.
+- This is also good for using inside dynamic metadata and would impact load time when running sequentially.
 
 This means that can keep using our common pattern of fetching data inside components, similar to how we would use useQuery in a client side app. This deduplication automatically happening with fetch requests by the way.
 
