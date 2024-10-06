@@ -3,7 +3,7 @@
 ## Setup and starting point
 
 - This is a project task manager sort of thing. My designer Eileen Røsholt has designed the UI, and it's based on something we made in our current project.
-- The setup is of course Next.js App router, prisma and an Azure DB, tailwind CSS.
+- The setup is of course Next.js App router, prisma and an Azure DB cause its free on my company azure account, tailwind CSS.
 - Demo app: Very slow load, slowed down data fetches on purpose.
 - But, it's actually not bad. This is all html, navigations and a form for the search, and things work. And there is no JS on the client side. Works without js.
 - Try out tabs, try search with a basic form, see the result in the table.
