@@ -19,7 +19,8 @@
 - TBT: 0 since no JS, responsive page, no uncanny valley since default elements.
 - CLS: 0 since everything is painted at once.
 - Speed index bad since it measures incrementally how much content is shown, but we have nothing until everything is shown.
-- Overall metrics terrible and UX is definitely not good.
+- Overall metrics terrible.
+- App feels terrible on initial load because we are waiting for everything to render on the server and only getting the default browser spinner.
 
 ## Go through the code
 
@@ -28,7 +29,6 @@
 - And we are querying our db based on filters directly in the components and finishing the render there since they are server components. No React state.
 - Search is just submitting a query param with a get request
 - Tabs are navigating but very slowly because of the data fetches.
-- App feels terrible on initial load because we are waiting for everything to render on the server and only getting the default browser spinner.
 
 ## Improve the UX when switching tabs
 
