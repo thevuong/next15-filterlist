@@ -12,8 +12,8 @@ type Props = {
 export default function CategoryFilter({ categoriesPromise }: Props) {
   const categoriesMap = use(categoriesPromise);
   const searchParams = useSearchParams();
-  const [isPending, startTransition] = useTransition();
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
   const [optimisticCategories, setOptimisticCategories] = useOptimistic(searchParams.getAll('category'));
 
   return (
