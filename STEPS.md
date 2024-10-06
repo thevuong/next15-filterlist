@@ -128,7 +128,7 @@ This means that can keep using our common pattern of fetching data inside compon
 - We can still improve. Actually, we are dynamically fetching this project details data on every page load even though it very rarely changes.
 - This could be static data that we can revalidate on a time based interval using X (unstable_cache), Y (fetch options) or Z (ISR). Wasting resources and time. Static is the fastest.
 - Remove the cookies from the data fetch, and remove the suspense around the projectDetails. Show the result: app is frozen again.
-- Turn on partial prerendering in next.config.js. Run build and start and show the result, refresh and new tab. The app is now instantly showing useful content.
+- Turn on partial prerendering in next.config.js. Run build and start and show the result (ppr symbol), refresh and new tab. The app is now instantly showing useful content.
 
 ## Test lighthouse scores again
 
