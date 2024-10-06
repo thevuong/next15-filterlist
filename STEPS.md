@@ -86,8 +86,9 @@ We are putting state in the URL. This is a common request because the current st
 - Pay attention to the URL. It's not switching until the new table in page.tsx is done with its await query and finished rendering on the server. Therefore we cannot see the active filters right away.
 - UseOptimistic is a great tool to handle this. It will take in a state to show no action is pending, and return an trigger function and optimistic value, and it will throw away the client side optimistic state is thrown away after the action completes, then settle to the "truth".
 - Add useOptimistic to Tabs.tsx and Tab.tsx. They are now way more responsive.
+- Add useOptimistic to CategoryFilter.tsx.
 
-- Add useOptimistic to CategoryFilter.tsx, it also batches them like with the search! Can be cancelled if the user navigates away before the promise resolves.
+The categories are instant and don't depend in the network. Refreshing the page will show the correct state. It also batches them like with the search! Can be cancelled if the user navigates away before the promise resolves.
 
 ## Cache() getCategoriesMap in categories.ts
 
