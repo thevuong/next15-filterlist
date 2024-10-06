@@ -106,7 +106,7 @@ This means that can keep using our common pattern of fetching data inside compon
 
 ## Final demo
 
-- Reload page. Interact with tabs and filters while streaming in the server components as they load. Switch tabs back and fourth. Click multiple filters.
+- Reload page. Interact with tabs and filters while streaming in the server components as they load. Switch tabs back and fourth. Click multiple filters. Refresh the page.
 - Greatly improved UX even though the data fetches are still extremely slow. App feels super responsive.
 - And this is very robust: progressively enhanced, we wont have race conditions because of useTransitions, the app is reloadable and shareable. And there is a low amount of js, using it only where needed, the buttons work with onclick while we are streaming in the server components.
 - No useEffects or useStates in sight. We are making interactive apps without it. In the new React world with Next.js 15 we don't need it as much.
