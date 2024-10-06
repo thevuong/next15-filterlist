@@ -5,7 +5,7 @@ import { GeistSans } from 'geist/font/sans';
 import LoadTimeTracker from '@/components/LoadTimeTracker';
 import ProjectInfo from '@/components/ProjectInfo';
 import Search from '@/components/Search';
-import Tabs from '@/components/tabs/Tabs';
+import StatusTabs from '@/components/StatusTabs';
 import { getProject } from '@/data/services/project';
 import { getTaskSummary } from '@/data/services/task';
 import { cn } from '@/utils/cn';
@@ -30,7 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           </div>
           <div className="flex flex-col gap-6">
             <h2>Task list</h2>
-            <Tabs taskSummary={taskSummary} />
+            <StatusTabs taskSummary={taskSummary} />
           </div>
           <div className="h-[1px] bg-primary" />
           <Search />
