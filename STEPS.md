@@ -65,7 +65,7 @@ The ux is still not good here. We are not seeing active tab and not getting feed
 
 ### Add a loading spinner to Search.tsx
 
-- Progressive enhancement of the base case search with onChange. Enable the spinner.
+- Progressive enhancement of the base case search with onChange. Enable the spinner. When this is hydrated by js, we have the onchange and the spinner.
 - Explain useTransition: mark a state update as non-urgent and non-blocking and get pending state.
 - Using the existing searchparams because I will be adding more in the next step.
 - Pay attention to the url - startTransition also batches all state updates, or keystrokes, and executes all of them once they are all done.
@@ -108,7 +108,7 @@ This means that can keep using our common pattern of fetching data inside compon
 
 - Reload page. Interact with tabs and filters while streaming in the server components as they load. Switch tabs back and fourth. Click multiple filters.
 - Greatly improved UX even though the data fetches are still extremely slow. App feels super responsive.
-- And this is very robust: progressively enhanced, we wont have race conditions because of useTransitions, the app is reloadable and shareable. And there is a low amount of js, using it only where needed.
+- And this is very robust: progressively enhanced, we wont have race conditions because of useTransitions, the app is reloadable and shareable. And there is a low amount of js, using it only where needed, the buttons work with onclick while we are streaming in the server components.
 - No useEffects or useStates in sight. We are making interactive apps without it. In the new React world with Next.js 15 we don't need it as much.
 
 ## Test lighthouse scores
@@ -135,5 +135,5 @@ This means that can keep using our common pattern of fetching data inside compon
 ## Showcase other things for improvement
 
 - Some final things to note
-- Show filters are being discarded when clicking between them if the transition is still ongoing. Checkout branch here called filter-provider where I've fixed this and simplified the code by extracting to a optimistic search param provider which React Context which batches all of them together.
 - Turn off slow and feel the UX. Suspense boundaries are omitted cause the app is fast. However we know its okay if it isn't.
+- Show filters are being discarded when clicking between them if the transition is still ongoing. Checkout branch here called filter-provider where I've fixed this and simplified the code by extracting to a optimistic search param provider which React Context which batches all of them together.
