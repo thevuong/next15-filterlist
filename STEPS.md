@@ -41,7 +41,7 @@
 
 - For the initial load, I'm blocked by the awaits in the layout and I cant show anything on the screen.
 - Layout.tsx fetches are running sequentially even though they don't depend on each other.
-- The first thorugh might be to run them in parallel with promise.all().That would help, but you would still be blocked in the layout, and the slowest call which is the page.tsx.
+- The first through might be to run them in parallel with promise.all().That would help, but you would still be blocked in the layout, and the slowest call which is the page.tsx.
 - So, let's unblock the layout and push the data down from the layout to the components themselves, and show Suspense fallbacks.
 - Suspense around projectDetails with skeleton, await inside.
 - Explain making skeletons the right size. If we don't we get CLS which hurts our score badly. Can be hard.
@@ -67,7 +67,8 @@ The ux is still not good here. We are not seeing active tab and not getting feed
 
 - Progressive enhancement of the base case search with onChange. Enable the spinner. When this is hydrated by js, we have the onchange and the spinner.
 - Explain useTransition: mark a state update as non-urgent and non-blocking and get pending state.
-- Using the existing searchparams because I will be adding more in the next step.
+- Use pending state to display user while waiting for the navigation to finish.
+- Using the existing search params because I will be adding more in the next step.
 - Pay attention to the url - startTransition also batches all state updates, or keystrokes, and executes all of them once they are all done. Few pushes to the browser history.
 - Add key to form to reset it between tabs
 
@@ -76,17 +77,17 @@ We are putting state in the URL. This is a common request because the current st
 ## Add CategoryFilter.tsx to layout.tsx
 
 - Add the CategoryFilter component to layout.tsx. It takes in a categories promise and reads it with use. Pass it down with a new data fetch and suspend with a skeleton.
-- This component is filtering with searchParams again, using the URL as the state again. However when we click the tabs, we dont see anything happening.
+- This component is filtering with searchParams again, using the URL as the state again. However when we click the tabs, we don't see anything happening.
 - What's happening is we are waiting for the await of the page.tsx to finish, so we cannot see the active filters.
 - Add startTransition router.push. How can we use this isPending?
 - Add data-pending=isPending attribute.
 - Show group-has data-pending in page.tsx, show class group.
 - Show the result. Pending feedback while showing stale content.
-- Credit to Sam Selikoff with his post on buildui blog for this pattern.
 - Pay attention to the URL. It's not switching until the new table in page.tsx is done with its await query and finished rendering on the server. Therefore we cannot see the active filters right away.
 - UseOptimistic is a great tool to handle this. It will take in a state to show no action is pending, and return an trigger function and optimistic value, and it will throw away the client side optimistic state is thrown away after the action completes, then settle to the "truth".
 - Add useOptimistic to Tabs.tsx and Tab.tsx. They are now way more responsive.
 - Add useOptimistic to CategoryFilter.tsx.
+- Credit to Sam Selikoff with his post on buildui blog for this pattern.
 
 The categories are instant and don't depend in the network. Refreshing the page will show the correct state. It also batches them like with the search! Can be cancelled if the user navigates away before the promise resolves.
 
