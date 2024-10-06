@@ -12,7 +12,7 @@
 
 ## Review lighthouse scores
 
-- Run lighthouse.
+- Open pre-run lighthouse tab.
 - Show impact of each by hovering circle.
 - FCP: Bad since we are showing nothing until everything. Check the logs for the true value. Fix mistakenly good scores.
 - LCP: Bad, out LCP is shown together with everything else. Check the logs for the true value. Fix mistakenly good scores.
