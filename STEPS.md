@@ -46,7 +46,7 @@
 - Suspense around projectDetails with skeleton.
 - Explain making skeletons the right size. If we don't we get CLS which hurts our score badly. Can be hard.
 - Suspense around tabs with skeleton.
-- (Suspense Search because SearchParams witch skeleton because SearchParams are dynamic.)
+- Suspense Search because SearchParams witch skeleton because SearchParams are dynamic.
 - Showcase the result.
 
 Now we can show something on the screen while streaming in the components as they finish. Utilizing the shared compute load between server and client, and interact with what we have (fill search). We are pushing data fetching down and displaying fallbacks while streaming in the RSC's. All components fetch in parallel in this case since they are independent, reducing total load time. If they did depend on each other, we could have made more levels of suspenses inside each, streaming sequentially. Each component is now responsible for their own data, making them composable.
@@ -110,9 +110,9 @@ This means that can keep using our common pattern of fetching data inside compon
 ## Final demo
 
 - Reload page. Interact with tabs and filters while streaming in the server components as they load. Switch tabs back and fourth. Click multiple filters. Refresh the page.
-- Greatly improved UX even though the data fetches are still extremely slow. App feels super responsive.
+- Greatly improved UX. Even though the data fetches are still extremely slow, the app feels super responsive.
 - And this is very robust: progressively enhanced, we wont have race conditions because of useTransitions, the app is reloadable and shareable. And there is a low amount of js, using it only where needed, the buttons work with onclick while we are streaming in the server components.
-- No useEffects or useStates in sight. We are making interactive apps without it. In the new React world with Next.js 15 we don't need it as much.
+- No useEffects or useStates in sight. We are making interactive apps without them in this new world of React and Next.js.
 
 ## Test lighthouse scores
 
@@ -133,10 +133,11 @@ This means that can keep using our common pattern of fetching data inside compon
 ## Test lighthouse scores again
 
 - LCP: LCP is our PPR'd project details, so the score is even better. Check ms for LCP in logs.
-- This can be very impactful on a bigger application with larger chunks of static content.
+ontent is shown earlier.
+- And its nice as a user. And this can be very impactful on a bigger application with larger chunks of static content.
 
 ## Showcase other things for improvement
 
 - Some final things to note
-- Turn off slow and feel the UX. Suspense boundaries are omitted cause the app is fast. However we know its okay if it isn't.
 - Show filters are being discarded when clicking between them if the transition is still ongoing. Checkout branch here called filter-provider where I've fixed this and simplified the code by extracting to a optimistic search param provider which React Context which batches all of them together. You could put pagination, sorting, and other things in here as well. And there are libraries that can do this, for example nuqs.
+- Turn off slow and feel the UX. Suspense boundaries are omitted cause the app is fast. However we know its okay if it isn't.
