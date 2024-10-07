@@ -138,4 +138,4 @@ This means that can keep using our common pattern of fetching data inside compon
 
 - Open the third tab with pre-run scores.
 - LCP: LCP is our PPR'd project details, so the score is even better. Check ms for LCP in logs.
-- Reload, copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger chunks of static content.
+- Reload, copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger chunks of static content. Instant interactive application.
