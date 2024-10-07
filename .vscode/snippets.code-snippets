@@ -15,5 +15,12 @@
             "  taskSummaryPromise: Promise<TaskSummary>;",
             "};"
         ],
+    },
+    "useTransition": {
+        "scope": "typescriptreact",
+        "prefix": "transition",
+        "body": [
+            "const [isPending, startTransition] = useTransition();"
+        ]
     }
 }
