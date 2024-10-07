@@ -136,5 +136,4 @@ This means that can keep using our common pattern of fetching data inside compon
 ## Test lighthouse scores again
 
 - LCP: LCP is our PPR'd project details, so the score is even better. Check ms for LCP in logs.
-ontent is shown earlier.
-- And its nice as a user. And this can be very impactful on a bigger application with larger chunks of static content.
+- And this can be extremely impactful on a bigger application with larger chunks of static content.
