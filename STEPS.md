@@ -49,10 +49,10 @@
 - Suspense around projectDetails with skeleton.
 - Explain making skeletons the right size. If we don't we get CLS which hurts our score badly. Can be hard.
 - Suspense around tabs with skeleton.
-- Suspense Search because SearchParams witch skeleton because SearchParams are dynamic.
+- Suspense Search because SearchParams witch skeleton because SearchParams opt into dynamic rendering.
 - Showcase the result.
 
-Now we can show something on the screen while streaming in the components as they finish. Utilizing the shared compute load between server and client, and interact with what we have (fill search). We are pushing data fetching down and displaying fallbacks while streaming in the RSC's. All components fetch in parallel in this case since they are independent, reducing total load time. If they did depend on each other, we could have made more levels of suspenses inside each, streaming sequentially. Each component is now responsible for their own data, making them composable.
+By are pushing data fetching down and displaying fallbacks while streaming in the RSC's as they finish, and utilizing the shared compute load between server and client, we can actually show something on the screen and even interact with what we have (fill search).  All components fetch in parallel in this case since they are independent, reducing total load time. If they did depend on each other, we could have made more levels of suspenses inside each, streaming sequentially. Each component is now responsible for their own data, making them composable.
 
 ## Improve UX
 

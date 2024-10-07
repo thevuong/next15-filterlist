@@ -3,8 +3,9 @@
         "scope": "typescriptreact",
         "prefix": "suspense",
         "body": [
-            "<Suspense fallback={${1:< />}}>",
-            "${0}</Suspense>"
+            "<Suspense fallback={${1:${TM_SELECTED_TEXT} }}>",
+            "${TM_SELECTED_TEXT}",
+            "</Suspense>"
         ],
     },
     "newSearchParams": {
