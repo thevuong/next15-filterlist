@@ -142,5 +142,5 @@ ontent is shown earlier.
 ## Showcase other things for improvement
 
 - Some final things to note
-- Show filters are being discarded when clicking between them if the transition is still ongoing. Checkout branch here called filter-provider where I've fixed this and simplified the code by extracting to a optimistic search param provider which React Context which batches all of them together. You could put pagination, sorting, and other things in here as well. And there are libraries that can do this, for example nuqs.
-- Turn off slow and feel the UX. Suspense boundaries are omitted cause the app is fast. However we know its okay if it isn't.
+- Show filters are being discarded when clicking between them if the transition is still ongoing. I have a branch called filter-provider where I've fixed this and simplified the code by extracting to a optimistic search param provider which React Context which batches all of them together. And there are libraries that can do this, for example nuqs.
+- Turn off slow and feel the UX. Suspense boundaries are omitted cause the app is fast. However we know its okay if it isn't.c
