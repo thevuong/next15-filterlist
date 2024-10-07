@@ -79,7 +79,7 @@ We are putting state in the URL. This is a common request because the current st
 
 ## Add CategoryFilter.tsx to layout.tsx
 
-- Add the CategoryFilter component to layout.tsx. It takes in a categories promise and reads it with use. Pass it down with a new data fetch and suspend with a skeleton.
+- Add the CategoryFilter component to layout.tsx. It takes in a categories promise and reads it with use. Pass it down with a new data fetch and suspend with a disabled toggle button.
 - This component is filtering with searchParams again, using the URL as the state again. However when we click the tabs, we don't see anything happening.
 - Pay attention to the URL. It's not switching until the new table in page.tsx is done with its await query and finished rendering on the server. Therefore we cannot see the active filters right away.
 - What's happening is we are waiting for the await of the page.tsx.
@@ -132,7 +132,7 @@ This means that can keep using our common pattern of fetching data inside compon
 - We can still improve. Actually, we are dynamically fetching this project details data on every page load even though it very rarely changes.
 - This could be static data that we can revalidate on a time based interval using X (unstable_cache), Y (fetch options) or Z (ISR). Wasting resources and time. Static is the fastest.
 - Remove the cookies from the data fetch, and remove the suspense around the projectDetails. Show the result: app is frozen again.
-- Turn on partial prerendering in next.config.js.
+- Turn on partial prerendering in next.config.js. This will allow me to partially render a page or layout as static, also in Next.js 15. Very powerful.
 
 ## Test lighthouse scores again
 
