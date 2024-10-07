@@ -107,18 +107,19 @@ This means that can keep using our common pattern of fetching data inside compon
 ## Turn on staleTimes in next.config.js
 
 - Every time we click a tab, filter, or search, we are rerunning the page.tsx table on the server, with the data fetch. We can cache this.
-- Cache the rsc payload for the route page.tsx (table) by turning on staleTimes in next.config.js.
-- Show the result. Click the same twice. This is a Next.js 15 feature.
+- Cache the rsc payload for the route page.tsx (table) by turning on staleTimes in next.config.js. This is a Next.js 15 feature.
+- Show the result. Click the same twice.
 
 ## Final demo
 
 - Reload page. Interact with tabs and filters while streaming in the server components as they load. Switch tabs back and fourth. Click multiple filters. Refresh the page.
 - Greatly improved UX. Even though the data fetches are still extremely slow, the app feels super responsive.
-- And this is very robust: progressively enhanced, we wont have race conditions because of useTransitions, the app is reloadable and shareable. And there is a low amount of js, using it only where needed, the buttons work with onclick while we are streaming in the server components.
+- And this is very robust: progressively enhanced, we wont have race conditions because of useTransitions. And there is a low amount of js, using it only where needed, the buttons work with onclick while we are streaming in the server components.
 - No useEffects or useStates in sight. We are making interactive apps without them in this new world of React and Next.js.
 
 ## Test lighthouse scores
 
+- Open second tab
 - FCP: FCP is better! Showing suspense fallbacks right away.
 - LCP: Its a lot better, but it's dependant on the project details so it's higher than FCP.
 - TBT: 0 since minimal JS and no long tasks, responsive page, no uncanny valley since default elements. Same as before pretty much.
