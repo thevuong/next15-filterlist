@@ -50,7 +50,7 @@
 - Explain making skeletons the right size. If we don't we get CLS which hurts our score badly. Can be hard.
 - Suspense around tabs with skeleton.
 - Suspense Search because SearchParams witch skeleton because SearchParams opt into dynamic rendering.
-- Showcase the result.
+- Showcase the result. If we turn off the slow the suspense boundaries would be mostly omitted.
 
 By are pushing data fetching down and displaying fallbacks while streaming in the RSC's as they finish, and utilizing the shared compute load between server and client, we can actually show something on the screen and even interact with what we have (fill search).  All components fetch in parallel in this case since they are independent, reducing total load time. If they did depend on each other, we could have made more levels of suspenses inside each, streaming sequentially. Each component is now responsible for their own data, making them composable.
 
@@ -67,15 +67,15 @@ The ux is still not good here. We are not seeing active tab and the search is do
 
 ### Add a loading spinner to Search.tsx
 
-- Progressive enhancement of the base case search with onChange, add router and searchParams.
+- Progressive enhancement of the base case search with onChange, add router and searchParams. Using the existing search params because I will be adding more in the next step.
+- Add key to form to reset it between tabs
+- Notice the url is updating later because we are waiting for the await in the table to resolve before routing.
 - Explain useTransition: mark a state update as non-urgent and non-blocking and get pending state.
 - Use pending state to display user while waiting for the navigation to finish, which is the await in the table component.
 - Enable the spinner. When this is hydrated by js, we have the onchange and the spinner.
-- Using the existing search params because I will be adding more in the next step.
 - Pay attention to the url - startTransition also batches all state updates, or keystrokes, and executes all of them once they are all done. Few pushes to the browser history.
-- Add key to form to reset it between tabs
 
-We are putting state in the URL. This is a common request because the current state of the app can be shareable and reloadable. But, it can be hard to coordinate state in the url with component state with i.e useEffect - instead the URL is now a single source of truth. We are lifting the state up, which is a well known pattern in React.
+We are putting state in the URL. This is a common request because the current state of the app can be shareable and reloadable. But, it can be hard to coordinate state in the url with component state with i.e useEffect - instead the URL is now a single source of truth, by lifting the state up, which is a well known pattern in React.
 
 ## Add CategoryFilter.tsx to layout.tsx
 
@@ -138,9 +138,3 @@ This means that can keep using our common pattern of fetching data inside compon
 - LCP: LCP is our PPR'd project details, so the score is even better. Check ms for LCP in logs.
 ontent is shown earlier.
 - And its nice as a user. And this can be very impactful on a bigger application with larger chunks of static content.
-
-## Showcase other things for improvement
-
-- Some final things to note
-- Show filters are being discarded when clicking between them if the transition is still ongoing. I have a branch called filter-provider where I've fixed this and simplified the code by extracting to a optimistic search param provider which React Context which batches all of them together. And there are libraries that can do this, for example nuqs.
-- Turn off slow and feel the UX. Suspense boundaries are omitted cause the app is fast. However we know its okay if it isn't.c
