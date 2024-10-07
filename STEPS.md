@@ -35,6 +35,7 @@
 
 - Lets improve the UX of these tabs.
 - Tabs are navigating but very slowly, because we are waiting for the await for the table data in page.tsx to finish.
+- Suspense will allow us to mark something as lower priority and non-blocking, and show a fallback while waiting for it to finish.
 - Let's unblock the page.tsx by adding loading.tsx inside /[tab] to create an implicit suspense boundary.
 
 ## Improve data fetching in layout.tsx
