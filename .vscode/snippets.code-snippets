@@ -7,14 +7,22 @@
             "${0}</Suspense>"
         ],
     },
-    "tabsprops": {
+    "newSearchParams": {
         "scope": "typescriptreact",
-        "prefix": "tabsprops",
+        "prefix": "newSearchParams",
         "body": [
-            "type Props = {",
-            "  taskSummaryPromise: Promise<TaskSummary>;",
-            "};"
+            "const newSearchParams = new URLSearchParams(searchParams.toString());",
+            "newSearchParams.set('q', e.target.value);"
         ],
+    },
+    "pushRouter": {
+        "scope": "typescriptreact",
+        "prefix": "pushRouter",
+        "body": [
+            "router.push(`?${newSearchParams.toString()}`, {",
+            "  scroll: false,",
+            "});"
+        ]
     },
     "useTransition": {
         "scope": "typescriptreact",
