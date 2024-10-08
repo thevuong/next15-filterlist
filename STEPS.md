@@ -138,9 +138,10 @@ This means that can keep using our common pattern of fetching data inside compon
 ## Test lighthouse scores again
 
 - Open the second tab in new window with pre-run scores.
-- Our LCP is just a little slower in prod, mostly the same.
+- The LCP is now greatly reduced because it is static.
+- (Our app is just a little slower in prod, mostly the same.)
 - (FCP is greatly improved because our fist piece of content is static.)
-- If our LCP was our PPR-d piece we would have a 100 score now.
+- (If our LCP was our PPR-d piece we would have a 100 score now.)
 - Speed index follows the improvement of LCP since there is more content from the start.
 - Reload, copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger or slower chunks of static content. Instant interactive application even with slow data fetches.
 - We managed to do our task of improving the bad scores and leaving the good ones good, while also making app interactive and user-friendly.
