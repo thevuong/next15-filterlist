@@ -144,4 +144,4 @@ This means that can keep using our common pattern of fetching data inside compon
 - (If our LCP was our PPR-d piece we would have a 100 score now.)
 - Speed index is improved since there is more content from the start (filmstrip).
 - Reload, copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger or slower chunks of static content.
-- We managed to complete our task of improving the bad scores and leaving the good ones good, while also making app fast, interactive and user-friendly.
+- We managed to complete our task of improving the bad metrics and maintaining the good metrics, while also making app fast, interactive and user-friendly.
