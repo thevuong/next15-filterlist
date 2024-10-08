@@ -99,9 +99,8 @@ The categories are instant and don't depend in the network. Refreshing the page 
 - We can deduplicate this since it's running in the same render.
 - Add cache() higher order React 19 function to getCategoriesMap in categories.ts. (Show console logs 1x.)
 - The load time is actually reduced by 500ms because the getTaskSummary is reusing the prepared data from the getCategoriesMap called by categoryFilter.
-- This is also good for using inside dynamic metadata.
 
-This means that can keep using our common pattern of fetching data inside components, similar to how we would use useQuery in a client side app. This deduplication automatically happening with fetch requests by the way.
+This means that can keep using our common pattern of fetching data inside components, similar to how we would use useQuery in a client side app.
 
 ## Turn on staleTimes in next.config.js
 
