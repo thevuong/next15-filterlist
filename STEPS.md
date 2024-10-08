@@ -133,13 +133,11 @@ This means that can keep using our common pattern of fetching data inside compon
 - This could be static data that we can revalidate on a time based interval using X (unstable_cache), Y (fetch options) or Z (ISR). Wasting resources and time. Static is the fastest.
 - Remove the cookies from the data fetch, and remove the suspense around the projectDetails. Show the result: app is frozen again.
 - Turn on partial prerendering in next.config.js. This will allow me to partially render a page or layout as static, also in Next.js 15. Very powerful.
-- Run build and start
-- Reload, copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger or slower chunks of static content. Instant interactive application even with slow data fetches.
 
 ## Test lighthouse scores again
 
-- For the final verdict, lets run the last lighthouse test.
-- (Open the third tab with pre-run scores.)
-- (Run lighthouse)
+- Open the third tab with pre-run scores.
+- Our LCP is just a little slower in prod, mostly the same.
 - FCP is greatly improved because our fist piece of content is static.
 - Speed index follows the improvement of LCP since there is more content from the start.
+- Reload, copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger or slower chunks of static content. Instant interactive application even with slow data fetches.
