@@ -110,16 +110,17 @@ This means that can keep using our common pattern of fetching data inside compon
 
 ## Final demo
 
-- Reload page. Interact with tabs and filters while streaming in the server components as they load. Switch tabs back and fourth. Click multiple filters. Refresh the page.
+- Start lighthouse run new window.
+- Interact with tabs and filters while streaming in the server components as they load. Switch tabs back and fourth. Click multiple filters. Refresh the page.
 - Greatly improved UX. Even though the data fetches are still extremely slow, the app feels super responsive.
 - And this is very robust: progressively enhanced, we wont have race conditions because of useTransitions. And there is a low amount of js, using it only where needed, the buttons work with onclick while we are streaming in the server components.
 - No useEffects or useStates in sight. We are making interactive apps without them in this new world of React and Next.js.
 
 ## Test lighthouse scores
 
-- Open second tab
 - FCP: FCP is better! AFter the project details are streamed in we are seeing content.
 - LCP: The same since its still an unavoidabally slow request of dynamic data. But, it doesnt affect the feel of the app anymore.
+- If LCP === project info: 100 score.
 - TBT: 0 since minimal JS and no long tasks, responsive page, no uncanny valley since default elements. Same as before pretty much.
 - CLS: Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
 - Speed index way better since we show incrementally more content as seen in filmstrip.
