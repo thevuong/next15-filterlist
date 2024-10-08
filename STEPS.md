@@ -12,8 +12,7 @@
 
 ## Review lighthouse scores
 
-- Open pre-run lighthouse tab. Of course, these scores impact our SEO.
-- Show impact of each by hovering circle.
+- Open pre-run lighthouse screen. Show impact of each by hovering circle.
 - FCP: Bad since we are showing nothing until everything.
 - LCP: Bad, out LCP is shown together with everything else.
 - TBT: 0 since no JS, responsive page, no uncanny valley since default elements.
