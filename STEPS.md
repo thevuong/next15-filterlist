@@ -14,8 +14,8 @@
 
 - Open pre-run lighthouse tab. Of course, these scores impact our SEO.
 - Show impact of each by hovering circle.
-- FCP: Bad since we are showing nothing until everything. Check the logs for the true value. Fix mistakenly good scores.
-- LCP: Bad, out LCP is shown together with everything else. Check the logs for the true value. Fix mistakenly good scores.
+- FCP: Bad since we are showing nothing until everything.
+- LCP: Bad, out LCP is shown together with everything else.
 - TBT: 0 since no JS, responsive page, no uncanny valley since default elements.
 - CLS: 0 since everything is painted at once.
 - Speed index bad since it measures incrementally how much content is shown, but we have nothing until everything is shown.
