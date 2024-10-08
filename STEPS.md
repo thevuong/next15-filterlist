@@ -5,7 +5,7 @@
 - This is a project task manager sort of thing. The designer of my current project Eileen Røsholt has designed the UI, and it's based on something I made there.
 - The setup is of course Next.js App router, prisma and an Azure DB cause its free on my company azure account, tailwind CSS.
 - Demo app: Very slow load, slowed down data fetches on purpose.
-- But, it's actually not bad. This is all html, navigations and a form for the search, and things work. And there is no JS on the client side. Works without js.
+- But, it's actually not bad. This is all server components, which means there is no js shipped to the client for these components. Just html, navigations and a form for the search, and things work. Works without js.
 - Try out tabs, try search with a basic form, see the result in the table.
 - Good base case, will work even if we are on a device with low processing power that cannot run JS efficiently.
 - No data mutation, we are focusing on data fetching and server components patterns, forms and mutations is another story, I've done talks on that before.
