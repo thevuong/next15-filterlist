@@ -114,6 +114,7 @@ This means that can keep using our common pattern of fetching data inside compon
 - Interact with tabs and filters while streaming in the server components as they load.
 - Wait for lighthouse:
 - Greatly improved UX. Even though the data fetches are still extremely slow, the app feels super responsive.
+- Search, refresh the page and have the same state.
 - And this is very robust: progressively enhanced, we wont have race conditions because of useTransitions. And there is a low amount of js, using it only where needed, the buttons work with onclick while we are streaming in the server components.
 - No useEffects or useStates in sight. We are making interactive apps without them in this new world of React and Next.js.
 
@@ -125,8 +126,7 @@ This means that can keep using our common pattern of fetching data inside compon
 - TBT: 0 since minimal JS and no long tasks, responsive page, no uncanny valley since default elements. Same as before pretty much.
 - CLS: Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
 - Speed index way better since we show incrementally more content as seen in filmstrip.
-- Greatly improved scores, 100 lighthouse performance even with a 4s second total load time application.
-- Of course we also have good INP (performance)
+- Greatly improved scores, 100 lighthouse performance even with a 2s second total load time application.
 
 ## Improve FCP with Partial Pre-rendering
 
