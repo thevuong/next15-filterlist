@@ -37,22 +37,22 @@
 - Lets improve the UX of these tabs.
 - Tabs are navigating but very slowly, because we are waiting for the await for the table data in page.tsx to finish.
 - Suspense will allow us to mark something as lower priority and non-blocking, and show a fallback while waiting for finish, and then stream it in.
-- Let's unblock the page.tsx by adding loading.tsx inside /[tab] to create an implicit suspense boundary.
+- Let's unblock the page.tsx by adding loading.tsx inside /[tab] to create an implicit suspense boundary. Now it can navigate instantly.
 
 ## Improve data fetching in layout.tsx
 
 - For the initial load, I'm blocked by the awaits in the layout and I cant show anything on the screen.
 - Layout.tsx fetches are running sequentially even though they don't depend on each other.
 - The first through might be to run them in parallel with promise.all().That would help, but you would still be blocked in the layout.
-- So, let's push the data down from the layout to the components themselves, and show Suspense fallbacks.
+- So, let's push the data fetches down from the layout to the components themselves, and show Suspense fallbacks.
 - Move projectDetails fetch to projectDetails.tsx, and move tabs fetch to tabs.tsx. Show the result.
 - Suspense around projectDetails with skeleton.
 - Explain making skeletons the right size. If we don't we get CLS which hurts our score badly. Can be hard.
 - Suspense around tabs with skeleton.
 - Suspense Search because SearchParams witch skeleton because SearchParams opt into dynamic rendering.
-- Showcase the result. If we turn off the slow the suspense boundaries would be mostly omitted.
+- Showcase the result.
 
-By are pushing data fetching down and displaying fallbacks while streaming in the generated RSC's using minimal js, and utilizing the shared compute load between server and client, we can actually show something on the screen and even interact with what we have (fill search).  All components fetch in parallel in this case since they are independent, reducing total load time. If they did depend on each other, we could have made more levels of suspenses inside each, streaming sequentially. Each component is now responsible for their own data, making them composable.
+By are pushing data fetching down and displaying fallbacks while streaming in the generated RSC's using minimal js, and utilizing the shared compute load between server and client, we can actually show something on the screen and even interact with what we have (fill search).  All components fetch in parallel in this case since they are independent, reducing total load time. If they did depend on each other, we could have made more levels of suspenses inside each, streaming sequentially. Each component is now responsible for their own data, making them composable. If we turn off the slow the suspense boundaries would be mostly omitted.
 
 ## Improve UX
 
