@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import type { TaskStatus } from '@/types/task';
 import { SearchIcon } from './ui/icons/SearchIcon';
