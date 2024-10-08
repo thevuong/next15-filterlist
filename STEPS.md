@@ -137,7 +137,7 @@ This means that can keep using our common pattern of fetching data inside compon
 
 ## Test lighthouse scores again
 
-- Open the third tab with pre-run scores.
+- Open the second tab in new window with pre-run scores.
 - Our LCP is just a little slower in prod, mostly the same.
 - FCP is greatly improved because our fist piece of content is static.
 - If our LCP was our PPR-d piece we would have a 100 score now.
