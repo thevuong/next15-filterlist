@@ -120,9 +120,11 @@ This means that can keep using our common pattern of fetching data inside compon
 
 ## Test lighthouse scores
 
-- FCP: FCP is better! AFter the project details are streamed in we are seeing content.
-- LCP: The same since its still an unavoidabally slow request of dynamic data. But, it doesnt affect the feel of the app anymore.
-- If LCP === project info: 100 score.
+- FCP is way better since we are seeing content right away.
+- (FCP: FCP is better! After the project details are streamed in we are seeing content.)
+- LCP is also way better because our LCP is the project info.
+- (LCP: The same since its still an unavoidabally slow request of dynamic data. But, it doesnt affect the feel of the app anymore.)
+- (If LCP === project info: 100 score.)
 - TBT: 0 since minimal JS and no long tasks, responsive page, no uncanny valley since default elements. Same as before pretty much.
 - CLS: Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
 - Speed index way better since we show incrementally more content as seen in filmstrip.
