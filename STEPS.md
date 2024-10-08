@@ -120,22 +120,26 @@ This means that can keep using our common pattern of fetching data inside compon
 ## Test lighthouse scores
 
 - Open second tab
-- FCP: FCP is better! Showing suspense fallbacks right away.
-- LCP: Its a lot better, but it's dependant on the project details so it's higher than FCP.
+- FCP: FCP is better! AFter the project details are streamed in we are seeing content.
+- LCP: The same since its still an unavoidabally slow request. But, it doesnt affect the feel of the app anymore.
 - TBT: 0 since minimal JS and no long tasks, responsive page, no uncanny valley since default elements. Same as before pretty much.
 - CLS: Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
-- Speed index way better since we show incrementally more content.
+- Speed index way better since we show incrementally more content as seen in filmstrip.
 - Greatly improved scores, 100 lighthouse performance even with a 4s second total load time application.
 
-## Improve LCP (and FCP) with Partial Pre-rendering
+## Improve FCP with Partial Pre-rendering
 
 - We can still improve. Actually, we are dynamically fetching this project details data on every page load even though it very rarely changes.
 - This could be static data that we can revalidate on a time based interval using X (unstable_cache), Y (fetch options) or Z (ISR). Wasting resources and time. Static is the fastest.
 - Remove the cookies from the data fetch, and remove the suspense around the projectDetails. Show the result: app is frozen again.
 - Turn on partial prerendering in next.config.js. This will allow me to partially render a page or layout as static, also in Next.js 15. Very powerful.
+- Run build and start
+- Reload, copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger or slower chunks of static content. Instant interactive application even with slow data fetches.
 
 ## Test lighthouse scores again
 
-- Open the third tab with pre-run scores.
-- LCP: LCP is our PPR'd project details, so the score is even better. Check ms for LCP in logs.
-- Reload, copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger chunks of static content. Instant interactive application.
+- For the final verdict, lets run the last lighthouse test.
+- (Open the third tab with pre-run scores.)
+- (Run lighthouse)
+- FCP is greatly improved because our fist piece of content is static.
+- Speed index follows the improvement of LCP since there is more content from the start.
