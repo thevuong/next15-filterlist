@@ -121,7 +121,7 @@ This means that can keep using our common pattern of fetching data inside compon
 
 - Open second tab
 - FCP: FCP is better! AFter the project details are streamed in we are seeing content.
-- LCP: The same since its still an unavoidabally slow request. But, it doesnt affect the feel of the app anymore.
+- LCP: The same since its still an unavoidabally slow request of dynamic data. But, it doesnt affect the feel of the app anymore.
 - TBT: 0 since minimal JS and no long tasks, responsive page, no uncanny valley since default elements. Same as before pretty much.
 - CLS: Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
 - Speed index way better since we show incrementally more content as seen in filmstrip.
