@@ -87,7 +87,7 @@ We are putting state in the URL. This is a common request because the current st
 - Add data-pending=isPending attribute. Instead of creating a global state manager, we can just use css.
 - Show group-has data-pending in page.tsx, show class group.
 - Show the result. Pending feedback while showing stale content.
-- What were gonna use to fix the togglebuttons, is useOptimistic, it is a great tool to handle this. It will take in a state to show no action is pending, and return an trigger function and optimistic value.
+- But i also want responsive buttons, and were gonna use useOptimistic - it is a great tool to handle this. It will take in a state to show no action is pending, and return an trigger function and optimistic value.
 - Add useOptimistic to CategoryFilter.tsx.
 - UseOptimistic will throw away the client side optimistic state after the navigation completes, then settle to the "truth" which is the URL.
 - Credit to Sam Selikoff with his post on buildui blog for this pattern.
