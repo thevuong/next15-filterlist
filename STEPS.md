@@ -12,15 +12,15 @@
 
 ## Review lighthouse scores
 
-- Open pre-run lighthouse tab.
+- Open pre-run lighthouse tab. Of course, these scores impact our SEO.
 - Show impact of each by hovering circle.
 - FCP: Bad since we are showing nothing until everything. Check the logs for the true value. Fix mistakenly good scores.
 - LCP: Bad, out LCP is shown together with everything else. Check the logs for the true value. Fix mistakenly good scores.
 - TBT: 0 since no JS, responsive page, no uncanny valley since default elements.
 - CLS: 0 since everything is painted at once.
 - Speed index bad since it measures incrementally how much content is shown, but we have nothing until everything is shown.
-- Overall metrics terrible.
-- App feels terrible on initial load because we are waiting for everything to render on the server and only getting the default browser spinner.
+- Overall metrics are bad but actually not the worst because we have no js to worsen TBT and no moving elements to worsen CLS.
+- However the app feels terrible on initial load because we are waiting for everything to render on the server and only getting the default browser spinner.
 
 ## Go through the code
 
@@ -30,7 +30,7 @@
 - Async [tab] page.tsx server components, we are querying our db based on filters directly based on the filters inside this server component.
 - Meaning we are never doing any of this stuff on the client, and the components are fully created on the server, and does not ship any js.
 - Dynamic requests, static is easy because this could be run in the build, but this is dynamic data. We have to await at runtime.
-- Basically, want we want to do is fix this app.
+- Basically, want we want to do is fix this app, and improve the metrics that are bad without worsening the other ones.
 
 ## Improve the UX when switching tabs
 
@@ -52,7 +52,7 @@
 - Suspense Search because SearchParams witch skeleton because SearchParams opt into dynamic rendering.
 - Showcase the result. If we turn off the slow the suspense boundaries would be mostly omitted.
 
-By are pushing data fetching down and displaying fallbacks while streaming in the RSC's as they finish, and utilizing the shared compute load between server and client, we can actually show something on the screen and even interact with what we have (fill search).  All components fetch in parallel in this case since they are independent, reducing total load time. If they did depend on each other, we could have made more levels of suspenses inside each, streaming sequentially. Each component is now responsible for their own data, making them composable.
+By are pushing data fetching down and displaying fallbacks while streaming in the generated RSC's using minimal js, and utilizing the shared compute load between server and client, we can actually show something on the screen and even interact with what we have (fill search).  All components fetch in parallel in this case since they are independent, reducing total load time. If they did depend on each other, we could have made more levels of suspenses inside each, streaming sequentially. Each component is now responsible for their own data, making them composable.
 
 ## Improve UX
 
@@ -139,5 +139,7 @@ This means that can keep using our common pattern of fetching data inside compon
 - Open the third tab with pre-run scores.
 - Our LCP is just a little slower in prod, mostly the same.
 - FCP is greatly improved because our fist piece of content is static.
+- If our LCP was our PPR-d piece we would have a 100 score now.
 - Speed index follows the improvement of LCP since there is more content from the start.
 - Reload, copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger or slower chunks of static content. Instant interactive application even with slow data fetches.
+- We managed to do our task of improving the bad scores and leaving the good ones good, while also making app interactive and user-friendly.
