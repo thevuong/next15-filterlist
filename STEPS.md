@@ -139,7 +139,7 @@ This means that can keep using our common pattern of fetching data inside compon
 
 - Open the second tab in new window with pre-run scores.
 - Our LCP is just a little slower in prod, mostly the same.
-- FCP is greatly improved because our fist piece of content is static.
+- (FCP is greatly improved because our fist piece of content is static.)
 - If our LCP was our PPR-d piece we would have a 100 score now.
 - Speed index follows the improvement of LCP since there is more content from the start.
 - Reload, copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger or slower chunks of static content. Instant interactive application even with slow data fetches.
