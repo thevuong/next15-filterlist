@@ -30,7 +30,7 @@
 - Async [tab] page.tsx server components, we are querying our db based on filters directly based on the filters inside this server component.
 - Meaning we are never doing any of this stuff on the client, and the components are only generated on the server.
 - Dynamic requests, static is easy because this could be run in the build, but this is dynamic data. We have to await at runtime.
-- Basically, want we want to do is fix the speed, interactivity and UX of this app, and improve the web vitals that are bad without worsening the good ones.
+- Basically, want we want to do is elevate the speed, interactivity and UX of this app, and improve the web vitals that are bad without worsening the good ones.
 
 ## Improve the UX when switching tabs
 
