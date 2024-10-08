@@ -126,6 +126,7 @@ This means that can keep using our common pattern of fetching data inside compon
 - CLS: Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
 - Speed index way better since we show incrementally more content as seen in filmstrip.
 - Greatly improved scores, 100 lighthouse performance even with a 4s second total load time application.
+- Of course we also have good INP (performance)
 
 ## Improve FCP with Partial Pre-rendering
 
