@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 export function GlobalStyles() {
   return (
     <style
@@ -8,4 +9,4 @@ export function GlobalStyles() {
   );
 }
 
-const styles = JSON.parse('');
+const styles = JSON.parse('"/*\\n! tailwindcss v3.4.5 | MIT License | https://tailwindcss.com\\n*/*"');
