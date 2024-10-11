@@ -1,18 +1,70 @@
-const combinedStyles = `
+export function GlobalStyles() {
+  return (
+    <style
+      dangerouslySetInnerHTML={{
+        __html: styles,
+      }}
+    />
+  );
+}
+
+const styles = `
   /* Global styles */
-  @tailwind base; @tailwind components; @tailwind utilities;
-  textarea, input { margin: 0; border: 1px solid #e4e4e7; background-color: white; padding: 0.5rem 0.75rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); outline: none; }
-  textarea:focus, input:focus { outline: 2px solid #3b82f6; outline-offset: -1px; }
-  textarea:disabled, input:disabled { background-color: #f3f4f6; }
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  textarea, input {
+    margin: 0;
+    border: 1px solid #e4e4e7;
+    background-color: white;
+    padding: 0.5rem 0.75rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    outline: none;
+  }
+  textarea:focus, input:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: -1px;
+  }
+  textarea:disabled, input:disabled {
+    background-color: #f3f4f6;
+  }
   h1 { font-size: 2.25rem; }
   h2 { font-size: 1.5rem; }
   h3 { font-size: 1.25rem; }
-  table { width: 100%; border-collapse: collapse; border-spacing: 0; border: 1px solid #e4e4e7; }
-  tr { width: 100%; border-bottom: 1px solid #e4e4e7; }
-  th { white-space: nowrap; border-bottom: 1px solid #e4e4e7; background-color: #f9fafb; padding: 0.5rem 1rem; text-align: left; font-weight: 500; text-transform: uppercase; }
-  th:not(:first-child):not(:last-child) { border-left: 1px solid #e4e4e7; }
-  td { padding: 1rem; text-align: left; }
-  .skeleton-animation { background: rgba(130, 130, 130, 0.2); background: linear-gradient(to right, rgba(130, 130, 130, 0.2) 8%, rgba(130, 130, 130, 0.3) 18%, rgba(130, 130, 130, 0.2) 33%); background-size: 800px 100px; animation: wave-lines 2s infinite ease-out; }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #e4e4e7;
+  }
+  tr { 
+    width: 100%;
+    border-bottom: 1px solid #e4e4e7; 
+  }
+  th {
+    white-space: nowrap;
+    border-bottom: 1px solid #e4e4e7;
+    background-color: #f9fafb;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  th:not(:first-child):not(:last-child) {
+    border-left: 1px solid #e4e4e7;
+  }
+  td {
+    padding: 1rem;
+    text-align: left;
+  }
+
+  .skeleton-animation {
+    background: linear-gradient(to right, rgba(130, 130, 130, 0.2) 8%, rgba(130, 130, 130, 0.3) 18%, rgba(130, 130, 130, 0.2) 33%);
+    background-size: 800px 100px;
+    animation: wave-lines 2s infinite ease-out;
+  }
 
   /* ProjectInfo styles */
   .w-fit { width: fit-content; }
@@ -26,8 +78,7 @@ const combinedStyles = `
   .gap-16 { gap: 4rem; }
   .font-bold { font-weight: bold; }
   .hidden { display: none; }
-  .sm\\:flex { display: flex; }
-  .md\\:flex { display: flex; }
+  .sm\\:flex, .md\\:flex { display: flex; }
 
   /* Layout styles */
   .flex { display: flex; }
@@ -41,18 +92,4 @@ const combinedStyles = `
   .2xl\\:px-96 { padding-left: 24rem; padding-right: 24rem; }
   .h-\\[1px\\] { height: 1px; }
   .bg-primary { background-color: var(--color-primary); }
-`.replace(/\s+/g, ' ');
-
-const styles = JSON.parse(
-  '"/*\\n! tailwindcss v3.4.5 | MIT License | https://tailwindcss.com\\n*/' + combinedStyles + '"',
-);
-
-export function GlobalStyles() {
-  return (
-    <style
-      dangerouslySetInnerHTML={{
-        __html: styles,
-      }}
-    />
-  );
-}
+`;
