@@ -58,9 +58,9 @@ export default async function StatusTabs({ taskSummary }: Props) {
 export function StatusTabsSkeleton() {
   return (
     <div className="flex gap-6 overflow-auto">
-      <Skeleton className="h-[169px] sm:h-48" />
-      <Skeleton className="h-[169px] sm:h-48" />
-      <Skeleton className="h-[169px] sm:h-48" />
+      <Skeleton className="h-[156px] sm:h-48" />
+      <Skeleton className="h-[156px] sm:h-48" />
+      <Skeleton className="h-[156px] sm:h-48" />
     </div>
   );
 }
