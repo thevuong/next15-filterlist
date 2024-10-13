@@ -129,11 +129,11 @@ This means that can keep using our common pattern of fetching data inside compon
 - I want to use partial prerendering. This will allow me to partially render a page or layout as static, also a Next.js 15 feature. Very powerful.
 - Remove the suspense around the projectDetails, and remove the cookies from the data fetch. Show the result: app is frozen again.
 - Turn on partial prerendering in next.config.js. I need to make a production build, I've already deployed it so we can see it.
+- Open the second tab in new window.
+- Reload, copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger or slower chunks of static content.
 
 ## Review lighthouse scores again
 
-- Open the second tab in new window with pre-run scores.
-- Speed index improved since we show start off with more content, the project information, before showing incrementally more content, as seen in filmstrip.
-- Reload, copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger or slower chunks of static content.
+- Open the third tab in new window with pre-run scores. Hover scores.
+- Greatly improved scores, 95-100 lighthouse performance even with a 2s second total load time application.
 - We managed to complete our task of improving the bad metrics and maintaining the good metrics, while also making app fast, interactive and user-friendly.
-- Greatly improved scores, 100 lighthouse performance even with a 2s second total load time application.
