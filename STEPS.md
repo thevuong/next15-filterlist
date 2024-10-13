@@ -74,7 +74,7 @@ The ux is still not good here. We are not seeing active tab and the search is do
 - Enable the spinner, while we are transitioning, we can see it. When this is hydrated by js, we have the onchange and the spinner.
 - (Using a transition also batches the key strokes, leaving only one entry in the history.)
 
-We are putting state in the URL. This is a common request because the current state of the app can be shareable and reloadable. But, it can be hard to coordinate state in the url with component state with i.e useEffect - instead the URL is now a single source of truth, by lifting the state up, which is a well known pattern in React.
+We are putting state in the URL. This is a common request because the current state of the app can be shareable, bookmarkable, reloadable. But, it can be hard to coordinate state in the url with component state with i.e useEffect - instead the URL is now a single source of truth, by lifting the state up, which is a well known pattern in React.
 
 ## Add CategoryFilter.tsx to layout.tsx
 
