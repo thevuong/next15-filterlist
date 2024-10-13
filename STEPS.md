@@ -88,12 +88,10 @@ We are putting state in the URL. This is a common request because the current st
 - Show group-has data-pending in page.tsx, show class group.
 - Show the result. Pending feedback while showing stale content instead of nothing.
 - But i also want responsive buttons, and were gonna use useOptimistic - it is a great tool to handle this. It will take in a state to show no action is pending, and return an trigger function and optimistic value.
-- Add useOptimistic to CategoryFilter.tsx.
-- UseOptimistic will throw away the client side optimistic state after the navigation completes, then settle to the "truth" which is the URL.
+- Add useOptimistic to CategoryFilter.tsx. Set them inside the transition while waiting for the router to resolve. Showcase.
+- UseOptimistic will create, but then throw away the client side optimistic state after the navigation completes, then settle to the "truth" which is the URL. The categories are instant and don't depend in the network. Refreshing the page will show the correct state.
 - Credit to Sam Selikoff with his post on buildui blog for this pattern.
 - (Batchign again, only updating once we are done selecting, leaving only one entry in the history.)
-
-The categories are instant and don't depend in the network. Refreshing the page will show the correct state.
 
 ## Cache() getCategoriesMap in categories.ts
 
