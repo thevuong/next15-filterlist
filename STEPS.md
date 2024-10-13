@@ -135,5 +135,6 @@ This means that can keep using our common pattern of fetching data inside compon
 ## Review lighthouse scores again
 
 - Open the third tab in new window with pre-run scores. Hover scores.
+- Speed index improved since we show start off with more content, the project information, before showing incrementally more content, as seen in filmstrip.
 - Greatly improved scores, 95-100 lighthouse performance even with a 2s second total load time application.
 - We managed to complete our task of improving the bad metrics and maintaining the good metrics, while also making app fast, interactive and user-friendly.
