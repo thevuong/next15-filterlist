@@ -2,21 +2,21 @@
 
 ## Setup and starting point
 
-- This is a project task manager sort of thing. The designer of my current project Eileen Røsholt has designed the UI, and it's inspired by something I made there.
+- This is a project task manager sort of thing. The designer of my current project Eileen Røsholt has designed the UI, and it's inspired by something we made in that project.
 - The setup is of course Next.js App router, prisma and an Azure DB cause its free on my company azure account, tailwind CSS.
 - Demo app, new tab: Very slow load, slowed down data fetches on purpose.
-- But, it's actually not bad. This is all server components, which means there is no js shipped to the client for these components. Just html, navigations and a form for the search, and things work. Works without js.
-- Try out tabs, try search with a basic form, see the result in the table.
+- But, it's actually not bad. Try out tabs, try search with a basic form, see the result in the table.
+- This is all server components, which means there is no js shipped to the client for these components. Just html, navigations and a form, and things work without js.
 - Good base case, will work even if we are on a device with low processing power that cannot run JS efficiently.
 
 ## Review lighthouse scores
 
 - Open pre-run lighthouse screen. Show impact of each by hovering circle.
-- FCP: Bad since we are showing nothing until everything.
-- LCP: Bad, out LCP is shown together with everything else.
+- FCP: Bad since we are showing nothing until all server components are done.
+- LCP: Bad, out LCP is shown same time as our FCP.
+- Speed index bad since it measures incrementally how much content is shown, but we have nothing until everything is shown.
 - TBT: 0 since no JS, responsive page, no uncanny valley since default elements. INP is 0 since no js.
 - CLS: 0 since everything is painted at once.
-- Speed index bad since it measures incrementally how much content is shown, but we have nothing until everything is shown.
 - Overall metrics are bad but actually not the worst because we have no js to get high TBT and no moving elements to get high CLS.
 - However the app feels terrible on initial load because we are waiting for everything to render on the server and only getting the default browser spinner.
 
@@ -24,7 +24,7 @@
 
 - Async layout.tsx server component
 - Show the different data files just querying a db and using cookies() and slow()
-- Mention each component, search is just submitting a query param with a get request using a form, children:
+- Mention each component in the file, children:
 - Async [tab] page.tsx server components, we are querying our db based on filters directly based on the filters inside this server component.
 - Dynamic requests, static is easy because this could be run in the build, but this is dynamic data. We have to await at runtime.
 - Basically, want we want to do is elevate the speed, interactivity and UX of this app, and improve the web vitals that are bad without worsening the good ones.
