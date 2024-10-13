@@ -25,7 +25,7 @@
 
 - Async layout.tsx server component
 - Show the different data files just querying a db and using cookies() and slow()
-- Search is just submitting a query param with a get request using a form.
+- Mention each component, search is just submitting a query param with a get request using a form.
 - Async [tab] page.tsx server components, we are querying our db based on filters directly based on the filters inside this server component.
 - Dynamic requests, static is easy because this could be run in the build, but this is dynamic data. We have to await at runtime.
 - Basically, want we want to do is elevate the speed, interactivity and UX of this app, and improve the web vitals that are bad without worsening the good ones.
