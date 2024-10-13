@@ -93,16 +93,15 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 
 ## Cache() getCategoriesMap in categories.ts
 
-- We are fetching the categories twice for every render - once for the task summary and once for the category filter. Show console logs 2x.
+- We are fetching the categories twice for every render - once for the task summary and once for the category filter. Show terminal logs 2x.
 - We can deduplicate this since it's running in the same render.
-- Add cache() higher order React 19 function to getCategoriesMap in categories.ts. Now it's only run once. Show console logs 1x.
+- Add cache() higher order React 19 function to getCategoriesMap in categories.ts. Now it's only run once. Show terminal logs 1x.
 - The load time is actually reduced by 500ms because the TaskSummary and the CategoryFilter are using the same return value of getCategoriesMap.
-
-This means that can keep using our common pattern of fetching data inside components, similar to how we would use for example tanstack query in a client side app.
+- This means that can keep using our common pattern of fetching data inside components, similar to how we would use for example tanstack query in a client side app.
 
 ## Turn on staleTimes in next.config.js
 
-- Every time we click a tab, filter, or search, we are rerunning the page.tsx table on the server, with the data fetch. We can cache this.
+- Every time we click a tab, filter, or search, we are rerunning the page.tsx table on the server, with the data fetch. We can cache this, my data doesnt need to be that fresh.
 - Cache the rsc payload for the route page.tsx (table) by turning on staleTimes in next.config.js. This is a Next.js 15 feature.
 - Show the result. Click the same twice.
 
@@ -125,7 +124,7 @@ This means that can keep using our common pattern of fetching data inside compon
 
 - We can still improve the speed. Show project details in layout. Actually, we are dynamically fetching this project details data on every page load even though it very rarely changes.
 - This could be static data that we can revalidate on a time based interval using X (unstable_cache), Y (fetch options) or Z (ISR). Wasting resources and time. Static is the fastest.
-- I want to use partial prerendering. This will allow me to partially render a page or layout as static, also a Next.js 15 feature. Very powerful.
+- I want to use partial prerendering. This will allow me to partially the layout as static, also a very Next.js 15 feature.
 - Remove the suspense around the projectDetails, and remove the cookies from the data fetch. Show the result: app is frozen again.
 - Turn on partial prerendering in next.config.js. I need to make a production build, I've already deployed it so we can see it.
 - Open the second tab in new window.
@@ -134,6 +133,6 @@ This means that can keep using our common pattern of fetching data inside compon
 ## Review lighthouse scores again
 
 - Open the third tab in new window with pre-run scores. Hover scores.
-- Speed index improved since we show start off with more content, the project information, before showing incrementally more content, as seen in filmstrip.
-- Greatly improved scores, 95-100 lighthouse performance even with a 2s second total load time application.
+- We saw the LCP and FCP improvement already, but we can also see that the speed index improved since we show start off with more content, the project information, before showing incrementally more content, as seen in filmstrip. And we still have 0 TBT and 0 CSL.
+- We have greatly improved performance, getting 95-100 score in lighthouse even with a 2s second total load time application.
 - We managed to complete our task of improving the bad metrics and maintaining the good metrics, while also making app fast, interactive and user-friendly.
