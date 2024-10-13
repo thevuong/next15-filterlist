@@ -85,9 +85,9 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 - Instead of creating a global state manager, we can just use css. Add data-pending=isPending attribute.
 - Show class group in layout, show pseudo-class group-has data-pending in page.tsx.
 - Show the result. Pending feedback while showing stale content instead of nothing.
-- But i also want responsive buttons, and were gonna use useOptimistic - it is a great tool to handle this. It will take in a state to show no action is pending, and return an trigger function and optimistic value.
+- But i also want responsive buttons, and were gonna use useOptimistic - it is a great tool to handle this. It will take in a state to show no action is pending, which is our "truth" of the url, and return an optimistic value and a trigger function.
 - Add useOptimistic to CategoryFilter.tsx. Set them inside the transition while waiting for the router to resolve. Showcase.
-- UseOptimistic will create, but then throw away the client side optimistic state after the navigation completes, then settle to the "truth" which is the URL. The categories are instant and don't depend in the network. Refreshing the page will show the correct state.
+- UseOptimistic will create a optimistic client state, but then throw away it away after the transition completes. The categories are instant and don't depend in the network. Refreshing the page will show the correct state.
 - Credit to Sam Selikoff with his post on buildui blog for this pattern.
 - (Batchign again, only updating once we are done selecting, leaving only one entry in the history.)
 
