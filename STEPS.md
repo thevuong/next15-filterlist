@@ -82,9 +82,8 @@ We are putting state in the URL. This is a common request because the current st
 
 - Add the CategoryFilter component to layout.tsx. It takes in a categories promise and reads it with use. Pass it down with a new data fetch and suspend with a disabled toggle button.
 - This component is filtering with searchParams again, using the URL as the state again. However when we click the tabs, we don't see anything happening.
-- Pay attention to the URL. It's not switching until the new table in page.tsx is done with its await query and finished rendering on the server. Therefore we cannot see the active filters right away.
-- What's happening is we are waiting for the await of the page.tsx.
-- Add startTransition router.push. How can we use this isPending?
+- Pay attention to the URL. It's not updating until the new table in page.tsx is done with its await query and finished rendering on the server. Therefore we cannot see the active filters right away.
+- Add startTransition around router.push. How can we use this isPending?
 - Add data-pending=isPending attribute. Instead of creating a global state manager, we can just use css.
 - Show group-has data-pending in page.tsx, show class group.
 - Show the result. Pending feedback while showing stale content instead of nothing.
