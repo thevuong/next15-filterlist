@@ -44,17 +44,18 @@
 - The first through might be to run them in parallel with promise.all().That would help, but you would still be blocked in the layout.
 - So, let's push the data fetches down from the layout to the components themselves, and show Suspense fallbacks.
 - Move projectDetails fetch to projectDetails.tsx, and move tabs fetch to tabs.tsx.
-- Suspense "loading..." around projectDetails with skeleton, and around tabs with tabs.tsx. Show the result.
-- We fixed the FCP and LCP since we are showing content after just 0.5s and not blocking the page. However, did you see how the elements are visually unstable as they load. Open CWV plugin, we got layout shift. CLS is very impactful on our scores.
+- Suspense "loading..." around projectDetails with skeleton, and around tabs with tabs.tsx. Show the result: streaming in the RSCs as they complete on the server.
+- We fixed the FCP and LCP since we are showing the project information right away and not blocking the page, and LCP is our FCP which is the project information and its very fast.
+- However, did you see how the elements are visually unstable as they load. Open CWV plugin, we got layout shift, its no longer 0. CLS is very impactful on our scores.
 - We have to make skeletons the right size, which can be hard. Replace with skeletons.
+- Showcase the improved CLS.
 - Suspense Search because SearchParams witch skeleton because SearchParams opt into dynamic rendering.
-- Showcase the result and the score again.
 
 By are pushing data fetching down and displaying fallbacks while streaming in the generated RSC's using minimal js, and utilizing the shared compute load between server and client, we can actually show something on the screen and even interact with what we have (fill search).  All components fetch in parallel in this case since they are independent, reducing total load time. If they did depend on each other, we could have made more levels of suspenses inside each, streaming sequentially. Each component is now responsible for their own data, making them composable. If we turn off the slow the suspense boundaries would be mostly omitted.
 
 ## Improve UX
 
-The ux is still not good here. We are not seeing active tab and the search is doing a full page reload.
+Let's move to improveing the UX, it is still not good here. We are not seeing active tab and the search is doing a full page reload.
 
 ### Mark active tab and read promise with use in Tabs.tsx
 
@@ -118,13 +119,11 @@ This means that can keep using our common pattern of fetching data inside compon
 
 ## Open CWV plugin: the state of our scores
 
-- We already had these FCP and LCP from the prevoius steps.
-- FCP is way better since we are seeing content right away after 0.5s.
-- LCP is our project details and its very fast, 0.5s.
+- We already saw these FCP and LCP from the previous steps: the FCP is the LCP and they are both shown right away.
 - CLS: Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
 - INP: very good since minimal JS and no long tasks, responsive page, no uncanny valley since default elements. Same as before pretty much.
 
-## Improve FCP with Partial Pre-rendering
+## Improve Speed Index and UX with Partial Pre-rendering
 
 - We can still improve. Actually, we are dynamically fetching this project details data on every page load even though it very rarely changes.
 - This could be static data that we can revalidate on a time based interval using X (unstable_cache), Y (fetch options) or Z (ISR). Wasting resources and time. Static is the fastest.
@@ -134,8 +133,7 @@ This means that can keep using our common pattern of fetching data inside compon
 ## Review lighthouse scores again
 
 - Open the second tab in new window with pre-run scores.
-- The LCP is our project info and is now greatly reduced because it is static.
-- Speed index way better since we show incrementally more content as seen in filmstrip.
+- Speed index improved since we show start off with more content, the project information, before showing incrementally more content, as seen in filmstrip.
 - Reload, copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger or slower chunks of static content.
 - We managed to complete our task of improving the bad metrics and maintaining the good metrics, while also making app fast, interactive and user-friendly.
 - Greatly improved scores, 100 lighthouse performance even with a 2s second total load time application.

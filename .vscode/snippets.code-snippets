@@ -25,6 +25,15 @@
             "});"
         ]
     },
+    "tabsProps": {
+        "scope": "typescriptreact",
+        "prefix": "tabsProps",
+        "body": [
+            "type Props = {",
+            "  taskSummaryPromise: Promise<TaskSummary>;",
+            "};"
+        ]
+    },
     "optimisticCategories": {
         "scope": "typescriptreact",
         "prefix": "optimisticCategories",
