@@ -8,7 +8,6 @@
 - But, it's actually not bad. This is all server components, which means there is no js shipped to the client for these components. Just html, navigations and a form for the search, and things work. Works without js.
 - Try out tabs, try search with a basic form, see the result in the table.
 - Good base case, will work even if we are on a device with low processing power that cannot run JS efficiently.
-- No data mutation, we are focusing on data fetching and server components patterns, forms and mutations is another story, I've done talks on that before.
 
 ## Review lighthouse scores
 
