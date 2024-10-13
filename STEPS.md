@@ -2,7 +2,7 @@
 
 ## Setup and starting point
 
-- This is a project task manager sort of thing. The designer of my current project Eileen Røsholt has designed the UI, and it's based on something I made there.
+- This is a project task manager sort of thing. The designer of my current project Eileen Røsholt has designed the UI, and it's inspired by something I made there.
 - The setup is of course Next.js App router, prisma and an Azure DB cause its free on my company azure account, tailwind CSS.
 - Demo app: Very slow load, slowed down data fetches on purpose.
 - But, it's actually not bad. This is all server components, which means there is no js shipped to the client for these components. Just html, navigations and a form for the search, and things work. Works without js.
@@ -110,7 +110,8 @@ This means that can keep using our common pattern of fetching data inside compon
 
 ## Final demo
 
-- In tab "todo": Interact with tabs or filters while streaming in the server components as they finish rendering on the server. Enable "testing" and "backend".
+- In tab "todo": Interact with tabs while streaming in the server components as they finish rendering on the server.
+- Reload, enable "testing" and "backend" while streaming.
 - Greatly improved UX. Even though the data fetches are still extremely slow, the app feels super responsive.
 - Search for "api". Reload/share/bookmark the page and have the same state.
 - And this is very robust: progressively enhanced the no-js base case, and just added a low amount of js, using it only where needed. (No race conditions because of useTransitions batching.)
