@@ -18,7 +18,7 @@
 - TBT: 0 since no JS, responsive page, no uncanny valley since default elements. INP is 0 since no js.
 - CLS: 0 since everything is painted at once.
 - Speed index bad since it measures incrementally how much content is shown, but we have nothing until everything is shown.
-- Overall metrics are bad but actually not the worst because we have no js to worsen TBT and no moving elements to worsen CLS.
+- Overall metrics are bad but actually not the worst because we have no js to get high TBT and no moving elements to get high CLS.
 - However the app feels terrible on initial load because we are waiting for everything to render on the server and only getting the default browser spinner.
 
 ## Go through the code
@@ -27,7 +27,6 @@
 - Show the different data files just querying a db and using cookies() and slow()
 - Search is just submitting a query param with a get request using a form.
 - Async [tab] page.tsx server components, we are querying our db based on filters directly based on the filters inside this server component.
-- Meaning we are never doing any of this stuff on the client, and the components are only generated on the server.
 - Dynamic requests, static is easy because this could be run in the build, but this is dynamic data. We have to await at runtime.
 - Basically, want we want to do is elevate the speed, interactivity and UX of this app, and improve the web vitals that are bad without worsening the good ones.
 
