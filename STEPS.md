@@ -102,7 +102,7 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 ## Turn on staleTimes in next.config.js
 
 - Every time we click a tab, filter, or search, we are rerunning the page.tsx table on the server, with the data fetch. We can cache this, my data doesnt need to be that fresh.
-- Cache the rsc payload for the route page.tsx (table) by turning on staleTimes in next.config.js. This is a Next.js 15 feature.
+- Cache the rsc payload for the route page.tsx (table) by turning on nextjs 15 staleTimes in next.config.js.
 - Show the result. Click the same twice.
 
 ## Final demo
@@ -118,13 +118,13 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 
 - We already saw these FCP and LCP from the previous steps: the FCP is the LCP and they are both shown right away.
 - CLS: Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
-- INP: check with search: very good since minimal JS and no long tasks, responsive page, no uncanny valley since default elements. Same as before pretty much.
+- INP: very good since minimal JS and no long tasks, responsive page using default elements, no uncanny valley.
 
 ## Improve Speed Index with Partial Pre-rendering
 
 - We can still improve the speed. Show project details in layout. Actually, we are dynamically fetching this project details data on every page load even though it very rarely changes.
 - This could be static data that we can revalidate on a time based interval using X (unstable_cache), Y (fetch options) or Z (ISR). Wasting resources and time. Static is the fastest.
-- I want to use partial prerendering. This will allow me to partially the layout as static, also a very Next.js 15 feature.
+- I want to use nextjs 15 partial prerendering. This will allow me to partially the layout as static - everything not inside suspense bboundaries.
 - Remove the suspense around the projectDetails, and remove the cookies from the data fetch. Show the result: app is frozen again.
 - Turn on partial prerendering in next.config.js. I need to make a production build, I've already deployed it so we can see it.
 - Open the second tab in new window.
