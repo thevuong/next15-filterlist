@@ -122,7 +122,7 @@ This means that can keep using our common pattern of fetching data inside compon
 - CLS: Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
 - INP: check with search: very good since minimal JS and no long tasks, responsive page, no uncanny valley since default elements. Same as before pretty much.
 
-## Improve Speed Index and UX with Partial Pre-rendering
+## Improve Speed Index with Partial Pre-rendering
 
 - We can still improve the speed. Show project details in layout. Actually, we are dynamically fetching this project details data on every page load even though it very rarely changes.
 - This could be static data that we can revalidate on a time based interval using X (unstable_cache), Y (fetch options) or Z (ISR). Wasting resources and time. Static is the fastest.
