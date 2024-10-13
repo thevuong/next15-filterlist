@@ -43,11 +43,11 @@
 - The first through might be to run them in parallel with promise.all().That would help, but you would still be blocked in the layout.
 - So, let's push the data fetches down from the layout to the components themselves.
 - Move projectDetails fetch to projectDetails.tsx, and move tabs fetch to tabs.tsx.
-- Display suspense fallbacks with "loading..." around projectDetails, and around tabs. - Show the result: streaming in the RSCs using just a little js as they complete on the server. Unblocked and running in parallel, lower total load time and utlitizing the shared compute load between server and client. We can actually show something on the screen and even interact with what we have (fill search).
+- Display suspense fallbacks with "loading..." around projectDetails, and around tabs. - Show the result: streaming in the RSCs using just a little js as they complete on the server. Running in parallel, have a lower total load timem and utlitizes the shared compute load between server and client. We can actually show something on the screen and even interact with what we have (fill search).
 - Each component is now responsible for their own data, making them composable. If we turn off the slow the suspense boundaries would be mostly omitted.
-- Open CWV: We fixed the FCP and LCP since we are showing the project information right away and not blocking the page, and LCP is our FCP which is the project information and its very fast.
-- However, did you see how the elements are visually unstable as they load. We got layout shift, its no longer 0. CLS is very impactful on our scores.
-- We have to make skeletons the right size, which can be hard. Replace with skeletons.
+- However, did you see how the elements are visually unstable as they load. We got cumulative layout shift.
+- Open CWV: We fixed the FCP and LCP since we are showing the project information right away and not blocking the page, and LCP is our FCP which is the project information and its very fast. However CLS its no longer 0, and is very impactful on our scores.
+- We have to make skeletons the right size. Replace with skeletons.
 - Showcase the improved CLS.
 - Suspense Search because SearchParams witch skeleton because SearchParams opt into dynamic rendering.
 
@@ -64,8 +64,9 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 
 ### Add a loading spinner to Search.tsx
 
-- Progressive enhancement of the base case search with onChange, add router, params, and searchParams.
-- Add "use client", newSearchParams, pushRouter. We are keeping the state in the URL as a single source of truth, because the state of the app is reloadable, shareable, and bookmarkable.
+- Unconfortable experience in the search.
+- Progressive enhancement of the base case search with onChange, we want to push to the router. Add router, params, and searchParams.
+- Add "use client", newSearchParams, pushRouter. We are keeping the state in the URL as a single source of truth, because the state of the app will be reloadable, shareable, and bookmarkable.
 - Using the existing search params because I will be adding more in the next step.
 - Add defaultvalue and reset with a key
 - Notice the url is updating later because we are waiting for the await in the table to resolve before routing.
@@ -106,8 +107,8 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 
 ## Final demo
 
-- In tab "todo": Interact with tabs while streaming in the server components as they finish rendering on the server.
-- Reload, enable "testing" and "backend" while streaming.
+- In tab "todo": See content right away, and interact with tabs while streaming in the server components as they finish rendering on the server.
+- Reload, even filter while streaming, enable "testing" and "backend".
 - Greatly improved UX. Even though the data fetches are still extremely slow, the app feels super responsive.
 - Search for "api". Reload/share/bookmark the page and have the same state.
 - And this is very robust: progressively enhanced the no-js base case, and just added a low amount of js, using it only where needed. (No race conditions because of useTransitions batching.)
