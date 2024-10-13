@@ -8,6 +8,13 @@
             "</Suspense>"
         ],
     },
+    "params": {
+        "scope": "typescriptreact",
+        "prefix": "params",
+        "body": [
+            "const params = useParams();"
+        ]
+    },
     "newSearchParams": {
         "scope": "typescriptreact",
         "prefix": "newSearchParams",

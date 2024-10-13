@@ -66,16 +66,15 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 ### Add a loading spinner to Search.tsx
 
 - Progressive enhancement of the base case search with onChange, add router, params, and searchParams.
-- Add "use client", newSearchParams, pushRouter.
+- Add "use client", newSearchParams, pushRouter. We are keeping the state in the URL as a single source of truth, because the state of the app is reloadable, shareable, and bookmarkable.
 - Using the existing search params because I will be adding more in the next step.
 - Add defaultvalue and reset with a key
 - Notice the url is updating later because we are waiting for the await in the table to resolve before routing.
+- As a user, we want to know that something is happening in the app.
 - Explain useTransition: mark a state update as non-urgent and non-blocking and get pending state.
 - Use pending state to display user while waiting for the navigation to finish, which is the await in the table component.
 - Enable the spinner, while we are transitioning, we can see it. When this is hydrated by js, we have the onchange and the spinner.
 - (Using a transition also batches the key strokes, leaving only one entry in the history.)
-
-We are putting state in the URL. This is a common request because the current state of the app can be shareable, bookmarkable, reloadable. But, it can be hard to coordinate state in the url with component state with i.e useEffect. Instead, by lifting the state up, the URL is now a single source of truth, which is a well known pattern in React.
 
 ## Add CategoryFilter.tsx to layout.tsx
 
