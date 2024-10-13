@@ -126,8 +126,9 @@ This means that can keep using our common pattern of fetching data inside compon
 
 - We can still improve. Show project details in layout. Actually, we are dynamically fetching this project details data on every page load even though it very rarely changes.
 - This could be static data that we can revalidate on a time based interval using X (unstable_cache), Y (fetch options) or Z (ISR). Wasting resources and time. Static is the fastest.
+- I want to use partial prerendering. This will allow me to partially render a page or layout as static, also a Next.js 15 feature. Very powerful.
 - Remove the suspense around the projectDetails, and remove the cookies from the data fetch. Show the result: app is frozen again.
-- Turn on partial prerendering in next.config.js. This will allow me to partially render a page or layout as static, also in Next.js 15. Very powerful. I need to make a production build, I've already deployed it so we can see it.
+- Turn on partial prerendering in next.config.js. I need to make a production build, I've already deployed it so we can see it.
 
 ## Review lighthouse scores again
 
