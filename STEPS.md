@@ -98,9 +98,9 @@ We are putting state in the URL. This is a common request because the current st
 - We are fetching the categories twice for every render - once for the task summary and once for the category filter. Show console logs 2x.
 - We can deduplicate this since it's running in the same render.
 - Add cache() higher order React 19 function to getCategoriesMap in categories.ts. Now it's only run once. Show console logs 1x.
-- The load time is actually reduced by 500ms because the getTaskSummary is reusing the prepared data from the getCategoriesMap called by categoryFilter.
+- The load time is actually reduced by 500ms because the TaskSummary and the CategoryFilter are using the same return value of getCategoriesMap.
 
-This means that can keep using our common pattern of fetching data inside components, similar to how we would use useQuery in a client side app.
+This means that can keep using our common pattern of fetching data inside components, similar to how we would use for example tanstack query in a client side app.
 
 ## Turn on staleTimes in next.config.js
 
@@ -110,17 +110,17 @@ This means that can keep using our common pattern of fetching data inside compon
 
 ## Final demo
 
-- Interact with tabs and filters while streaming in the server components as they load.
+- In tab "todo": Interact with tabs or filters while streaming in the server components as they finish rendering on the server. Enable "testing" and "backend".
 - Greatly improved UX. Even though the data fetches are still extremely slow, the app feels super responsive.
-- Search, refresh the page and have the same state.
-- And this is very robust: progressively enhanced, we wont have race conditions because of useTransitions. And there is a low amount of js, using it only where needed, the buttons work with onclick while we are streaming in the server components.
-- No useEffects or useStates in sight. We are making interactive apps without them in this new world of React and Next.js.
+- Search for "api". Reload/share/bookmark the page and have the same state.
+- And this is very robust: progressively enhanced the no-js base case, and just added a low amount of js, using it only where needed. (No race conditions because of useTransitions batching.)
+- No useEffects or useStates in sight. We are making interactive apps without that in this new world of React and Next.js.
 
 ## Open CWV plugin: the state of our scores
 
 - We already saw these FCP and LCP from the previous steps: the FCP is the LCP and they are both shown right away.
 - CLS: Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
-- INP: very good since minimal JS and no long tasks, responsive page, no uncanny valley since default elements. Same as before pretty much.
+- INP: check with search: very good since minimal JS and no long tasks, responsive page, no uncanny valley since default elements. Same as before pretty much.
 
 ## Improve Speed Index and UX with Partial Pre-rendering
 
