@@ -69,6 +69,7 @@ Let's move to improveing the UX, it is still not good here. We are not seeing ac
 - Progressive enhancement of the base case search with onChange, add router, params, and searchParams.
 - Add "use client", newSearchParams, pushRouter.
 - Using the existing search params because I will be adding more in the next step.
+- Add defaultvalue and reset with a key
 - Notice the url is updating later because we are waiting for the await in the table to resolve before routing.
 - Explain useTransition: mark a state update as non-urgent and non-blocking and get pending state.
 - Use pending state to display user while waiting for the navigation to finish, which is the await in the table component.
