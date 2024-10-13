@@ -82,8 +82,8 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 - This component is filtering with searchParams again, using the URL as the state again. However when we click the tabs, we don't see anything happening.
 - Pay attention to the URL. It's not updating until the new table in page.tsx is done with its await query and finished rendering on the server. Therefore we cannot see the active filters right away.
 - Add startTransition around router.push. How can we use this isPending?
-- Add data-pending=isPending attribute. Instead of creating a global state manager, we can just use css.
-- Show group-has data-pending in page.tsx, show class group.
+- Instead of creating a global state manager, we can just use css. Add data-pending=isPending attribute.
+- Show class group in layout, show pseudo-class group-has data-pending in page.tsx.
 - Show the result. Pending feedback while showing stale content instead of nothing.
 - But i also want responsive buttons, and were gonna use useOptimistic - it is a great tool to handle this. It will take in a state to show no action is pending, and return an trigger function and optimistic value.
 - Add useOptimistic to CategoryFilter.tsx. Set them inside the transition while waiting for the router to resolve. Showcase.
