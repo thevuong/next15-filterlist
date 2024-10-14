@@ -48,7 +48,7 @@
 - However, did you see how the elements are visually unstable as they load. We got cumulative layout shift.
 - Open CWV: We fixed the FCP and LCP since we are showing the project information right away and not blocking the page, and LCP is our FCP which is the project information and its very fast. However CLS its no longer 0, and is very impactful on our scores.
 - We have to make skeletons the right size. Replace with skeletons.
-- Showcase the improved CLS.
+- Showcase the improved CLS. Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
 - Suspense Search because SearchParams witch skeleton because SearchParams opt into dynamic rendering.
 
 ## Improve UX
@@ -114,6 +114,11 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 - And this is very robust: progressively enhanced the no-js base case, and just added a low amount of js, using it only where needed. (No race conditions because of useTransitions batching.)
 - No useEffects or useStates in sight. We are making interactive apps without that in this new world of React and Next.js.
 
+## Open CWV plugin: the state of our scores
+
+- We already saw these FCP, CLS and LCP from the previous steps.
+- We can also see the INP: very good since minimal JS and no long tasks, responsive page using default elements, no uncanny valley.
+
 ## Improve Speed Index with Partial Pre-rendering
 
 - We can still improve the speed. Show project details in layout. Actually, we are dynamically fetching this project details data on every page load even though it very rarely changes.
@@ -127,8 +132,7 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 ## Review lighthouse scores again
 
 - Open the third tab in new window with pre-run scores. Hover scores.
-- We already saw these FCP and LCP from the previous steps: the FCP is the LCP and they are both shown right away. But we can also see that the speed index improved since we show start off with more content, the project information, before showing incrementally more content, as seen in filmstrip.
-- CLS: Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
-- INP: very good since minimal JS and no long tasks, responsive page using default elements, no uncanny valley.
+- Again, the LCP and FCP are much improved since the first run, but we can also see that the speed index improved since we show start off with more content, the project information, before showing incrementally more content, as seen in filmstrip.
+- Maintained 0 CLS , 0 TBT.
 - We have greatly improved performance, getting 95-100 score in lighthouse even with a 2s second total load time application.
 - We managed to complete our task of improving the bad metrics and maintaining the good metrics, while also making app fast, interactive and user-friendly.
