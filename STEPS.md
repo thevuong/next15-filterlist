@@ -64,11 +64,12 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 
 ### Add a loading spinner to Search.tsx
 
-- Unconfortable experience in the search.
+- Uncomfortable experience in the search.
 - Progressive enhancement of the base case search with onChange, we want to push to the router. Add router, params, and searchParams.
-- Add "use client", newSearchParams, pushRouter. We are keeping the state in the URL as a single source of truth, because the state of the app will be reloadable, shareable, and bookmarkable.
+- Add "use client", newSearchParams, pushRouter.
 - Using the existing search params because I will be adding more in the next step.
-- Add defaultvalue and reset with a key
+- We are keeping the state in the URL as a single source of truth, because the state of the app will be reloadable, shareable, and bookmarkable.
+- Add defaultvalue and reset with a key.
 - Notice the url is updating later because we are waiting for the await in the table to resolve before routing.
 - As a user, we want to know that something is happening in the app.
 - Explain useTransition: mark a state update as non-urgent and non-blocking and get pending state.
@@ -81,10 +82,10 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 - Add the CategoryFilter component to layout.tsx. It takes in a categories promise and reads it with use. Pass it down with a new data fetch and suspend with a disabled toggle button.
 - This component is filtering with searchParams again, using the URL as the state again. However when we click the tabs, we don't see anything happening.
 - Pay attention to the URL. It's not updating until the new table in page.tsx is done with its await query and finished rendering on the server. Therefore we cannot see the active filters right away.
-- Add startTransition around router.push. How can we use this isPending?
-- Instead of creating a global state manager, we can just use css. Add data-pending=isPending attribute.
+- Let's mark the loading state. Add startTransition around router.push. How can we use this isPending?
 - Show class group in layout, show pseudo-class group-has data-pending in page.tsx.
 - Show the result. Pending feedback while showing stale content instead of nothing.
+- Instead of creating a global state manager, we can just use css. Add data-pending=isPending attribute.
 - But i also want responsive buttons, and were gonna use useOptimistic - it is a great tool to handle this. It will take in a state to show no action is pending, which is our "truth" of the url, and return an optimistic value and a trigger function.
 - Add useOptimistic to CategoryFilter.tsx. Set them inside the transition while waiting for the router to resolve. Showcase.
 - UseOptimistic will create a optimistic client state, but then throw away it away after the transition completes. The categories are instant and don't depend in the network. Refreshing the page will show the correct state.
@@ -95,8 +96,8 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 
 - We are fetching the categories twice for every render - once for the task summary and once for the category filter. Show terminal logs 2x.
 - We can deduplicate this since it's running in the same render.
-- Add cache() higher order React 19 function to getCategoriesMap in categories.ts. Now it's only run once. Show terminal logs 1x.
-- The load time is actually reduced by 500ms because the TaskSummary and the CategoryFilter are using the same return value of getCategoriesMap.
+- Add cache() higher order React 19 function to getCategoriesMap in categories.ts. Notice load time.
+- The load time is actually reduced by 500ms because the TaskSummary and the CategoryFilter are using the same return value of getCategoriesMap. And you can see it's only run once. Show terminal logs 1x.
 - This means that can keep using our common pattern of fetching data inside components, similar to how we would use for example tanstack query in a client side app.
 
 ## Turn on staleTimes in next.config.js
