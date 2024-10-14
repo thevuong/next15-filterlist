@@ -45,7 +45,7 @@
 - Move projectDetails fetch to projectDetails.tsx, and move tabs fetch to tabs.tsx.
 - Display suspense fallbacks with "loading..." around projectDetails, and around tabs. - Show the result: streaming in the RSCs using just a little js as they complete on the server. Running in parallel, have a lower total load timem and utlitizes the shared compute load between server and client. We can actually show something on the screen and even interact with what we have (fill search).
 - Each component is now responsible for their own data, making them composable. If we turn off the slow the suspense boundaries would be mostly omitted.
-- Open CWV: We fixed the FCP and LCP since we are showing the project information right away and not blocking the page, and LCP is our FCP which is the project information and its very fast. However CLS its no longer 0, and is very impactful on our scores.
+- Open CWV: We fixed the FCP and LCP since we are showing the project information right away and not blocking the page, and LCP is our FCP which is the project information and its very fast. (Our LCP is still slowed down but greatly improved). However CLS its no longer 0, and is very impactful on our scores.
 - However, did you see how the elements are visually unstable as they load. We got cumulative layout shift. Unconfortable UX.
 - We have to make skeletons the right size. Replace with skeletons.
 - Showcase the improved CLS. Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
@@ -97,28 +97,23 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 - We are fetching the categories twice for every render - once for the task summary and once for the category filter. Show terminal logs 2x.
 - We can deduplicate this since it's running in the same render.
 - Add cache() higher order React 19 function to getCategoriesMap in categories.ts. Notice load time.
-- The load time is actually reduced by 500ms because the TaskSummary and the CategoryFilter are using the same return value of getCategoriesMap. And you can see it's only run once. Show terminal logs 1x.
+- The load time is actually reduced by 500ms because the StatusTabs and the CategoryFilter are using the same return value of getCategoriesMap. And you can see it's only run once. Show terminal logs 1x.
 - This means that can keep using our common pattern of fetching data inside components, similar to how we would use for example tanstack query in a client side app.
 
 ## Turn on staleTimes in next.config.js
 
 - Every time we click a tab, filter, or search, we are rerunning the page.tsx table on the server, with the data fetch. We can resuse this, my data doesnt need to be that fresh.
-- Cache the rsc payload on the client for the route page.tsx (table) by turning on nextjs 15 staleTimes in next.config.js.
+- Enable staleTimes in next.config.js, this is a next.js 15 feature. This will cache the rsc payload on the client for the route page.tsx (table). Refresh page.
 - Show the result. Click the same twice. Now we dont have to regenerate the server component every time.
 
 ## Final demo
 
-- In tab "todo": See content right away, and interact with tabs while streaming in the server components as they finish rendering on the server.
+- See content right away, and interact with tabs while streaming in the server components as they finish rendering on the server. And we have some nice caching here.
 - Reload, even filter while streaming, enable "testing" and "backend".
 - Greatly improved UX. Even though the data fetches are still extremely slow, the app feels super responsive.
 - Search for "api". Reload/share/bookmark the page and have the same state.
 - And this is very robust: progressively enhanced the no-js base case, and just added a low amount of js, using it only where needed. (No race conditions because of useTransitions batching.)
-- No useEffects or useStates in sight. We are making interactive apps without that in this new world of React and Next.js.
-
-## Open CWV plugin: the state of our scores
-
-- We already saw these FCP, CLS and LCP from the previous steps.
-- We can also see that the INP is good corresponding to the responsive clicks because we have minimal JS, no long tasks.
+- No useEffects or useStates in sight. We are making interactive apps without that in this new world of React Server Components.
 
 ## Improve Speed Index with Partial Pre-rendering
 
@@ -134,6 +129,7 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 
 - Open the third tab in new window with pre-run scores. Hover scores.
 - Again, the LCP and FCP are much improved since the first run, but we can also see that the speed index improved since we show start off with more content, the project information, before showing incrementally more content, as seen in filmstrip.
-- Maintained 0 CLS , 0 TBT.
+- Maintained 0 CLS because of these skeletons being sized correctly.
+- We can also maintained the TBT of 0, which corresponds to the responsive clicks because we have minimal JS and no long tasks.
 - We have greatly improved performance, getting 95-100 score in lighthouse even with a 2s second total load time application.
 - We managed to complete our task of improving the bad metrics and maintaining the good metrics, while also making app fast, interactive and user-friendly.
