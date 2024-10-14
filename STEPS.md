@@ -103,7 +103,7 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 ## Turn on staleTimes in next.config.js
 
 - Every time we click a tab, filter, or search, we are rerunning the page.tsx table on the server, with the data fetch. We can resuse this, my data doesnt need to be that fresh.
-- Enable staleTimes in next.config.js, this is a next.js 15 feature. This will cache the rsc payload on the client for the route page.tsx (table). Refresh page.
+- Enable staleTimes in next.config.js, (this is a next.js 15 feature). This will cache the rsc payload on the client for the route page.tsx, the table. Refresh page.
 - Show the result. Click the same twice. Now we dont have to regenerate the server component every time.
 
 ## Final demo
@@ -119,7 +119,7 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 
 - We can still improve the speed. Show project details in layout. Actually, we are dynamically fetching this project details data on every page load even though it very rarely changes.
 - This could be static data that we can revalidate on a time based interval using for example fetch options, or, the new Next.js directive "use cache". Wasting resources and time. Static is the fastest.
-- I want to use nextjs 15 partial prerendering. This will allow me to partially the layout as static - everything not inside suspense boundaries.
+- I want to use nextjs (15) partial prerendering. This will allow me to partially the layout as static - everything not inside suspense boundaries.
 - Remove the suspense around the projectDetails, and remove the cookies from the data fetch. Show the result: app is frozen again.
 - Turn on partial prerendering in next.config.js. I need to make a production build, I've already deployed it so we can see it.
 - Open the second tab in new window.
