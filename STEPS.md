@@ -123,13 +123,14 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 - Remove the suspense around the projectDetails, and remove the cookies from the data fetch. Show the result: app is frozen again.
 - Turn on partial prerendering in next.config.js. I need to make a production build, I've already deployed it so we can see it.
 - Open the second tab in new window.
-- Reload, copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger or slower chunks of static content.
+- Cpy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger or slower chunks of static content.
+- Reload, its just there right away because its static.
 
 ## Review lighthouse scores again
 
 - Open the third tab in new window with pre-run scores. Hover scores.
-- Again, the LCP and FCP are much improved since the first run, but we can also see that the speed index improved since we show start off with more content, the project information, before showing incrementally more content, as seen in filmstrip.
-- Maintained 0 CLS because of these skeletons being sized correctly.
+- Again, the LCP and FCP are much improved since the first run because they are both the project information, but we can also see that the speed index improved since we show start off with more content, the project information, before showing incrementally more content, as seen in filmstrip.
 - We can also maintained the TBT of 0, which corresponds to the responsive clicks because we have minimal JS and no long tasks.
+- Maintained 0 CLS because of these skeletons being sized correctly.
 - We have greatly improved performance, getting 95-100 score in lighthouse even with a 2s second total load time application.
 - We managed to complete our task of improving the bad metrics and maintaining the good metrics, while also making app fast, interactive and user-friendly.
