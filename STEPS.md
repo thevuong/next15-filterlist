@@ -15,7 +15,7 @@
 - FCP: Bad since we are showing nothing until all server components are done.
 - LCP: Bad, out LCP is shown same time as our FCP.
 - Speed index bad since it measures incrementally how much content is shown, but we have nothing until everything is shown.
-- TBT: 0 since no JS, responsive page, no uncanny valley since default elements. INP is 0 since no js.
+- TBT: 0 since no JS, responsive page, no uncanny valley since default elements.
 - CLS: 0 since everything is painted at once.
 - Overall metrics are bad but actually not the worst because we have no js to get high TBT and no moving elements to get high CLS.
 - However the app feels terrible on initial load because we are waiting for everything to render on the server and only getting the default browser spinner.
