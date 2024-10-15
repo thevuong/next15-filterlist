@@ -70,7 +70,7 @@ Let's continue to improve the UX, it is still not good here. We are not seeing a
 
 ### Add a loading spinner to Search.tsx
 
-- Uncomfortable experience in the search.
+- Uncomfortable experience in the search when using the default form submit, which is a GET pushing the values of the inputs inside the form to the URL.
 - Progressive enhancement of the base case search. Let's first use the new Nextjs form component to make this a client side navigation when js is loaded: import, use form and add action.
 - Next enhancement is to add an onChange handler, we want to push to the router. Add router, params, and searchParams.
 - Onchange newSearchParams. We gonna use the existing search params because I will keeping the state in the URL as a single source of truth, because the state of the app will be reloadable, shareable, and bookmarkable.
