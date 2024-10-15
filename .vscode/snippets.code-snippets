@@ -8,6 +8,13 @@
             "</Suspense>"
         ],
     },
+    "importForm": {
+        "scope": "typescriptreact",
+        "prefix": "importForm",
+        "body": [
+            "import Form from 'next/form';"
+        ]
+    },
     "toggleButton": {
         "scope": "typescriptreact",
         "prefix": "toggleButton",

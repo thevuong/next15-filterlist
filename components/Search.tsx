@@ -1,5 +1,6 @@
 'use client';
 
+import Form from 'next/form';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import React, { useTransition } from 'react';
 import type { TaskStatus } from '@/types/task';
@@ -13,7 +14,7 @@ export default function Search() {
   const [isPending, startTransition] = useTransition();
 
   return (
-    <form className="relative flex w-full flex-col gap-1 sm:w-fit" key={params.tab as TaskStatus}>
+    <Form action="/" className="relative flex w-full flex-col gap-1 sm:w-fit" key={params.tab as TaskStatus}>
       <label className="font-semibold uppercase" htmlFor="search">
         Search
       </label>
@@ -35,7 +36,7 @@ export default function Search() {
         type="search"
       />
       <SearchStatus searching={isPending} />
-    </form>
+    </Form>
   );
 }
 
