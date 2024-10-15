@@ -8,6 +8,13 @@
             "</Suspense>"
         ],
     },
+    "toggleButton": {
+        "scope": "typescriptreact",
+        "prefix": "toggleButton",
+        "body": [
+            "ToggleButton disabled>Loading...</ToggleButton>"
+        ]
+    },
     "params": {
         "scope": "typescriptreact",
         "prefix": "params",
