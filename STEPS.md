@@ -1,5 +1,11 @@
 # DEMO STEPS
 
+## (Introduction)
+
+- Aurora, web dev, norway, consultant at Inmeta in oslo
+- Excited to speak here today, because i'll be teaching you how to elevate speed, interactivity and user experience with React Server Components.
+- I will be coding something inspired by a feature i’ve built for my current consultancy project, where im actively using React Server Components.
+
 ## Setup and starting point
 
 - This is a project task manager sort of thing. The designer of my current project Eileen Røsholt has designed the UI, and it's inspired by a feature we made in that project.
@@ -134,3 +140,7 @@ Let's continue to improve the UX, it is still not good here. We are not seeing a
 - Maintained 0 CLS because of these skeletons being sized correctly.
 - We have greatly improved performance, getting 95-100 score in lighthouse even with a 2s second total load time application.
 - We managed to complete our task of improving the bad metrics and maintaining the good ones, while also making app fast, interactive and user-friendly.
+
+## (Conclusion)
+
+That's it for this talk, the code is pinned on my github, and follow me on twitter if you are interested in more RSC content. Thanks for listening!
