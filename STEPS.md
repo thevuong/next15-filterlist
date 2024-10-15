@@ -66,10 +66,9 @@ Let's continue to improve the UX, it is still not good here. We are not seeing a
 
 - Uncomfortable experience in the search.
 - Progressive enhancement of the base case search with onChange, we want to push to the router. Add router, params, and searchParams.
-- Add "use client", newSearchParams, pushRouter.
-- Using the existing search params because I will be adding more in the next step.
-- We are keeping the state in the URL as a single source of truth, because the state of the app will be reloadable, shareable, and bookmarkable.
+- Onchange newSearchParams. We gonna use the existing search params because I will keeping the state in the URL as a single source of truth, because the state of the app will be reloadable, shareable, and bookmarkable.
 - Add defaultvalue and reset with a key.
+- Add "use client".
 - Notice the url is updating later because we are waiting for the await in the table to resolve before routing.
 - As a user, we want to know that something is happening in the app.
 - Explain useTransition: mark a state update as non-urgent and non-blocking and get pending state.
@@ -134,4 +133,4 @@ Let's continue to improve the UX, it is still not good here. We are not seeing a
 - We can also maintained the TBT of 0, which corresponds to the responsive clicks because we have minimal JS and no long tasks.
 - Maintained 0 CLS because of these skeletons being sized correctly.
 - We have greatly improved performance, getting 95-100 score in lighthouse even with a 2s second total load time application.
-- We managed to complete our task of improving the bad metrics and maintaining the good metrics, while also making app fast, interactive and user-friendly.
+- We managed to complete our task of improving the bad metrics and maintaining the good ones, while also making app fast, interactive and user-friendly.
