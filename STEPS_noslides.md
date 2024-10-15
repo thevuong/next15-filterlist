@@ -117,7 +117,7 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 
 ## Review lighthouse scores again
 
-- Open the tab in new window with pre-run scores localhost. Hover scores.
+- Open the tab in new window with pre-run scores localhost. Hover scores. Or rerun?
 - Again, the LCP and FCP are much improved since the first run because they are both the project information, but we can also see that the speed index improved since we show start off with more content, the project information, before showing incrementally more content, as seen in filmstrip.
 - We can also maintained the TBT of 0, which corresponds to the responsive clicks because we have minimal JS and no long tasks.
 - Maintained 0 CLS because of these skeletons being sized correctly.
