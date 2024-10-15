@@ -51,10 +51,10 @@
 - Move projectDetails fetch to projectDetails.tsx, and move tabs fetch to tabs.tsx. Each component is now responsible for their own data, making them composable.
 - Display suspense fallbacks with "loading..." around projectDetails, and around tabs. - Show the result: streaming in the RSCs using just a little js as they complete on the server. Running in parallel, have a lower total load timem and utlitizes the shared compute load between server and client. We can actually show something on the screen and even interact with what we have (fill search).
 - If we turn off the slow the suspense boundaries would be mostly omitted.
-- However, did you see how the elements are visually unstable as they load. We got cumulative layout shift. Uncomfortable UX. CLS is no longer 0, and is very impactful on our scores.
+- However, did you see how the elements are visually unstable as they load. We got cumulative layout shift. Uncomfortable UX. Open CWV: CLS is no longer 0, and is very impactful on our scores.
 - We have to make loading fallbacks the right size. Replace with skeletons.
 - Open CWV: Showcase the improved CLS. Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
-- We fixed the FCP and LCP since we are showing the project information right away and not blocking the page, and LCP is our FCP which is the project information and its very fast. (Our LCP is still slowed down but greatly improved).
+- We also fixed the FCP and LCP since we are showing the project information right away and not blocking the page, and LCP is our FCP which is the project information and its very fast. (Our LCP is still slowed down but greatly improved).
 - Suspense Search because SearchParams witch skeleton because SearchParams opt into dynamic rendering.
 
 ## Improve UX
