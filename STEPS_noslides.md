@@ -79,8 +79,9 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 - Notice the url is updating later because we are waiting for the await in the table to resolve before routing.
 - As a user, we want to know that something is happening in the app.
 - Explain useTransition: mark a state update as non-urgent and non-blocking and get pending state.
-- Use pending state to display user while waiting for the navigation to finish, which is the await in the table component.
-- Enable the spinner, while we are transitioning, we can see it. When this is hydrated by js, we have the onchange and the spinner.
+- Use pending state to display user while waiting for the navigation to finish, which is the await in the table component. Reload.
+- Enable the spinner, while we are transitioning, we can see it.
+- When this is hydrated by js, we have the progressive enhcanement of the onchange and the spinner.
 - (Using a transition also batches the key strokes, leaving only one entry in the history.)
 
 ## Add CategoryFilter.tsx to layout.tsx
