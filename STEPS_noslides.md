@@ -9,7 +9,7 @@
 ## Setup and starting point
 
 - This is a project task manager sort of thing.
-- The setup is of course Next.js App router, prisma and an Azure DB, tailwind CSS.
+- The setup is Next.js App router, prisma and an Azure DB, tailwind CSS.
 - Demo app, new tab: Very slow load, slowed down data fetches on purpose.
 - But, it's actually not bad. Try out tabs, try search with a basic form, see the result in the table.
 - This is all server components, which means there is no js shipped to the client for these components. Just html, navigations and a form, and things work without js.
@@ -48,11 +48,11 @@
 - Layout.tsx fetches are running sequentially even though they don't depend on each other.
 - The first through might be to run them in parallel with promise.all().That would help, but you would still be blocked in the layout.
 - So, let's push the data fetches down from the layout to the components themselves.
-- Move projectDetails fetch to projectDetails.tsx, and move tabs fetch to tabs.tsx.
+- Move projectDetails fetch to projectDetails.tsx, and move tabs fetch to tabs.tsx. Each component is now responsible for their own data, making them composable.
 - Display suspense fallbacks with "loading..." around projectDetails, and around tabs. - Show the result: streaming in the RSCs using just a little js as they complete on the server. Running in parallel, have a lower total load timem and utlitizes the shared compute load between server and client. We can actually show something on the screen and even interact with what we have (fill search).
-- Each component is now responsible for their own data, making them composable. If we turn off the slow the suspense boundaries would be mostly omitted.
-- Open CWV: We fixed the FCP and LCP since we are showing the project information right away and not blocking the page, and LCP is our FCP which is the project information and its very fast. (Our LCP is still slowed down but greatly improved). However CLS its no longer 0, and is very impactful on our scores.
-- However, did you see how the elements are visually unstable as they load. We got cumulative layout shift. Unconfortable UX.
+- If we turn off the slow the suspense boundaries would be mostly omitted.
+- Open CWV: We fixed the FCP and LCP since we are showing the project information right away and not blocking the page, and LCP is our FCP which is the project information and its very fast. (Our LCP is still slowed down but greatly improved).
+- However, did you see how the elements are visually unstable as they load. We got cumulative layout shift. Unconfortable UX. CLS is no longer 0, and is very impactful on our scores.ments are visually unstable as they load. We got cumulative layout shift. Unconfortable UX.
 - We have to make skeletons the right size. Replace with skeletons.
 - Showcase the improved CLS. Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
 - Suspense Search because SearchParams witch skeleton because SearchParams opt into dynamic rendering.
