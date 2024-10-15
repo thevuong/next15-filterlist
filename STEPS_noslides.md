@@ -95,7 +95,7 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 - Instead of creating a global state manager, we can just use css. Add data-pending=isPending attribute.
 - But i also want responsive buttons, and were gonna use useOptimistic - it is a great tool to handle this. It will take in a state to show no action is pending, which is our "truth" of the url, and return an optimistic value and a trigger function.
 - Add useOptimistic to CategoryFilter.tsx. Set them inside the transition while waiting for the router to resolve. Showcase.
-- UseOptimistic will create a optimistic client state, but then throw away it away after the transition completes. The categories are instant and don't depend in the network. Refreshing the page will show the correct state.
+- UseOptimistic will create a optimistic client state, but then throw away it away after the transition completes. The categories are instant and don't depend in the network.
 - Credit to Sam Selikoff with his post on buildui blog for this pattern.
 - (Batchign again, only updating once we are done selecting, leaving only one entry in the history.)
 
@@ -103,13 +103,13 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 
 - We are fetching the categories twice for every render - once for the task summary and once for the category filter. Show terminal logs 2x.
 - We can deduplicate this since it's running in the same render.
-- Add cache() higher order React 19 function to getCategoriesMap in categories.ts. Notice load time.
+- Add cache() higher order React 19 function to getCategoriesMap in categories.ts. Pay attention to the load time, refresh.
 - The load time is actually reduced by 500ms because the StatusTabs and the CategoryFilter are using the same return value of getCategoriesMap. And you can see it's only run once. Show terminal logs 1x.
 - This means that can keep using our common pattern of fetching data inside components, similar to how we would use for example tanstack query in a client side app.
 
 ## Final demo
 
-- See content right away, and interact with tabs while streaming in the server components as they finish rendering on the server. And we have some nice caching here.
+- See content right away, and interact with tabs while streaming in the server components as they finish rendering on the server.
 - Reload, even filter while streaming, enable "testing" and "backend".
 - Greatly improved UX. Even though the data fetches are still extremely slow, the app feels super responsive.
 - Search for "api". Reload/share/bookmark the page and have the same state.
@@ -118,7 +118,7 @@ Let's move to improving the UX, it is still not good here. We are not seeing act
 
 ## Review lighthouse scores again
 
-- Open the tab in new window with pre-run scores localhost. Hover scores. Or rerun?
+- Open the tab in new window with pre-run scores localhost. Hover scores.
 - Again, the LCP and FCP are much improved since the first run because they are both the project information, but we can also see that the speed index improved since we show start off with more content, the project information, before showing incrementally more content, as seen in filmstrip.
 - We can also maintained the TBT of 0, which corresponds to the responsive clicks because we have minimal JS and no long tasks.
 - Maintained 0 CLS because of these skeletons being sized correctly.
