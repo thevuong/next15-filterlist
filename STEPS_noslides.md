@@ -53,7 +53,7 @@
 - If we turn off the slow the suspense boundaries would be mostly omitted.
 - Open CWV: We fixed the FCP and LCP since we are showing the project information right away and not blocking the page, and LCP is our FCP which is the project information and its very fast. (Our LCP is still slowed down but greatly improved).
 - However, did you see how the elements are visually unstable as they load. We got cumulative layout shift. Unconfortable UX. CLS is no longer 0, and is very impactful on our scores.ments are visually unstable as they load. We got cumulative layout shift. Unconfortable UX.
-- We have to make skeletons the right size. Replace with skeletons.
+- We have to make loading fallbacks the right size. Replace with skeletons.
 - Showcase the improved CLS. Managed 0-0.1 since my skeletons are good, but not perfect and will often be hard to obtain with dynamically sized content.
 - Suspense Search because SearchParams witch skeleton because SearchParams opt into dynamic rendering.
 
