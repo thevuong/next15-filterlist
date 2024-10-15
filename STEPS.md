@@ -2,7 +2,7 @@
 
 ## Setup and starting point
 
-- This is a project task manager sort of thing. The designer of my current project Eileen Røsholt has designed the UI, and it's inspired by something we made in that project.
+- This is a project task manager sort of thing. The designer of my current project Eileen Røsholt has designed the UI, and it's inspired by a feature we made in that project.
 - The setup is of course Next.js App router, prisma and an Azure DB cause its free on my company azure account, tailwind CSS.
 - Demo app, new tab: Very slow load, slowed down data fetches on purpose.
 - But, it's actually not bad. Try out tabs, try search with a basic form, see the result in the table.
