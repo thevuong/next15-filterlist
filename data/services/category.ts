@@ -1,13 +1,13 @@
 import 'server-only';
 
-import { cookies } from 'next/headers';
+import { unstable_noStore } from 'next/cache';
 import { prisma } from '@/db';
 import { slow } from '@/utils/slow';
 
 export const getCategoriesMap = async () => {
   console.log('getCategoriesMap');
 
-  await cookies();
+  unstable_noStore();
   await slow(1000);
 
   const categories = await prisma.category.findMany();
