@@ -101,9 +101,8 @@ Let's continue to improve the UX, it is still not good here. We are not seeing a
 
 ## Cache() getCategoriesMap in categories.ts
 
-- We are fetching the categories twice for every render - once for the task summary and once for the category filter. Show terminal logs 2x.
-- We can deduplicate this since it's running in the same render.
-- Add cache() higher order React 19 function to getCategoriesMap in categories.ts. Pay attention to the load time, refresh.
+- We are fetching the categories twice for every render - once for the task summary and once for the category filter. Show terminal logs 2x. We can reuse the the return value of getCategoriesMap.
+- Add cache() higher order React 19 function to getCategoriesMap in categories.ts. This enables per-render caching. Pay attention to the load time, refresh.
 - The load time is actually reduced by 500ms because the StatusTabs and the CategoryFilter are using the same return value of getCategoriesMap. And you can see it's only run once. Show terminal logs 1x.
 - This means that can keep using our pattern of fetching data inside the components themselves, instead of passing the data down from a common parent, maintaining composition. The components all call the same cached data, similar to how we would use for example tanstack query in a client side app.
 
