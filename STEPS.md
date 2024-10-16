@@ -105,7 +105,7 @@ Let's continue to improve the UX, it is still not good here. We are not seeing a
 - We can deduplicate this since it's running in the same render.
 - Add cache() higher order React 19 function to getCategoriesMap in categories.ts. Pay attention to the load time, refresh.
 - The load time is actually reduced by 500ms because the StatusTabs and the CategoryFilter are using the same return value of getCategoriesMap. And you can see it's only run once. Show terminal logs 1x.
-- This means that can keep using our common pattern of fetching data inside components, similar to how we would use for example tanstack query in a client side app.
+- This means that can keep using our pattern of fetching data inside the components themselves, instead of passing the data down from a common parent, maintaining composition. The components all call the same cached data, similar to how we would use for example tanstack query in a client side app.
 
 ## Turn on staleTimes in next.config.js
 
