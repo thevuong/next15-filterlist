@@ -1,14 +1,15 @@
 import 'server-only';
 
 import { unstable_noStore } from 'next/cache';
-import { cookies } from 'next/headers';
+
 import { prisma } from '@/db';
+import { slow } from '@/utils/slow';
 
 export async function getProject() {
   console.log('getProject');
 
   unstable_noStore();
-  await cookies();
+  await slow(500);
 
   const projects = await prisma.project.findMany({
     include: {
