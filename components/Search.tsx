@@ -9,6 +9,7 @@ export default function Search() {
         Search
       </label>
       <input
+        autoComplete="off"
         id="search"
         className="w-full pl-10 sm:w-96"
         name="q"
