@@ -19,6 +19,7 @@ export default function Search() {
         Search
       </label>
       <input
+        autoComplete="off"
         id="search"
         onChange={e => {
           startTransition(() => {
