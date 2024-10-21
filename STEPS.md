@@ -85,7 +85,7 @@ Let's continue to improve the UX, it is still not good here. We are not seeing a
 
 ## Add CategoryFilter.tsx to layout.tsx
 
-- Add the CategoryFilter component to layout.tsx. It takes in a categories promise and reads it with use. Pass it down with a new data fetch and suspend with a disabled toggle button.
+- Add the CategoryFilter component to layout.tsx. It takes in a categories promise and reads it with use. Pass it down with a new data fetch and suspend with correct skeleton.
 - This component is filtering with searchParams again, using the URL as the state again. However when we click the tabs, we don't see anything happening.
 - Pay attention to the URL. It's not updating until the new table in page.tsx is done with its await query and finished rendering on the server. Therefore we cannot see the active filters right away.
 - Let's mark the loading state. Add startTransition around router.push. How can we use this isPending?
