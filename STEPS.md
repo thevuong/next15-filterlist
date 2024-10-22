@@ -8,7 +8,7 @@
 
 ## Setup and starting point
 
-- This is a project task manager demo app. The designer of my current project Eileen Røsholt has designed the UI, and it's inspired by a feature we made in that project.
+- This is a project task manager demo app. The very talented designer (smile) of my current project Eileen Røsholt has designed the UI, and it's inspired by a feature we made in that project.
 - The setup is of course Next.js App Router, prisma and an Azure DB, tailwind CSS.
 - Demo app, new tab: Very slow load, slowed down data fetches on purpose.
 - But, it's actually not bad. Try out tabs, try search with a basic form, see the result in the table.
