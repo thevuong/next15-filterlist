@@ -1,5 +1,4 @@
 import React from 'react';
-
 import SearchStatus from './ui/SearchStatus';
 
 export default function Search() {
