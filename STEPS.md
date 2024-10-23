@@ -57,7 +57,7 @@
 
 ## Improve UX
 
-Let's continue to improve the UX, it is still not good here. We are not seeing active tab and the search is doing a full page reload.
+Let's continue to improve the UX, it is still not good here.
 
 ### Mark active tab and read promise with use in Tabs.tsx
 
@@ -79,7 +79,7 @@ Let's continue to improve the UX, it is still not good here. We are not seeing a
 - Explain useTransition: mark a state update as non-urgent and non-blocking and get pending state.
 - Use pending state to display user while waiting for the navigation to finish, which is the await in the table component. Reload.
 - Enable the spinner, while we are transitioning, we can see it.
-- When this is hydrated by js, we have the progressive enhcanement of the onchange and the spinner.
+- When this is hydrated by js, we have the progressive enhancement of the onchange and the spinner.
 - (Using a transition also batches the key strokes, leaving only one entry in the history.)
 
 ## Add CategoryFilter.tsx to layout.tsx
