@@ -1,10 +1,10 @@
 import React from 'react';
-import type { TaskStatus } from '@/types/task';
+
 import SearchStatus from './ui/SearchStatus';
 
 export default function Search() {
   return (
-    <form className="relative flex w-full flex-col gap-1 sm:w-fit" key={'' as TaskStatus}>
+    <form className="relative flex w-full flex-col gap-1 sm:w-fit">
       <label className="font-semibold uppercase" htmlFor="search">
         Search
       </label>
