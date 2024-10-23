@@ -2,7 +2,7 @@ import './globals.css';
 
 // eslint-disable-next-line import/no-unresolved
 import { GeistSans } from 'geist/font/sans';
-import LoadTimeTracker from '@/components/LoadTimeTracker';
+import LoadTime from '@/components/LoadTime';
 import ProjectInfo from '@/components/ProjectInfo';
 import Search from '@/components/Search';
 import StatusTabs from '@/components/StatusTabs';
@@ -36,7 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Search />
           {children}
         </div>
-        <LoadTimeTracker />
+        <LoadTime />
       </body>
     </html>
   );
