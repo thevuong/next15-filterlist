@@ -164,7 +164,7 @@ async function seedTodos() {
     }),
   )
     .then(() => {
-      return console.info('[SEED] Succussfully create project records');
+      return console.info('[SEED] Successfully create project records');
     })
     .catch(e => {
       return console.error('[SEED] Failed to create project records', e);
@@ -181,7 +181,7 @@ async function seedTodos() {
     }),
   )
     .then(() => {
-      return console.info('[SEED] Succussfully create teamMember records');
+      return console.info('[SEED] Successfully create teamMember records');
     })
     .catch(e => {
       return console.error('[SEED] Failed to create teamMember records', e);
@@ -197,7 +197,7 @@ async function seedTodos() {
     }),
   )
     .then(() => {
-      return console.info('[SEED] Succussfully create category records');
+      return console.info('[SEED] Successfully create category records');
     })
     .catch(e => {
       return console.error('[SEED] Failed to create category records', e);
