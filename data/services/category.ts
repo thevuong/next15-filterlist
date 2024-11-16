@@ -1,13 +1,13 @@
 import 'server-only';
 
-import { unstable_noStore } from 'next/cache';
+import { connection } from 'next/server';
 import { prisma } from '@/db';
 import { slow } from '@/utils/slow';
 
 export const getCategoriesMap = async () => {
   console.log('getCategoriesMap');
 
-  unstable_noStore();
+  await connection();
   await slow(1000);
 
   const categories = await prisma.category.findMany();

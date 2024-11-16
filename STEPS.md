@@ -29,7 +29,7 @@
 ## Go through the code
 
 - Async layout.tsx server component
-- Show the different data files just querying a db, been made dynamic with noStore() and slowed with slow(). (In the future of Next.js with dynamicIO as announced on the keynote, this would become dynamic by default and we would rather opt in to static.)
+- Show the different data files just querying a db, been made dynamic with connection() and slowed with slow(). (In the future of Next.js with dynamicIO as announced on the keynote, this would become dynamic by default and we would rather opt in to static.)
 - Mention each component in the file, search and form, children:
 - Async [tab] page.tsx server components, we are querying our db based on filters directly based on the filters inside this server component.
 - Dynamic requests, static is easy because this could be run in the build, but this is dynamic data. We have to await at runtime.
@@ -128,7 +128,7 @@ Let's continue to improve the UX, it is still not good here.
 - We can still improve the speed. Show project details in layout. Actually, we are dynamically fetching this project info data on every page load even though it very rarely changes.
 - This could be static data that we can revalidate on a time based interval using for example fetch options, or, the new Next.js directive "use cache" and its related APIs. Wasting resources and time. Static is the fastest.
 - I want to use Partial Prerendering. This will allow me to partially the layout as static - everything not inside suspense boundaries. (In the future, that would be determined with "use cache")
-- Remove the suspense around the projectDetails. Remove the noStore from the data fetch. Show the result: app is frozen again. Suspense Search because SearchParams with skeleton because SearchParams opt into dynamic rendering.
+- Remove the suspense around the projectDetails. Remove the connection() from the data fetch. Show the result: app is frozen again. Suspense Search because SearchParams with skeleton because SearchParams opt into dynamic rendering.
 - Turn on partial prerendering in next.config.js. I need to make a production build, I've already deployed it so we can see it.
 - Open the second tab in new window.
 - Copy paste new tab: the app is now instantly showing useful content. This can be extremely impactful on a bigger application with larger or slower chunks of static content.
